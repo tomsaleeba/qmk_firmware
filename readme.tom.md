@@ -11,6 +11,6 @@
 ## ergodox infinity
   1. make ergodox_infinity:tom
   1. put left half into flash mode
-  1. `sudo make ergodox_infinity:keymapname:dfu-util`
+  1. `sudo make ergodox_infinity:tom:dfu-util`
   1. put right half into flash mode
-  1. `sudo make ergodox_infinity:keymapname:dfu-util MASTER=right`
+  1. `sudo make ergodox_infinity:tom:dfu-util MASTER=right`
