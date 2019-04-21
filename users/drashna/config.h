@@ -15,10 +15,10 @@
   // #ifdef RGBLIGHT_ENABLE
   // #define NO_MUSIC_MODE
   // #endif //RGBLIGHT_ENABLE/
-  #ifndef __arm__
-    #undef  NOTE_REST
-    #define NOTE_REST         1.00f
-  #endif // !__arm__
+  // #ifndef __arm__
+  //   #undef  NOTE_REST
+  //   #define NOTE_REST         1.00f
+  // #endif // !__arm__
 
 #define UNICODE_SONG_OSX SONG(RICK_ROLL)
 #define UNICODE_SONG_LNX SONG(RICK_ROLL)
@@ -55,7 +55,7 @@
 // and when this option isn't enabled, z rapidly followed by x
 // actually sends Ctrl-x. That's bad.)
 #define IGNORE_MOD_TAP_INTERRUPT
-// #define PERMISSIVE_HOLD
+#undef PERMISSIVE_HOLD
 //#define TAPPING_FORCE_HOLD
 //#define RETRO_TAPPING
 
