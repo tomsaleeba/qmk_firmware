@@ -1,12 +1,5 @@
-#include "vision_division.h"
-#include "action_layer.h"
-#include "eeconfig.h"
+#include QMK_KEYBOARD_H
 #include "led.h"
-
-#ifdef AUDIO_ENABLE
-    #include "audio.h"
-    #include "song_list.h"
-#endif
 
 enum keyboard_layers {
   LAYER_QWERTY = 0,
@@ -137,8 +130,6 @@ enum keyboard_macros {
 #define TG_NKRO             MAGIC_TOGGLE_NKRO
 #define OS_SHFT             OSM(MOD_LSFT)
 
-#define _______             KC_TRNS
-#define XXXXXXX             KC_NO
 #define ________________    _______, _______
 #define XXXXXXXXXXXXXXXX    XXXXXXX, XXXXXXX
 
