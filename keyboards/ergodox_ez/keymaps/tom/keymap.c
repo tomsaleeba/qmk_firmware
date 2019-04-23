@@ -25,10 +25,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |   =    |   1  |   2  |   3  |   4  |   5  | ESC  |           | ~L2  |   6  |   7  |   8  |   9  |   0  |   -    |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |   \    |   Q  |   W  |   E  |   R  |   T  |  L1  |           |  {   |   Y  |   U  |   I  |   O  |   P  |   }    |
+ * |   \    |   Q  |   W  |   E  |   R  |   T  | Swap |           |  {   |   Y  |   U  |   I  |   O  |   P  |   }    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | Tab    |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |; / L3|   '    |
- * |--------+------+------+------+------+------| Swap |           | Swap |------+------+------+------+------+--------|
+ * |--------+------+------+------+------+------|  L1  |           | Swap |------+------+------+------+------+--------|
  * | LShift |Z/Ctrl|   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |//Ctrl| RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   | Ctrl |Grv/L1| Alt  | Left | Right|                                       | Left | Down | Up   | Right| RGUI |
@@ -46,9 +46,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BASE] = LAYOUT_ergodox(  // layer 0 : default
         // left hand
         KC_EQL,      KC_1,            KC_2,    KC_3,    KC_4,   KC_5,              KC_ESC,
-        KC_BSLS,     KC_Q,            KC_W,    KC_E,    KC_R,   KC_T,              MO(MDIA),
+        KC_BSLS,     KC_Q,            KC_W,    KC_E,    KC_R,   KC_T,              TT(SWAP),
         KC_TAB,      KC_A,            KC_S,    KC_D,    KC_F,   KC_G,
-        KC_LSFT,     KC_Z,            KC_X,    KC_C,    KC_V,   KC_B,              TT(SWAP),
+        KC_LSFT,     KC_Z,            KC_X,    KC_C,    KC_V,   KC_B,              MO(MDIA),
         KC_LCTL,     KC_GRV,          KC_LALT, KC_LEFT, KC_RGHT,
                                                                 KC_F2,             KC_LALT,
                                                                                    KC_HOME,
@@ -190,21 +190,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ___,      KC_BTN2, KC_BTN1
 ),
 // Layer 4: hand swap, all keys are mirrored to the other side of the keyboard
-// except for the layer toggle itself (so there is no right arrow when this
-// layer is activated).
+// except for the layer toggle itself
 [SWAP] = LAYOUT_ergodox(
   /* left hand */
   ___, ___, ___, ___, ___, ___, ___,
   ___, ___, ___, ___, ___, ___, ___,
   ___, ___, ___, ___, ___, ___,
-  ___, ___, ___, ___, ___, ___, ___,
+  ___, ___, ___, ___, ___, ___, TT(SWAP),
   ___, ___, ___, ___, ___,
                                 ___, ___,
                                      ___,
                            ___, ___, ___,
   /* right hand */
        ___, ___, ___, ___, ___, ___, ___,
-       ___, ___, ___, ___, ___, ___, ___,
+  TT(SWAP), ___, ___, ___, ___, ___, ___,
             ___, ___, ___, ___, ___, ___,
        ___, ___, ___, ___, ___, ___, ___,
                  ___, ___, ___, ___, ___,
