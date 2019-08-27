@@ -9,8 +9,8 @@
   1. flash with teensy loader https://www.pjrc.com/teensy/loader.html
 
 ## ergodox infinity
-  1. `make ergodox_infinity:tom`
-  1. put left half into flash mode
-  1. `sudo make ergodox_infinity:tom:dfu-util`
-  1. put right half into flash mode
-  1. `sudo make ergodox_infinity:tom:dfu-util MASTER=right`
+  1. `sudo env CFLAGS="-Wno-error=deprecated" make ergodox_infinity:tom:dfu-util`
+  1. quickly, while that is building, plug the left half into the pc directly
+     and put it into flash mode
+  1. `sudo env CFLAGS="-Wno-error=deprecated" make ergodox_infinity:tom:dfu-util MASTER=right`
+  1. plug right half in directly, put it into flash mode
