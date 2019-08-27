@@ -46,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_BSLS,     KC_Q,            KC_W,    KC_E,    KC_R,   KC_T,              TG(MDIA),
         KC_TAB,      KC_A,            KC_S,    KC_D,    KC_F,   KC_G,
         KC_LSFT,     KC_Z,            KC_X,    KC_C,    KC_V,   KC_B,              MO(MDIA),
-        KC_LCTL,     LT(SYMB,KC_GRV), KC_LALT, KC_LEFT, LT(NUMB, KC_RGHT),
+        KC_LCTL,     LT(SYMB,KC_GRV), KC_LALT, KC_LEFT, MO(NUMB),
                                                                 KC_F2,             KC_LALT,
                                                                                    KC_HOME,
                                                         KC_BSPC,KC_DELT,           KC_END,
@@ -191,9 +191,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * |   +    |  !   |  @   |  #   |  $   |  %   |      |           |      |  ^   |  &   |  *   |  (   |  )   |   _    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |   =    |  1   |  2   |  3   |  4   |  5   |------|           |------|  6   |  7   |  8   |   9  |  0   |   -    |
+ * |   =    |  1   |  2   |  3   |  4   |  5   |------|           |------|  6   |  7   |  8   |  9   |  0   |   -    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -210,23 +210,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Numbers
 [NUMB] = LAYOUT_ergodox(
         // left hand
-        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_EQL,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,
-        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                                      KC_TRNS, KC_TRNS,
-                                                               KC_TRNS,
-                                             KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS,      KC_TRNS,    KC_TRNS,    KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,
+        LSFT(KC_EQL), LSFT(KC_1), LSFT(KC_2), LSFT(KC_3),  LSFT(KC_4),  LSFT(KC_5),  KC_TRNS,
+        KC_EQL,       KC_1,       KC_2,       KC_3,        KC_4,        KC_5,
+        KC_TRNS,      KC_TRNS,    KC_TRNS,    KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,
+        KC_TRNS,      KC_TRNS,    KC_TRNS,    KC_TRNS,     KC_TRNS,
+                                                                        KC_TRNS,     KC_TRNS,
+                                                                                     KC_TRNS,
+                                                           KC_TRNS,     KC_TRNS,     KC_TRNS,
         // right hand
-        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                  KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
-        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS,  KC_TRNS,     KC_TRNS,    KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,
+        KC_TRNS,  LSFT(KC_6),  LSFT(KC_7), LSFT(KC_8),  LSFT(KC_9),  LSFT(KC_0),  LSFT(KC_MINS),
+                  KC_6,        KC_7,       KC_8,        KC_9,        KC_0,        KC_MINS,
+        KC_TRNS,  KC_TRNS,     KC_TRNS,    KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,
+                               KC_TRNS,    KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,
         KC_TRNS,  KC_TRNS,
         KC_TRNS,
-        KC_TRNS,  KC_TRNS, KC_TRNS
+        KC_TRNS,  KC_TRNS,     KC_TRNS
 ),
 };
 
