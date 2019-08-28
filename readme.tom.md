@@ -6,7 +6,9 @@
 
 ## ergodox ez
   1. `make ergodox_ez:tom`
-  1. flash with teensy loader https://www.pjrc.com/teensy/loader.html
+  1. flash with teensy loader
+      - GUI https://www.pjrc.com/teensy/loader.html or
+      - CLI: teensy-loader-cli -mmcu=atmega32u4 -w ergodox_ez_tom.hex
 
 ## ergodox infinity
   1. `sudo env CFLAGS="-Wno-error=deprecated" make ergodox_infinity:tom:dfu-util`

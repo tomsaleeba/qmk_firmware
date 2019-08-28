@@ -8,6 +8,7 @@
 #define SYMB 2 // numpad
 #define MOUS 3 // mouse
 #define SWAP 4 // swap hands (one handed mode)
+#define NUMB 5 // minimal numbers test
 
 // A 'transparent' key code (that falls back to the layers below it).
 #define ___ KC_TRANSPARENT
@@ -23,7 +24,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |   =    |   1  |   2  |   3  |   4  |   5  | ESC  |           | ~L2  |   6  |   7  |   8  |   9  |   0  |   -    |
+ * |        |      |      |      |      |      | ESC  |           | ~L2  |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |   \    |   Q  |   W  |   E  |   R  |   T  | Swap |           |  {   |   Y  |   U  |   I  |   O  |   P  |   }    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -45,16 +46,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Otherwise, it needs KC_*
 [BASE] = LAYOUT_ergodox(  // layer 0 : default
         // left hand
-        KC_EQL,      KC_1,            KC_2,    KC_3,    KC_4,   KC_5,              KC_ESC,
+        KC_TRNS,     KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS,KC_TRNS,           KC_ESC,
         KC_BSLS,     KC_Q,            KC_W,    KC_E,    KC_R,   KC_T,              TT(SWAP),
         KC_TAB,      KC_A,            KC_S,    KC_D,    KC_F,   KC_G,
         KC_LSFT,     KC_Z,            KC_X,    KC_C,    KC_V,   KC_B,              MO(MDIA),
-        KC_LCTL,     KC_GRV,          KC_LALT, KC_LEFT, KC_RGHT,
+        KC_LCTL,     KC_GRV,          KC_LALT, KC_LEFT, MO(NUMB),
                                                                 KC_F2,             KC_LALT,
                                                                                    KC_HOME,
                                                         KC_BSPC,KC_DELT,           KC_END,
         // right hand
-        TG(SYMB),    KC_6,            KC_7,    KC_8,    KC_9,   KC_0,              KC_MINS,
+        TG(SYMB),    KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS,KC_TRNS,           KC_TRNS,
         KC_LBRC,     KC_Y,            KC_U,    KC_I,    KC_O,   KC_P,              KC_RBRC,
                      KC_H,            KC_J,    KC_K,    KC_L,   LT(MOUS, KC_SCLN), KC_QUOT,
         TT(SWAP),    KC_N,            KC_M,    KC_COMM, KC_DOT, CTL_T(KC_SLSH),    KC_RSFT,
@@ -210,6 +211,48 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ___, ___,
   ___,
   ___, ___, ___
+),
+/* Keymap 5: Test minimal numbers
+ *
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * |   +    |  !   |  @   |  #   |  $   |  %   |      |           |      |  ^   |  &   |  *   |  (   |  )   |   _    |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |   =    |  1   |  2   |  3   |  4   |  5   |------|           |------|  6   |  7   |  8   |  9   |  0   |   -    |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   |      |      |      |      |      |                                       | Left | Down | Up   | Right|      |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        |      |      |       |      |      |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |      |       |      |      |      |
+ *                                 |      |      |------|       |------|      |      |
+ *                                 |      |      |      |       |      |      |      |
+ *                                 `--------------------'       `--------------------'
+ */
+// Numbers
+[NUMB] = LAYOUT_ergodox(
+        // left hand
+        KC_TRNS,      KC_TRNS,    KC_TRNS,    KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,
+        LSFT(KC_EQL), LSFT(KC_1), LSFT(KC_2), LSFT(KC_3),  LSFT(KC_4),  LSFT(KC_5),  KC_TRNS,
+        KC_EQL,       KC_1,       KC_2,       KC_3,        KC_4,        KC_5,
+        KC_TRNS,      KC_TRNS,    KC_TRNS,    KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,
+        KC_TRNS,      KC_TRNS,    KC_TRNS,    KC_TRNS,     KC_TRNS,
+                                                                        KC_TRNS,     KC_TRNS,
+                                                                                     KC_TRNS,
+                                                           KC_TRNS,     KC_TRNS,     KC_TRNS,
+        // right hand
+        KC_TRNS,  KC_TRNS,     KC_TRNS,    KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,
+        KC_TRNS,  LSFT(KC_6),  LSFT(KC_7), LSFT(KC_8),  LSFT(KC_9),  LSFT(KC_0),  LSFT(KC_MINS),
+                  KC_6,        KC_7,       KC_8,        KC_9,        KC_0,        KC_MINS,
+        KC_TRNS,  KC_TRNS,     KC_LEFT,    KC_DOWN,     KC_UP,       KC_RGHT,     KC_TRNS,
+                               KC_TRNS,    KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,
+        KC_TRNS,  KC_TRNS,
+        KC_TRNS,
+        KC_TRNS,  KC_TRNS,     KC_TRNS
 ),
 };
 
