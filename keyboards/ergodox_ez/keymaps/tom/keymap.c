@@ -237,7 +237,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [NUMB] = LAYOUT_ergodox(
         // left hand
         KC_TRNS,      KC_TRNS,    KC_TRNS,    KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,
-        LSFT(KC_EQL), LSFT(KC_1), LSFT(KC_2), LSFT(KC_3),  LSFT(KC_4),  LSFT(KC_5),  KC_TRNS,
+        KC_KP_PLUS,   LSFT(KC_1), LSFT(KC_2), LSFT(KC_3),  LSFT(KC_4),  LSFT(KC_5),  KC_TRNS,
         KC_EQL,       KC_1,       KC_2,       KC_3,        KC_4,        KC_5,
         KC_TRNS,      KC_TRNS,    KC_TRNS,    KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,
         KC_TRNS,      KC_TRNS,    KC_TRNS,    KC_TRNS,     KC_TRNS,
