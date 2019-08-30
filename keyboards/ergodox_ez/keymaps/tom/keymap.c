@@ -32,13 +32,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|  L1  |           | Swap |------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |//Ctrl| RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | Ctrl |  Grv |  Alt |  Del |  L5  |                                       | RGui | Left | Down |  Up  | Right|
+ *   | Ctrl |  Grv |  Alt |  Del |  L5  |                                       | Left | Down |  Up  | Right| RGui |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |        |
  *                                 ,------|------|------|       |------+--------+------.
  *                                 |      |      |      |       |      |        |      |
- *                                 | BkSp |      |------|       |------| Enter  | Space|
+ *                                 | BkSp |  L5  |------|       |------| Enter  | Space|
  *                                 |      |      |      |       |      |        |      |
  *                                 `--------------------'       `----------------------'
  */
@@ -53,13 +53,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCTL,     KC_GRV,          KC_LALT, KC_DELT, MO(NUMB),
                                                                 KC_TRNS,           KC_TRNS,
                                                                                    KC_TRNS,
-                                                        KC_BSPC,KC_TRNS,           KC_TRNS,
+                                                        KC_BSPC,MO(NUMB),          KC_TRNS,
         // right hand
         TG(SYMB),    KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS,KC_TRNS,           KC_TRNS,
         KC_LBRC,     KC_Y,            KC_U,    KC_I,    KC_O,   KC_P,              KC_RBRC,
                      KC_H,            KC_J,    KC_K,    KC_L,   LT(MOUS, KC_SCLN), KC_QUOT,
         TT(SWAP),    KC_N,            KC_M,    KC_COMM, KC_DOT, CTL_T(KC_SLSH),    KC_RSFT,
-                                      KC_RGUI, KC_LEFT, KC_DOWN,KC_UP,             KC_RGHT,
+                                      KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT,           KC_RGUI,
         KC_TRNS,     KC_TRNS,
         KC_TRNS,
         KC_TRNS,     KC_ENT,          KC_SPC
