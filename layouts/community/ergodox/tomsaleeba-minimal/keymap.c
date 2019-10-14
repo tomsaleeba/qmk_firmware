@@ -7,6 +7,10 @@
 #define MDIA 1 // media keys
 #define NUMB 2 // minimal numbers test
 #define MOUS 3 // mouse
+#define SWAP 4 // swap hands (one handed mode)
+
+// A 'transparent' key code (that falls back to the layers below it).
+#define ___ KC_TRANSPARENT
 
 enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE, // can always be here
@@ -21,10 +25,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |   \    |   Q  |   W  |   E  |   R  |   T  |      |           |  {   |   Y  |   U  |   I  |   O  |   P  |   }    |
+ * |   \    |   Q  |   W  |   E  |   R  |   T  | Swap |           |  {   |   Y  |   U  |   I  |   O  |   P  |   }    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | Tab    |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |; / L3|   '    |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |--------+------+------+------+------+------|      |           | Swap |------+------+------+------+------+--------|
  * |LShift/[|   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |//Ctrl|RShift/]|
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |Ctl/Es|Grv/L1| Alt  |      |  L5  |                                       | Left | Down | Up   | Right|      |
@@ -41,23 +45,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Otherwise, it needs KC_*
 [BASE] = LAYOUT_ergodox(  // layer 0 : default
         // left hand
-        KC_TRNS,          KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS,KC_TRNS,           KC_TRNS,
-        KC_BSLS,          KC_Q,            KC_W,    KC_E,    KC_R,   KC_T,              KC_TRNS,
+        ___,              ___,             ___,     ___,     ___,    ___,               ___,
+        KC_BSLS,          KC_Q,            KC_W,    KC_E,    KC_R,   KC_T,              TT(SWAP),
         KC_TAB,           KC_A,            KC_S,    KC_D,    KC_F,   KC_G,
-        LSFT_T(KC_LBRC),  KC_Z,            KC_X,    KC_C,    KC_V,   KC_B,              KC_TRNS,
-        LCTL_T(KC_ESC),   LT(MDIA,KC_GRV), KC_LALT, KC_TRNS, OSL(NUMB),
-                                                                KC_TRNS,           KC_TRNS,
-                                                                                   KC_TRNS,
-                                                        KC_BSPC,KC_DELT,           KC_TRNS,
+        LSFT_T(KC_LBRC),  KC_Z,            KC_X,    KC_C,    KC_V,   KC_B,              ___,
+        LCTL_T(KC_ESC),   LT(MDIA,KC_GRV), KC_LALT, ___,     OSL(NUMB),
+                                                                ___,               ___,
+                                                                                   ___,
+                                                        KC_BSPC,KC_DELT,           ___,
         // right hand
-        KC_TRNS,     KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS,KC_TRNS,           KC_TRNS,
+        ___,         ___,             ___,     ___,     ___,    ___,               ___,
         KC_LBRC,     KC_Y,            KC_U,    KC_I,    KC_O,   KC_P,              KC_RBRC,
                      KC_H,            KC_J,    KC_K,    KC_L,   LT(MOUS, KC_SCLN), KC_QUOT,
-        KC_TRNS,     KC_N,            KC_M,    KC_COMM, KC_DOT, RCTL_T(KC_SLSH),   RSFT_T(KC_RBRC),
-                                      KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT,           KC_TRNS,
-        KC_TRNS,     KC_TRNS,
-        KC_TRNS,
-        KC_TRNS,     KC_ENT,          RGUI_T(KC_SPC)
+        TT(SWAP),    KC_N,            KC_M,    KC_COMM, KC_DOT, RCTL_T(KC_SLSH),   RSFT_T(KC_RBRC),
+                                      KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT,           ___,
+        ___,         ___,
+        ___,
+        ___,         KC_ENT,          RGUI_T(KC_SPC)
     ),
 /* Keymap 1: Media and mouse keys
  *
@@ -83,23 +87,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // MEDIA AND MOUSE
 [MDIA] = LAYOUT_ergodox(
         // left hand
-        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        ___,      ___,     ___,     ___,     ___,     ___,     ___,
         VRSN,     KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F11,
-        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_ENT ,
-        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_SLSH, KC_TRNS,
-        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                                      KC_TRNS, KC_TRNS,
-                                                               KC_TRNS,
-                                             KC_TRNS, KC_TRNS, KC_TRNS,
+        ___,      ___,     ___,     ___,     ___,     KC_ENT ,
+        ___,      ___,     ___,     ___,     ___,     KC_SLSH, ___,
+        ___,      ___,     ___,     ___,     ___,
+                                                      ___,     ___,
+                                                               ___,
+                                             ___,     ___,     ___,
         // right hand
-        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_F12,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_TRNS,
-                  KC_TRNS, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_MPLY,
-        KC_TRNS,  KC_TRNS, KC_TRNS, KC_MPRV, KC_MNXT, KC_TRNS, KC_TRNS,
-                           KC_TRNS, KC_VOLD, KC_VOLU, KC_MUTE, KC_TRNS,
+        ___,      ___,     ___,     ___,     ___,     ___,     ___,
+        KC_F12,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  ___,
+                  ___,     KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_MPLY,
+        ___,      ___,     ___,     KC_MPRV, KC_MNXT, ___,     ___,
+                           ___,     KC_VOLD, KC_VOLU, KC_MUTE, ___,
         KC_PSCR,  KC_CALC,
-        KC_TRNS,
-        KC_TRNS,  KC_TRNS, KC_TRNS
+        ___,
+        ___,      ___,     KC_TRNS
 ),
 /* Keymap 2: Test minimal numbers
  *
@@ -125,23 +129,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Numbers
 [NUMB] = LAYOUT_ergodox(
         // left hand
-        KC_TRNS,      KC_TRNS,    KC_TRNS,    KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,
-        LSFT(KC_EQL), LSFT(KC_1), LSFT(KC_2), LSFT(KC_3),  LSFT(KC_4),  LSFT(KC_5),  KC_TRNS,
+        ___,          ___,        ___,        ___,         ___,         ___,         ___,
+        LSFT(KC_EQL), LSFT(KC_1), LSFT(KC_2), LSFT(KC_3),  LSFT(KC_4),  LSFT(KC_5),  ___,
         KC_EQL,       KC_1,       KC_2,       KC_3,        KC_4,        KC_5,
-        KC_TRNS,      KC_END,     KC_PGUP,    KC_PGDN,     KC_HOME,     KC_TRNS,     KC_TRNS,
-        KC_TRNS,      KC_TRNS,    KC_TRNS,    KC_TRNS,     KC_TRNS,
-                                                                        KC_TRNS,     KC_TRNS,
-                                                                                     KC_TRNS,
-                                                           KC_TRNS,     KC_TRNS,     KC_TRNS,
+        ___,          KC_END,     KC_PGUP,    KC_PGDN,     KC_HOME,     ___,         ___,
+        ___,          ___,        ___,        ___,         ___,
+                                                                        ___,         ___,
+                                                                                     ___,
+                                                           ___,         ___,         ___,
         // right hand
-        KC_TRNS,  KC_TRNS,     KC_TRNS,    KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,
-        KC_TRNS,  LSFT(KC_6),  LSFT(KC_7), LSFT(KC_8),  LSFT(KC_9),  LSFT(KC_0),  LSFT(KC_MINS),
+        ___,      ___,         ___,        ___,         ___,         ___,         ___,
+        ___,      LSFT(KC_6),  LSFT(KC_7), LSFT(KC_8),  LSFT(KC_9),  LSFT(KC_0),  LSFT(KC_MINS),
                   KC_6,        KC_7,       KC_8,        KC_9,        KC_0,        KC_MINS,
-        KC_TRNS,  KC_TRNS,     KC_TRNS,    KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,
-                               KC_TRNS,    KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,
-        KC_TRNS,  KC_TRNS,
-        KC_TRNS,
-        KC_TRNS,  KC_TRNS,     KC_TRNS
+        ___,      ___,         ___,        ___,         ___,         ___,         ___,
+                               ___,        ___,         ___,         ___,         ___,
+        ___,      ___,
+        ___,
+        ___,      ___,         KC_TRNS
 ),
 /* Keymap 3: Mouse
  *
@@ -167,25 +171,53 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // MOUSE
 [MOUS] = LAYOUT_ergodox(
         // left hand
-        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS,  KC_TRNS, KC_TRNS, KC_MS_U, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS,  KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_R, KC_ENT ,
-        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_SLSH, KC_TRNS,
-        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                                      KC_TRNS, KC_TRNS,
-                                                               KC_TRNS,
-                                             KC_TRNS, KC_TRNS, KC_TRNS,
+        ___,      ___,     ___,     ___,     ___,     ___,     ___,
+        ___,      ___,     ___,     KC_MS_U, ___,     ___,     ___,
+        ___,      ___,     KC_MS_L, KC_MS_D, KC_MS_R, KC_ENT ,
+        ___,      ___,     ___,     ___,     ___,     KC_SLSH, ___,
+        ___,      ___,     ___,     ___,     ___,
+                                                      ___,     ___,
+                                                               ___,
+                                             ___,     ___,     ___,
         // right hand
-        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS,  KC_TRNS, KC_TRNS, KC_WH_U, KC_TRNS, KC_TRNS, KC_TRNS,
-                  KC_TRNS, KC_BTN3, KC_WH_D, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-        KC_TRNS,  KC_TRNS,
-        KC_TRNS,
-        KC_TRNS,  KC_BTN2, KC_BTN1
+        ___,      ___,     ___,     ___,     ___,     ___,     ___,
+        ___,      ___,     ___,     KC_WH_U, ___,     ___,     ___,
+                  ___,     KC_BTN3, KC_WH_D, ___,     ___,     ___,
+        ___,      ___,     ___,     ___,     ___,     ___,     ___,
+                           ___,     ___,     ___,     ___,     ___,
+        ___,      ___,
+        ___,
+        ___,      KC_BTN2, KC_BTN1
+),
+// Layer 4: hand swap, all keys are mirrored to the other side of the keyboard
+// except for the layer toggle itself
+[SWAP] = LAYOUT_ergodox(
+  /* left hand */
+  ___, ___, ___, ___, ___, ___, ___,
+  ___, ___, ___, ___, ___, ___, ___,
+  ___, ___, ___, ___, ___, ___,
+  ___, ___, ___, ___, ___, ___, TT(SWAP),
+  ___, ___, ___, ___, ___,
+                                ___, ___,
+                                     ___,
+                           ___, ___, ___,
+  /* right hand */
+       ___, ___, ___, ___, ___, ___, ___,
+  TT(SWAP), ___, ___, ___, ___, ___, ___,
+            ___, ___, ___, ___, ___, ___,
+       ___, ___, ___, ___, ___, ___, ___,
+                 ___, ___, ___, ___, ___,
+  ___, ___,
+  ___,
+  ___, ___, ___
 ),
 };
+#ifdef KEYBOARD_ergodox_ez
+// The current set of active layers (as a bitmask).
+// There is a global 'layer_state' variable but it is set after the call
+// to layer_state_set_user().
+static uint32_t current_layer_state = 0;
+#endif
 
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 {
@@ -234,13 +266,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 // Runs just one time when the keyboard initializes.
 void matrix_init_user(void) {
-
+#ifdef RGBLIGHT_COLOR_LAYER_0
+  rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
+#endif
 };
 
 
 // Runs constantly in the background, in a loop.
 void matrix_scan_user(void) {
-
+#ifdef KEYBOARD_ergodox_infinity
     uint8_t layer = biton32(layer_state);
 
     ergodox_board_led_off();
@@ -259,5 +293,85 @@ void matrix_scan_user(void) {
             // none
             break;
     }
-
+#endif
 };
+
+#ifdef KEYBOARD_ergodox_ez
+// Whether the given layer (one of the constant defined at the top) is active.
+#define LAYER_ON(layer) (current_layer_state & (1<<layer))
+// Runs whenever there is a layer state change.
+
+uint32_t layer_state_set_user(uint32_t state) {
+  current_layer_state = state;
+  swap_hands = LAYER_ON(SWAP) && !LAYER_ON(MOUS); // can't deal with mirrored mouse
+
+  ergodox_board_led_off();
+  ergodox_right_led_1_off();
+  ergodox_right_led_2_off();
+  ergodox_right_led_3_off();
+
+  uint8_t layer = biton32(state);
+  switch (layer) {
+      case 0:
+        #ifdef RGBLIGHT_COLOR_LAYER_0
+          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
+        #else
+        #ifdef RGBLIGHT_ENABLE
+          rgblight_init();
+        #endif
+        #endif
+        break;
+      case 1:
+        ergodox_right_led_1_on();
+        #ifdef RGBLIGHT_COLOR_LAYER_1
+          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_1);
+        #endif
+        break;
+      case 2:
+        ergodox_right_led_2_on();
+        #ifdef RGBLIGHT_COLOR_LAYER_2
+          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_2);
+        #endif
+        break;
+      case 3:
+        ergodox_right_led_3_on();
+        #ifdef RGBLIGHT_COLOR_LAYER_3
+          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_3);
+        #endif
+        break;
+      case 4:
+        ergodox_right_led_1_on();
+        ergodox_right_led_2_on();
+        #ifdef RGBLIGHT_COLOR_LAYER_4
+          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_4);
+        #endif
+        break;
+      case 5:
+        ergodox_right_led_1_on();
+        ergodox_right_led_3_on();
+        #ifdef RGBLIGHT_COLOR_LAYER_5
+          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_5);
+        #endif
+        break;
+      case 6:
+        ergodox_right_led_2_on();
+        ergodox_right_led_3_on();
+        #ifdef RGBLIGHT_COLOR_LAYER_6
+          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_6);
+        #endif
+        break;
+      case 7:
+        ergodox_right_led_1_on();
+        ergodox_right_led_2_on();
+        ergodox_right_led_3_on();
+        #ifdef RGBLIGHT_COLOR_LAYER_7
+          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_6);
+        #endif
+        break;
+      default:
+        break;
+    }
+
+  return state;
+};
+#endif
