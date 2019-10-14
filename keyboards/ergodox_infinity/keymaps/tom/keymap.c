@@ -27,15 +27,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |LShift/[|   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |//Ctrl|RShift/]|
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |Ctl/Es|Grv/L1| Alt  |      |  L5  |                                       | Left | Down | Up   | Right| RGUI |
+ *   |Ctl/Es|Grv/L1| Alt  |      |  L5  |                                       | Left | Down | Up   | Right|      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        |      |      |       |      |        |
- *                                 ,------|------|------|       |------+--------+------.
- *                                 |      |      |      |       |      |        |      |
- *                                 | BkSp | Del  |------|       |------| Enter  | Space|
- *                                 |      |      |      |       |      |        |      |
- *                                 `--------------------'       `----------------------'
+ *                                        |      |      |       |      |      |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |      |       |      |      |      |
+ *                                 | BkSp | Del  |------|       |------| Enter| Space|
+ *                                 |      |      |      |       |      |      | /RGUI|
+ *                                 `--------------------'       `--------------------'
  */
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
 // Otherwise, it needs KC_*
@@ -54,10 +54,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LBRC,     KC_Y,            KC_U,    KC_I,    KC_O,   KC_P,              KC_RBRC,
                      KC_H,            KC_J,    KC_K,    KC_L,   LT(MOUS, KC_SCLN), KC_QUOT,
         KC_TRNS,     KC_N,            KC_M,    KC_COMM, KC_DOT, RCTL_T(KC_SLSH),   RSFT_T(KC_RBRC),
-                                      KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT,           KC_RGUI,
+                                      KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT,           KC_TRNS,
         KC_TRNS,     KC_TRNS,
         KC_TRNS,
-        KC_TRNS,     KC_ENT,          KC_SPC
+        KC_TRNS,     KC_ENT,          RGUI_T(KC_SPC)
     ),
 /* Keymap 1: Media and mouse keys
  *
