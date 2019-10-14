@@ -31,34 +31,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *   | Ctrl |Grv/L2| Alt  |      |  L5  |                                       | Left | Down | Up   | Right| RGUI |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        |  F2  | LAlt |       | Alt  |Ctrl/Esc|
+ *                                        |      |      |       |      |        |
  *                                 ,------|------|------|       |------+--------+------.
- *                                 |      |      | Home |       | PgUp |        |      |
+ *                                 |      |      |      |       |      |        |      |
  *                                 | BkSp | Del  |------|       |------| Enter  | Space|
- *                                 |      |      | End  |       | PgDn |        |      |
+ *                                 |      |      |      |       |      |        |      |
  *                                 `--------------------'       `----------------------'
  */
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
 // Otherwise, it needs KC_*
 [BASE] = LAYOUT_ergodox(  // layer 0 : default
         // left hand
-        KC_TRNS,     KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS,KC_TRNS,           KC_ESC,
-        KC_BSLS,     KC_Q,            KC_W,    KC_E,    KC_R,   KC_T,              TG(MDIA),
-        KC_TAB,      KC_A,            KC_S,    KC_D,    KC_F,   KC_G,
-        KC_LSFT,     KC_Z,            KC_X,    KC_C,    KC_V,   KC_B,              MO(MDIA),
-        KC_LCTL,     LT(SYMB,KC_GRV), KC_LALT, KC_TRNS, OSL(NUMB),
-                                                                KC_F2,             KC_LALT,
-                                                                                   KC_HOME,
-                                                        KC_BSPC,KC_DELT,           KC_END,
+        KC_TRNS,          KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS,KC_TRNS,           KC_ESC,
+        KC_BSLS,          KC_Q,            KC_W,    KC_E,    KC_R,   KC_T,              TG(MDIA),
+        KC_TAB,           KC_A,            KC_S,    KC_D,    KC_F,   KC_G,
+        LSFT_T(KC_LBRC),  KC_Z,            KC_X,    KC_C,    KC_V,   KC_B,              MO(MDIA),
+        KC_LCTL,          LT(SYMB,KC_GRV), KC_LALT, KC_TRNS, OSL(NUMB),
+                                                                KC_TRNS,           KC_TRNS,
+                                                                                   KC_TRNS,
+                                                        KC_BSPC,KC_DELT,           KC_TRNS,
         // right hand
         TG(SYMB),    KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS,KC_TRNS,           KC_TRNS,
         KC_LBRC,     KC_Y,            KC_U,    KC_I,    KC_O,   KC_P,              KC_RBRC,
                      KC_H,            KC_J,    KC_K,    KC_L,   LT(MOUS, KC_SCLN), KC_QUOT,
-        MEH_T(KC_NO),KC_N,            KC_M,    KC_COMM, KC_DOT, CTL_T(KC_SLSH),    KC_RSFT,
+        MEH_T(KC_NO),KC_N,            KC_M,    KC_COMM, KC_DOT, CTL_T(KC_SLSH),    RSFT_T(KC_RBRC),
                                       KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT,           KC_RGUI,
-        KC_LALT,     KC_RCTL,
-        KC_PGUP,
-        KC_PGDN,     KC_ENT,          KC_SPC
+        KC_TRNS,     KC_TRNS,
+        KC_TRNS,
+        KC_TRNS,     KC_ENT,          KC_SPC
     ),
 /* Keymap 1: Media and mouse keys
  *
