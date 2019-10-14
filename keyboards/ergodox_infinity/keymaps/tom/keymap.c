@@ -21,13 +21,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |   \    |   Q  |   W  |   E  |   R  |   T  | ESC  |           |  {   |   Y  |   U  |   I  |   O  |   P  |   }    |
+ * |   \    |   Q  |   W  |   E  |   R  |   T  |      |           |  {   |   Y  |   U  |   I  |   O  |   P  |   }    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | Tab    |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |; / L3|   '    |
- * |--------+------+------+------+------+------|  L1  |           |      |------+------+------+------+------+--------|
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |LShift/[|   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |//Ctrl|RShift/]|
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | Ctrl |Grv/L1| Alt  |      |  L5  |                                       | Left | Down | Up   | Right| RGUI |
+ *   |Ctl/Es|Grv/L1| Alt  |      |  L5  |                                       | Left | Down | Up   | Right| RGUI |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |        |
@@ -42,10 +42,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BASE] = LAYOUT_ergodox(  // layer 0 : default
         // left hand
         KC_TRNS,          KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS,KC_TRNS,           KC_TRNS,
-        KC_BSLS,          KC_Q,            KC_W,    KC_E,    KC_R,   KC_T,              KC_ESC,
+        KC_BSLS,          KC_Q,            KC_W,    KC_E,    KC_R,   KC_T,              KC_TRNS,
         KC_TAB,           KC_A,            KC_S,    KC_D,    KC_F,   KC_G,
-        LSFT_T(KC_LBRC),  KC_Z,            KC_X,    KC_C,    KC_V,   KC_B,              MO(MDIA),
-        KC_LCTL,          LT(MDIA,KC_GRV), KC_LALT, KC_TRNS, OSL(NUMB),
+        LSFT_T(KC_LBRC),  KC_Z,            KC_X,    KC_C,    KC_V,   KC_B,              KC_TRNS,
+        LCTL_T(KC_ESC),   LT(MDIA,KC_GRV), KC_LALT, KC_TRNS, OSL(NUMB),
                                                                 KC_TRNS,           KC_TRNS,
                                                                                    KC_TRNS,
                                                         KC_BSPC,KC_DELT,           KC_TRNS,
