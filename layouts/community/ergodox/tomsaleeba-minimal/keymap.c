@@ -8,7 +8,6 @@
 #define NUMB 2 // minimal numbers test
 #define MOUS 3 // mouse
 #define SWAP 4 // swap hands (one handed mode)
-#define ARRW 5 // arrows
 
 // A 'transparent' key code (that falls back to the layers below it).
 #define ___ KC_TRANSPARENT
@@ -83,7 +82,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ___,         KC_Y,            KC_U,    KC_I,    KC_O,   KC_P,              TT(SWAP),
                      KC_H,            KC_J,    KC_K,    KC_L,   LT(MOUS, KC_SCLN), KC_QUOT,
         TT(SWAP),    KC_N,            KC_M,    KC_COMM, KC_DOT, RCTL_T(KC_SLSH),   KC_RSFT,
-                                      KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT,           TT(ARRW),
+                                      KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT,           ___,
         ___,         ___,
         ___,
         ___,         RGUI_T(KC_ENT),  KC_SPC
@@ -138,7 +137,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |   =    |  1   |  2   |  3   |  4   |  5   |------|           |------|  6   |  7   |  8   |  9   |  0   |   -    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        | End  | PgUp | PgDn | Home | ` ~  |      |           |      |  [   |  ]   |      |      |      |        |
+ * |        | End  | PgUp | PgDn | Home |  `   |      |           |      |  [   |  ]   |      |      |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |      |      |      |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
@@ -232,47 +231,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ___, ___,
   ___,
   ___, ___, ___
-),
-/* Keymap 5: Arrows
- *
- * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
- * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |      |      |      |      |------|           |------|      | Left | Down |  Up  | Right|        |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
- * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      |      |      |      |      |                                       |      |      |      |      |      |
- *   `----------------------------------'                                       `----------------------------------'
- *                                        ,-------------.       ,-------------.
- *                                        |      |      |       |      |      |
- *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      |      |       |      |      |      |
- *                                 |      |      |------|       |------|      |      |
- *                                 |      |      |      |       |      |      |      |
- *                                 `--------------------'       `--------------------'
- */
-[ARRW] = LAYOUT_ergodox(
-        // left hand
-        ___,      ___,     ___,     ___,     ___,     ___,     ___,
-        ___,      ___,     ___,     ___,     ___,     ___,     ___,
-        ___,      ___,     ___,     ___,     ___,     ___,
-        ___,      ___,     ___,     ___,     ___,     ___,     ___,
-        ___,      ___,     ___,     ___,     ___,
-                                                      ___,     ___,
-                                                               ___,
-                                             ___,     ___,     ___,
-        // right hand
-        ___,      ___,     ___,     ___,     ___,     ___,     ___,
-        ___,      ___,     ___,     ___,     ___,     ___,     ___,
-                  ___,     KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT,  ___,
-        ___,      ___,     ___,     ___,     ___,     ___,     ___,
-                           ___,     ___,     ___,     ___,     ___,
-        ___,      ___,
-        ___,
-        ___,      ___,     ___
 ),
 };
 // The current set of active layers (as a bitmask).
@@ -435,7 +393,7 @@ void farrows_finished (qk_tap_dance_state_t *state, void *user_data) {
     case SINGLE_HOLD:
       register_mods(MOD_BIT(KC_LCTL));
       register_mods(MOD_BIT(KC_LSHIFT));
-      layer_on(ARRW);
+      // layer_on(ARRW);
       break;
     case DOUBLE_SINGLE_TAP:
       register_code16(KC_F);
@@ -453,7 +411,7 @@ void farrows_reset (qk_tap_dance_state_t *state, void *user_data) {
     case SINGLE_HOLD:
       unregister_mods(MOD_BIT(KC_LCTL));
       unregister_mods(MOD_BIT(KC_LSHIFT));
-      layer_off(ARRW);
+      // layer_off(ARRW);
       break;
     case DOUBLE_SINGLE_TAP:
       unregister_code16(KC_F);
