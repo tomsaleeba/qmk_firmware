@@ -8,6 +8,7 @@
 #define NUMB 2 // minimal numbers test
 #define MOUS 3 // mouse
 #define SWAP 4 // swap hands (one handed mode)
+#define ARRW 5 // arrows
 
 // A 'transparent' key code (that falls back to the layers below it).
 #define ___ KC_TRANSPARENT
@@ -18,6 +19,30 @@ enum custom_keycodes {
   VRSN,
   RGB_SLD
 };
+
+// tapdance keycodes
+enum td_keycodes {
+  F_ARROWS
+};
+
+// define a type containing as many tapdance states as you need
+typedef enum {
+  SINGLE_TAP,
+  SINGLE_HOLD,
+  DOUBLE_SINGLE_TAP,
+} td_state_t;
+
+// create a global instance of the tapdance state type
+static td_state_t td_state;
+
+// declare your tapdance functions:
+
+// function to determine the current tapdance state
+int cur_dance (qk_tap_dance_state_t *state);
+
+// `finished` and `reset` functions for each tapdance keycode
+void farrows_finished (qk_tap_dance_state_t *state, void *user_data);
+void farrows_reset (qk_tap_dance_state_t *state, void *user_data);
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
@@ -31,39 +56,39 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           | Swap |------+------+------+------+------+--------|
  * |LShift/[|   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |//Ctrl|RShift/]|
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |Ctl/Es|Grv/L1| Alt  |      |  L5  |                                       | Left | Down | Up   | Right|      |
+ *   |      |      |  Alt |      |  L5  |                                       | Left | Down | Up   | Right|Arrows|
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |      |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      |      |       |      |      |      |
- *                                 | BkSp | Del  |------|       |------| Enter| Space|
- *                                 |      |      |      |       |      |      | /RGUI|
+ *                                 | BkSp | Ctrl |------|       |------| Enter| Space|
+ *                                 | /L1  | /Esc |      |       |      | /RGUI|      |
  *                                 `--------------------'       `--------------------'
  */
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
 // Otherwise, it needs KC_*
 [BASE] = LAYOUT_ergodox(  // layer 0 : default
         // left hand
-        ___,              ___,             ___,     ___,     ___,    ___,               ___,
-        KC_BSLS,          KC_Q,            KC_W,    KC_E,    KC_R,   KC_T,              TT(SWAP),
-        KC_TAB,           KC_A,            KC_S,    KC_D,    KC_F,   KC_G,
-        LSFT_T(KC_LBRC),  KC_Z,            KC_X,    KC_C,    KC_V,   KC_B,              ___,
-        LCTL_T(KC_ESC),   LT(MDIA,KC_GRV), KC_LALT, ___,     OSL(NUMB),
-                                                                ___,               ___,
-                                                                                   ___,
-                                                        KC_BSPC,KC_DELT,           ___,
+        ___,              ___,             ___,         ___,     ___,    ___,      ___,
+        KC_BSLS,          KC_Q,            KC_W,        KC_E,    KC_R,   KC_T,     TT(SWAP),
+        KC_TAB,           KC_A,            KC_S,        KC_D,    KC_F,   KC_G,
+        LSFT_T(KC_LBRC),  KC_Z,            KC_X,        KC_C,    KC_V,   KC_B,     ___,
+        ___,              ___,             KC_LALT,     ___,     MO(NUMB),
+                                                             ___,              ___,
+                                                                               ___,
+                                            LT(MDIA,KC_BSPC),LCTL_T(KC_ESC),   ___,
         // right hand
         ___,         ___,             ___,     ___,     ___,    ___,               ___,
         KC_LBRC,     KC_Y,            KC_U,    KC_I,    KC_O,   KC_P,              KC_RBRC,
                      KC_H,            KC_J,    KC_K,    KC_L,   LT(MOUS, KC_SCLN), KC_QUOT,
         TT(SWAP),    KC_N,            KC_M,    KC_COMM, KC_DOT, RCTL_T(KC_SLSH),   RSFT_T(KC_RBRC),
-                                      KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT,           ___,
+                                      KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT,           TT(ARRW),
         ___,         ___,
         ___,
-        ___,         KC_ENT,          RGUI_T(KC_SPC)
+        ___,         RGUI_T(KC_ENT),  KC_SPC
     ),
-/* Keymap 1: Media and mouse keys
+/* Keymap 1: Media and F-keys
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
@@ -72,25 +97,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |      |      |      | Enter|------|           |------|      | Home | PgDn | PgUp | End  |  Play  |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |      |      |      |  /   |      |           |      |      |      | Prev | Next |      |        |
+ * |        |      |      |      | Del  |  /   |      |           |      |      |      | Prev | Next |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |      |      |      |      |                                       |      |VolDn |VolUp | Mute |      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        |      |      |       | PRSC | Calc |
+ *                                        |      |      |       |      |      |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      |      |       |      |      |      |
  *                                 |      |      |------|       |------|      |      |
  *                                 |      |      |      |       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */
-// MEDIA AND MOUSE
 [MDIA] = LAYOUT_ergodox(
         // left hand
         ___,      ___,     ___,     ___,     ___,     ___,     ___,
         VRSN,     KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F11,
         ___,      ___,     ___,     ___,     ___,     KC_ENT ,
-        ___,      ___,     ___,     ___,     ___,     KC_SLSH, ___,
+        ___,      ___,     ___,     ___,     KC_DEL,  KC_SLSH, ___,
         ___,      ___,     ___,     ___,     ___,
                                                       ___,     ___,
                                                                ___,
@@ -101,7 +125,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                   ___,     KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_MPLY,
         ___,      ___,     ___,     KC_MPRV, KC_MNXT, ___,     ___,
                            ___,     KC_VOLD, KC_VOLU, KC_MUTE, ___,
-        KC_PSCR,  KC_CALC,
+        ___,      ___,
         ___,
         ___,      ___,     KC_TRNS
 ),
@@ -114,7 +138,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |   =    |  1   |  2   |  3   |  4   |  5   |------|           |------|  6   |  7   |  8   |  9   |  0   |   -    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        | End  | PgUp | PgDn | Home |      |      |           |      |      |      |      |      |      |        |
+ * |        | End  | PgUp | PgDn | Home | ` ~  |      |           |      |      |      |      |      |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |      |      |      |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
@@ -126,13 +150,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 |      |      |      |       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */
-// Numbers
 [NUMB] = LAYOUT_ergodox(
         // left hand
         ___,          ___,        ___,        ___,         ___,         ___,         ___,
         LSFT(KC_EQL), LSFT(KC_1), LSFT(KC_2), LSFT(KC_3),  LSFT(KC_4),  LSFT(KC_5),  ___,
         KC_EQL,       KC_1,       KC_2,       KC_3,        KC_4,        KC_5,
-        ___,          KC_END,     KC_PGUP,    KC_PGDN,     KC_HOME,     ___,         ___,
+        ___,          KC_END,     KC_PGUP,    KC_PGDN,     KC_HOME,     KC_GRV,      ___,
         ___,          ___,        ___,        ___,         ___,
                                                                         ___,         ___,
                                                                                      ___,
@@ -168,7 +191,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 |      |      |      |       |      |      |      |
  *                                 `--------------------'       `--------------------'
  */
-// MOUSE
 [MOUS] = LAYOUT_ergodox(
         // left hand
         ___,      ___,     ___,     ___,     ___,     ___,     ___,
@@ -211,13 +233,52 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ___,
   ___, ___, ___
 ),
+/* Keymap 5: Arrows
+ *
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |        |      |      |      |      |      |------|           |------|      | Left | Down |  Up  | Right|        |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   |      |      |      |      |      |                                       |      |      |      |      |      |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        |      |      |       |      |      |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |      |       |      |      |      |
+ *                                 |      |      |------|       |------|      |      |
+ *                                 |      |      |      |       |      |      |      |
+ *                                 `--------------------'       `--------------------'
+ */
+[ARRW] = LAYOUT_ergodox(
+        // left hand
+        ___,      ___,     ___,     ___,     ___,     ___,     ___,
+        ___,      ___,     ___,     ___,     ___,     ___,     ___,
+        ___,      ___,     ___,     ___,     ___,     ___,
+        ___,      ___,     ___,     ___,     ___,     ___,     ___,
+        ___,      ___,     ___,     ___,     ___,
+                                                      ___,     ___,
+                                                               ___,
+                                             ___,     ___,     ___,
+        // right hand
+        ___,      ___,     ___,     ___,     ___,     ___,     ___,
+        ___,      ___,     ___,     ___,     ___,     ___,     ___,
+                  ___,     KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT,  ___,
+        ___,      ___,     ___,     ___,     ___,     ___,     ___,
+                           ___,     ___,     ___,     ___,     ___,
+        ___,      ___,
+        ___,
+        ___,      ___,     ___
+),
 };
-#ifdef KEYBOARD_ergodox_ez
 // The current set of active layers (as a bitmask).
 // There is a global 'layer_state' variable but it is set after the call
 // to layer_state_set_user().
 static uint32_t current_layer_state = 0;
-#endif
 
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 {
@@ -274,29 +335,8 @@ void matrix_init_user(void) {
 
 // Runs constantly in the background, in a loop.
 void matrix_scan_user(void) {
-#ifdef KEYBOARD_ergodox_infinity
-    uint8_t layer = biton32(layer_state);
-
-    ergodox_board_led_off();
-    ergodox_right_led_1_off();
-    ergodox_right_led_2_off();
-    ergodox_right_led_3_off();
-    switch (layer) {
-      // TODO: Make this relevant to the ErgoDox EZ.
-        case 1:
-            ergodox_right_led_1_on();
-            break;
-        case 2:
-            ergodox_right_led_2_on();
-            break;
-        default:
-            // none
-            break;
-    }
-#endif
 };
 
-#ifdef KEYBOARD_ergodox_ez
 // Whether the given layer (one of the constant defined at the top) is active.
 #define LAYER_ON(layer) (current_layer_state & (1<<layer))
 // Runs whenever there is a layer state change.
@@ -374,4 +414,54 @@ uint32_t layer_state_set_user(uint32_t state) {
 
   return state;
 };
-#endif
+
+// determine the tapdance state to return
+int cur_dance (qk_tap_dance_state_t *state) {
+  if (state->count == 1) {
+    if (state->interrupted || !state->pressed) { return SINGLE_TAP; }
+    else { return SINGLE_HOLD; }
+  }
+  return DOUBLE_SINGLE_TAP;
+}
+
+// handle the possible states for each tapdance keycode you define:
+
+void farrows_finished (qk_tap_dance_state_t *state, void *user_data) {
+  td_state = cur_dance(state);
+  switch (td_state) {
+    case SINGLE_TAP:
+      register_code16(KC_F);
+      break;
+    case SINGLE_HOLD:
+      register_mods(MOD_BIT(KC_LCTL));
+      register_mods(MOD_BIT(KC_LSHIFT));
+      layer_on(ARRW);
+      break;
+    case DOUBLE_SINGLE_TAP:
+      register_code16(KC_F);
+      unregister_code16(KC_F);
+      register_code16(KC_F);
+      break;
+  }
+}
+
+void farrows_reset (qk_tap_dance_state_t *state, void *user_data) {
+  switch (td_state) {
+    case SINGLE_TAP:
+      unregister_code16(KC_F);
+      break;
+    case SINGLE_HOLD:
+      unregister_mods(MOD_BIT(KC_LCTL));
+      unregister_mods(MOD_BIT(KC_LSHIFT));
+      layer_off(ARRW);
+      break;
+    case DOUBLE_SINGLE_TAP:
+      unregister_code16(KC_F);
+      break;
+  }
+}
+
+// define `ACTION_TAP_DANCE_FN_ADVANCED()` for each tapdance keycode, passing in `finished` and `reset` functions
+qk_tap_dance_action_t tap_dance_actions[] = {
+  [F_ARROWS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, farrows_finished, farrows_reset)
+};
