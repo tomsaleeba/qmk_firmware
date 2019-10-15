@@ -1,3 +1,17 @@
-# backspace/L1
-Works ok but when I go to backspace a bunch of text, the initial hold gets
-weird. It needs a double tap.
+# ctrl+alt+l
+It's possible while I have a separate alt key but would be hard if alt is
+hidden.
+
+# ctrl+alt+delete
+Pretty difficult atm.
+
+# L1
+A dedicated L1 key under the thumb would be nice. Or if not dedicated, at
+least not a key that needs to be held ever.
+
+# Swap
+Currently don't have a swap on the left half, which is probably where I need
+it.
+
+# Leader key
+Need to try this under the thumb when I have a key available.

@@ -50,10 +50,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |   \    |   Q  |   W  |   E  |   R  |   T  | Swap |           |  {   |   Y  |   U  |   I  |   O  |   P  |   }    |
+ * |   \    |   Q  |   W  |   E  |   R  |   T  |      |           |      |   Y  |   U  |   I  |   O  |   P  |  Swap  |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * | Tab    |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |; / L3|   '    |
- * |--------+------+------+------+------+------|      |           | Swap |------+------+------+------+------+--------|
+ * | Tab/L1 |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |; / L3|   '    |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |//Ctrl| RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |      |  Alt |      |  L5  |                                       | Left | Down | Up   | Right|Arrows|
@@ -63,7 +63,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      |      |       |      |      |      |
  *                                 | BkSp | Ctrl |------|       |------| Enter| Space|
- *                                 | /L1  | /Esc |      |       |      | /RGUI|      |
+ *                                 |      | /Esc |      |       |      | /RGUI|      |
  *                                 `--------------------'       `--------------------'
  */
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
@@ -71,16 +71,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BASE] = LAYOUT_ergodox(  // layer 0 : default
         // left hand
         ___,              ___,             ___,         ___,     ___,    ___,      ___,
-        KC_BSLS,          KC_Q,            KC_W,        KC_E,    KC_R,   KC_T,     TT(SWAP),
-        KC_TAB,           KC_A,            KC_S,        KC_D,    KC_F,   KC_G,
+        KC_BSLS,          KC_Q,            KC_W,        KC_E,    KC_R,   KC_T,     ___,
+        LT(MDIA,KC_TAB),  KC_A,            KC_S,        KC_D,    KC_F,   KC_G,
         KC_LSFT,          KC_Z,            KC_X,        KC_C,    KC_V,   KC_B,     ___,
         ___,              ___,             KC_LALT,     ___,     MO(NUMB),
                                                              ___,              ___,
                                                                                ___,
-                                            LT(MDIA,KC_BSPC),LCTL_T(KC_ESC),   ___,
+                                                     KC_BSPC,LCTL_T(KC_ESC),   ___,
         // right hand
         ___,         ___,             ___,     ___,     ___,    ___,               ___,
-        KC_LBRC,     KC_Y,            KC_U,    KC_I,    KC_O,   KC_P,              KC_RBRC,
+        ___,         KC_Y,            KC_U,    KC_I,    KC_O,   KC_P,              TT(SWAP),
                      KC_H,            KC_J,    KC_K,    KC_L,   LT(MOUS, KC_SCLN), KC_QUOT,
         TT(SWAP),    KC_N,            KC_M,    KC_COMM, KC_DOT, RCTL_T(KC_SLSH),   KC_RSFT,
                                       KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT,           TT(ARRW),
