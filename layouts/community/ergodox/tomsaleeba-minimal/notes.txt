@@ -1,14 +1,3 @@
-# ctrl+alt+l
-It's possible while I have a separate alt key but would be hard if alt is
-hidden.
-
-# ctrl+alt+delete
-Pretty difficult atm.
-
-# L1
-A dedicated L1 key under the thumb would be nice. Or if not dedicated, at
-least not a key that needs to be held ever.
-
 # Swap
 Currently don't have a swap on the left half, which is probably where I need
 it.

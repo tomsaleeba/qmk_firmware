@@ -56,13 +56,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |//Ctrl| RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      |      |  Alt |      |  L5  |                                       | Left | Down | Up   | Right|Arrows|
+ *   | Ctrl |      |  Alt |  Del |  L2  |                                       | Left | Down | Up   | Right|Arrows|
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |      |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      |      |       |      |      |      |
- *                                 | BkSp | Ctrl |------|       |------| Enter| Space|
+ *                                 | BkSp |  L1  |------|       |------| Enter| Space|
  *                                 |      | /Esc |      |       |      | /RGUI|      |
  *                                 `--------------------'       `--------------------'
  */
@@ -74,10 +74,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_BSLS,          KC_Q,            KC_W,        KC_E,    KC_R,   KC_T,     ___,
         LT(MDIA,KC_TAB),  KC_A,            KC_S,        KC_D,    KC_F,   KC_G,
         KC_LSFT,          KC_Z,            KC_X,        KC_C,    KC_V,   KC_B,     ___,
-        ___,              ___,             KC_LALT,     ___,     MO(NUMB),
+        KC_LCTL,          ___,             KC_LALT,     KC_DEL,  MO(NUMB),
                                                              ___,              ___,
                                                                                ___,
-                                                     KC_BSPC,LCTL_T(KC_ESC),   ___,
+                                                   KC_BSPC,  LT(MDIA,KC_ESC),  ___,
         // right hand
         ___,         ___,             ___,     ___,     ___,    ___,               ___,
         ___,         KC_Y,            KC_U,    KC_I,    KC_O,   KC_P,              TT(SWAP),
