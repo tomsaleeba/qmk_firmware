@@ -4,3 +4,6 @@ it.
 
 # Leader key
 Need to try this under the thumb when I have a key available.
+
+# win + enter
+Currently can't do it because the gui key is on the same key
