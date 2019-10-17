@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |//Ctrl| RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | Ctrl |      |  Alt |  Del |  L2  |                                       | Left | Down | Up   | Right|Arrows|
+ *   | Ctrl |Leader|  Alt |  Del |  L2  |                                       | Left | Down | Up   | Right|Arrows|
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |      |
@@ -73,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_BSLS,          KC_Q,            KC_W,        KC_E,    KC_R,   KC_T,     ___,
         LT(MDIA,KC_TAB),  KC_A,            KC_S,        KC_D,    KC_F,   KC_G,
         KC_LSFT,          KC_Z,            KC_X,        KC_C,    KC_V,   KC_B,     ___,
-        KC_LCTL,          ___,             KC_LALT,     KC_DEL,  MO(NUMB),
+        KC_LCTL,          KC_LEAD,         KC_LALT,     KC_DEL,  MO(NUMB),
                                                              ___,              ___,
                                                                                ___,
                                                    KC_BSPC,  LT(MDIA,KC_ESC),  ___,
@@ -291,9 +291,57 @@ void matrix_init_user(void) {
 };
 
 
+LEADER_EXTERNS();
 // Runs constantly in the background, in a loop.
 void matrix_scan_user(void) {
-};
+  LEADER_DICTIONARY() {
+    leading = false;
+    leader_end();
+
+    SEQ_ONE_KEY(KC_B) {
+      register_code(KC_LALT);
+      register_code(KC_LEFT);
+      unregister_code(KC_LEFT);
+      unregister_code(KC_LALT);
+    }
+
+    SEQ_ONE_KEY(KC_T) {
+      register_code(KC_LCTL);
+      register_code(KC_LSHIFT);
+      register_code(KC_T);
+      unregister_code(KC_T);
+      unregister_code(KC_LSHIFT);
+      unregister_code(KC_LCTL);
+    }
+
+    SEQ_ONE_KEY(KC_LEFT) {
+      register_code(KC_LCTL);
+      register_code(KC_LGUI);
+      register_code(KC_LEFT);
+      unregister_code(KC_LEFT);
+      unregister_code(KC_LGUI);
+      unregister_code(KC_LCTL);
+    }
+
+    SEQ_ONE_KEY(KC_RIGHT) {
+      register_code(KC_LCTL);
+      register_code(KC_LGUI);
+      register_code(KC_RIGHT);
+      unregister_code(KC_RIGHT);
+      unregister_code(KC_LGUI);
+      unregister_code(KC_LCTL);
+    }
+
+    SEQ_ONE_KEY(KC_3) {
+      register_code(KC_LSHIFT);
+      register_code(KC_LGUI);
+      register_code(KC_3);
+      unregister_code(KC_3);
+      unregister_code(KC_LGUI);
+      unregister_code(KC_LSHIFT);
+    }
+  }
+}
 
 // Whether the given layer (one of the constant defined at the top) is active.
 #define LAYER_ON(layer) (current_layer_state & (1<<layer))
