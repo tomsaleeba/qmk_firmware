@@ -290,6 +290,24 @@ void matrix_init_user(void) {
 #endif
 };
 
+void sendKeys(int keys[], int keyCount) {
+  for (int i = 0; i < keyCount; ++i) {
+    register_code(keys[i]);
+  }
+  for (int i = keyCount-1; i >= 0; --i) {
+    unregister_code(keys[i]);
+  }
+}
+
+void sendTwoKeys(int key1, int key2) {
+  int keys[] = {key1, key2};
+  sendKeys(keys, 2);
+}
+
+void sendThreeKeys(int key1, int key2, int key3) {
+  int keys[] = {key1, key2, key3};
+  sendKeys(keys, 3);
+}
 
 LEADER_EXTERNS();
 // Runs constantly in the background, in a loop.
@@ -299,44 +317,44 @@ void matrix_scan_user(void) {
     leader_end();
 
     SEQ_ONE_KEY(KC_B) {
-      register_code(KC_LALT);
-      register_code(KC_LEFT);
-      unregister_code(KC_LEFT);
-      unregister_code(KC_LALT);
+      // browser back
+      sendTwoKeys(KC_LALT, KC_LEFT);
     }
 
     SEQ_ONE_KEY(KC_T) {
-      register_code(KC_LGUI);
-      register_code(KC_ENT);
-      unregister_code(KC_ENT);
-      unregister_code(KC_LGUI);
+      // new terminal in i3
+      sendTwoKeys(KC_LGUI, KC_ENT);
+    }
+
+    SEQ_ONE_KEY(KC_D) {
+      // rofi-pass
+      sendThreeKeys(KC_LGUI, KC_LSHIFT, KC_D);
     }
 
     SEQ_ONE_KEY(KC_LEFT) {
-      register_code(KC_LCTL);
-      register_code(KC_LGUI);
-      register_code(KC_LEFT);
-      unregister_code(KC_LEFT);
-      unregister_code(KC_LGUI);
-      unregister_code(KC_LCTL);
+      // i3 move workspace to monitor
+      // don't need one for right. On two monitors, it's the same
+      sendThreeKeys(KC_LCTL, KC_LGUI, KC_LEFT);
     }
 
-    SEQ_ONE_KEY(KC_RIGHT) {
-      register_code(KC_LCTL);
-      register_code(KC_LGUI);
-      register_code(KC_RIGHT);
-      unregister_code(KC_RIGHT);
-      unregister_code(KC_LGUI);
-      unregister_code(KC_LCTL);
+    SEQ_ONE_KEY(KC_1) {
+      sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_1);
+    }
+
+    SEQ_ONE_KEY(KC_2) {
+      sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_2);
     }
 
     SEQ_ONE_KEY(KC_3) {
-      register_code(KC_LSHIFT);
-      register_code(KC_LGUI);
-      register_code(KC_3);
-      unregister_code(KC_3);
-      unregister_code(KC_LGUI);
-      unregister_code(KC_LSHIFT);
+      sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_3);
+    }
+
+    SEQ_ONE_KEY(KC_4) {
+      sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_4);
+    }
+
+    SEQ_ONE_KEY(KC_5) {
+      sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_5);
     }
   }
 }
