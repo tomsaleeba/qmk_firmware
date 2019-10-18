@@ -306,12 +306,10 @@ void matrix_scan_user(void) {
     }
 
     SEQ_ONE_KEY(KC_T) {
-      register_code(KC_LCTL);
-      register_code(KC_LSHIFT);
-      register_code(KC_T);
-      unregister_code(KC_T);
-      unregister_code(KC_LSHIFT);
-      unregister_code(KC_LCTL);
+      register_code(KC_LGUI);
+      register_code(KC_ENT);
+      unregister_code(KC_ENT);
+      unregister_code(KC_LGUI);
     }
 
     SEQ_ONE_KEY(KC_LEFT) {
