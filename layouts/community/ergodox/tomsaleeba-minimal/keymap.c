@@ -316,46 +316,38 @@ void matrix_scan_user(void) {
     leading = false;
     leader_end();
 
+    // browser back
     SEQ_ONE_KEY(KC_B) {
-      // browser back
       sendTwoKeys(KC_LALT, KC_LEFT);
     }
 
-    SEQ_ONE_KEY(KC_T) {
-      // new terminal in i3
-      sendTwoKeys(KC_LGUI, KC_ENT);
-    }
-
+    // rofi-pass
     SEQ_ONE_KEY(KC_D) {
-      // rofi-pass
       sendThreeKeys(KC_LGUI, KC_LSHIFT, KC_D);
     }
 
+    // new terminal in i3
+    SEQ_ONE_KEY(KC_T) {
+      sendTwoKeys(KC_LGUI, KC_ENT);
+    }
+
+    // i3 "move workspace to monitor"
     SEQ_ONE_KEY(KC_LEFT) {
-      // i3 move workspace to monitor
       // don't need one for right. On two monitors, it's the same
       sendThreeKeys(KC_LCTL, KC_LGUI, KC_LEFT);
     }
 
-    SEQ_ONE_KEY(KC_1) {
-      sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_1);
+    // i3 "toggle scratchpad"
+    SEQ_ONE_KEY(KC_QUOT) {
+      sendTwoKeys(KC_LGUI, KC_MINS);
     }
 
-    SEQ_ONE_KEY(KC_2) {
-      sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_2);
-    }
-
-    SEQ_ONE_KEY(KC_3) {
-      sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_3);
-    }
-
-    SEQ_ONE_KEY(KC_4) {
-      sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_4);
-    }
-
-    SEQ_ONE_KEY(KC_5) {
-      sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_5);
-    }
+    // i3 "move window to workspace"
+    SEQ_ONE_KEY(KC_1) { sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_1); }
+    SEQ_ONE_KEY(KC_2) { sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_2); }
+    SEQ_ONE_KEY(KC_3) { sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_3); }
+    SEQ_ONE_KEY(KC_4) { sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_4); }
+    SEQ_ONE_KEY(KC_5) { sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_5); }
   }
 }
 

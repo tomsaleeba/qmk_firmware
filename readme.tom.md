@@ -9,7 +9,12 @@
 
 ## ergodox infinity
   1. `sudo env CFLAGS="-Wno-error=deprecated" make ergodox_infinity:tomsaleeba-minimal:dfu-util`
-  1. quickly, while that is building, plug the left half into the pc directly
-     and put it into flash mode
-  1. `sudo env CFLAGS="-Wno-error=deprecated" make ergodox_infinity:tomsaleeba-minimal:dfu-util MASTER=right`
+     (we need sudo to write to the micro controller)
+  1. while that is building, plug the left half into the pc directly and put it
+     into flash mode
+  1. now we'll do the right side with:
+     `sudo env CFLAGS="-Wno-error=deprecated" make ergodox_infinity:tomsaleeba-minimal:dfu-util MASTER=right`
   1. plug right half in directly, put it into flash mode
+
+  Note: you can get away with flashing only the right when it's just a keymap
+  change.
