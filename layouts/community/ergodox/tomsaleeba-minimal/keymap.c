@@ -475,6 +475,15 @@ void farrows_reset (qk_tap_dance_state_t *state, void *user_data) {
   }
 }
 
+uint16_t get_tapping_term(uint16_t keycode) {
+  switch (keycode) {
+    case LT(MDIA,KC_ESC):
+      return 150;
+    default:
+      return TAPPING_TERM;
+  }
+}
+
 // define `ACTION_TAP_DANCE_FN_ADVANCED()` for each tapdance keycode, passing in `finished` and `reset` functions
 qk_tap_dance_action_t tap_dance_actions[] = {
   [F_ARROWS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, farrows_finished, farrows_reset)
