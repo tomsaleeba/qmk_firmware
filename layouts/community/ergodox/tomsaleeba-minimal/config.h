@@ -3,3 +3,6 @@
 //#define DEBOUNCE    25
 
 #define LEADER_TIMEOUT 300
+
+#undef TAPPING_TERM
+#define TAPPING_TERM 150
