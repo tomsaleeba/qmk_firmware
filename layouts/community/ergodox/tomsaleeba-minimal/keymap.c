@@ -78,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /**/                                   ___,   KC_N,  KC_M,KC_COMM,KC_DOT,LT(BRKT,
 /**/                                                                    KC_SLSH),KC_RSFT,
 //                                   `-------------+------+------+------+------+--------'
-/**/                                               KC_LEFT,KC_DOWN,KC_UP,KC_RGHT, ___,
+/**/                                               KC_LEFT,KC_DOWN,KC_UP,KC_RGHT,A(KC_TAB),
 //                         ,-------------.         `----------------------------------'
 /**/                         ___,   ___,
 //                         |------+------+------.
