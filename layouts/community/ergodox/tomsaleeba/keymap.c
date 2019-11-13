@@ -1,6 +1,4 @@
 #include QMK_KEYBOARD_H
-#include "debug.h"
-#include "action_layer.h"
 #include "tom.h"
 
 #define SWAP 5 // swap hands (one handed mode)
@@ -10,39 +8,39 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BASE] = LAYOUT_ergodox(
 // left hand
 // ,--------+------+------+------+------+------+------.
-/**/  ___,    ___,   ___,   ___,   ___,   ___,   ___,
+      ___,    ___,   ___,   ___,   ___,   ___,   ___,
 // |--------+------+------+------+------+-------------|
-/**/KC_BSLS,  KC_Q,  KC_W,  KC_E,  KC_R,  KC_T,  ___,
+    KC_BSLS,  KC_Q,  KC_W,  KC_E,  KC_R,  KC_T, TT(SWAP),
 // |--------+------+------+------+------+------|      |
-/**/KC_TAB,   KC_A,  KC_S,  KC_D,  KC_F,  KC_G,//-----|
+    KC_TAB,   KC_A,  KC_S,  KC_D,  KC_F,  KC_G,//-----|
 // |--------+------+------+------+------+------|      |
-/**/KC_LSFT,  KC_Z,  KC_X,  KC_C,  KC_V,  KC_B,  ___,
+    KC_LSFT,  KC_Z,  KC_X,  KC_C,  KC_V,  KC_B,  ___,
 // `--------+------+------+------+------+-------------'
-/**/KC_LCTL,KC_LEAD,KC_LALT,KC_DEL,MO(NUMB),
+    KC_LCTL,KC_LEAD,KC_LALT,KC_DEL,MO(NUMB),
 //   `----------------------------------'     ,------+------.
-/**/                                            ___,   ___,
+                                                ___,   ___,
 //                                     ,------|------|------|
-/**/                                                   ___,
-//                                     ,      |      |------|
-/**/                                   KC_BSPC,MED_ESC,KC_ESC,
+                                                       ___,
+//                                     |      |      |------|
+                                       KC_BSPC,MED_ESC,KC_ESC,
 //                                     `--------------------'
 // right hand
 //                                   ,------+------+------+------+------+------+--------.
-/**/                                   ___,   KC_6,  KC_7,  KC_8,  KC_9,  KC_0,   ___,
+                                       ___,   KC_6,  KC_7,  KC_8,  KC_9,  KC_0,   ___,
 //                                   |------+------+------+------+------+------+--------|
-/**/                                   ___,   KC_Y,  KC_U,  KC_I,  KC_O,  KC_P, TT(SWAP),
+                                    TT(SWAP), KC_Y,  KC_U,  KC_I,  KC_O,  KC_P,   ___,
 //                                   |      |------+------+------+------+------+--------|
-/**/                               /*|------*/KC_H,  KC_J,  KC_K,  KC_L,MSE_CLN, KC_QUOT,
+                                   /*|------*/KC_H,  KC_J,  KC_K,  KC_L,MSE_CLN, KC_QUOT,
 //                                   |      |------+------+------+------+------+--------|
-/**/                                   ___,   KC_N,  KC_M,KC_COMM,KC_DOT,BRK_SLS,KC_RSFT,
+                                       ___,   KC_N,  KC_M,KC_COMM,KC_DOT,BRK_SLS,KC_RSFT,
 //                                   `-------------+------+------+------+------+--------'
-/**/                                               KC_LEFT,KC_DOWN,KC_UP,KC_RGHT,A(KC_TAB),
+                                                   KC_LEFT,KC_DOWN,KC_UP,KC_RGHT,ALTTAB,
 //                         ,-------------.         `----------------------------------'
-/**/                         ___,   ___,
+                             ___,   ___,
 //                         |------+------+------.
-/**/                         ___, /*     |     */
+                             ___, /*     |     */
 //                         |------|      |      |
-/**/                        KC_ENT,GUI_ENT,KC_SPC
+                            KC_ENT,GUI_ENT,KC_SPC
 //                         `--------------------'
 ),
 /* Media and F-keys
@@ -108,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [NUMB] = LAYOUT_ergodox(
         // left hand
         ___,          ___,        ___,        ___,         ___,         ___,         ___,
-        LSFT(KC_EQL), LSFT(KC_1), LSFT(KC_2), LSFT(KC_3),  LSFT(KC_4),  LSFT(KC_5),  ___,
+        KC_PLUS,      KC_EXLM,    KC_AT,      KC_HASH,     KC_DLR,      KC_PERC,     ___,
         KC_EQL,       KC_1,       KC_2,       KC_3,        KC_4,        KC_5,
         ___,          KC_END,     KC_PGUP,    KC_PGDN,     KC_HOME,     KC_GRV,      ___,
         ___,          ___,        ___,        ___,         ___,
@@ -117,7 +115,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                            ___,         ___,         ___,
         // right hand
         ___,      ___,         ___,        ___,         ___,         ___,         ___,
-        ___,      LSFT(KC_6),  LSFT(KC_7), LSFT(KC_8),  LSFT(KC_9),  LSFT(KC_0),  LSFT(KC_MINS),
+        ___,      KC_CIRC,     KC_AMPR,    KC_ASTR,     KC_LPRN,     KC_RPRN,     KC_UNDS,
                   KC_6,        KC_7,       KC_8,        KC_9,        KC_0,        KC_MINS,
         ___,      KC_COLN,     KC_TILD,    ___,         ___,         ___,         ___,
                                ___,        ___,         ___,         ___,         ___,
@@ -168,39 +166,39 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BRKT] = LAYOUT_ergodox(
 // left hand
 // ,--------+------+------+------+------+------+------.
-/**/  ___,    ___,   ___,   ___,   ___,   ___,   ___,
+      ___,    ___,   ___,   ___,   ___,   ___,   ___,
 // |--------+------+------+------+------+-------------|
-/**/  ___,    ___,   ___,   ___,   ___,   ___,   ___,
+      ___,    ___,   ___,   ___,   ___,   ___,   ___,
 // |--------+------+------+------+------+------|      |
-/**/  ___,    ___,   ___,   ___,   ___,   ___, //-----|
+      ___,    ___,   ___,   ___,   ___,   ___, //-----|
 // |--------+------+------+------+------+------|      |
-/**/  ___,    ___,   ___,   ___,   ___,   ___,   ___,
+      ___,    ___,   ___,   ___,   ___,   ___,   ___,
 // `--------+------+------+------+------+-------------'
-/**/   ___,   ___,   ___,   ___,   ___,
+       ___,   ___,   ___,   ___,   ___,
 //   `----------------------------------'     ,------+------.
-/**/                                            ___,   ___,
+                                                ___,   ___,
 //                                     ,------|------|------|
-/**/                                                   ___,
-/**/                                     ___,   ___, //-----|
-/**/                                                   ___,
+                                                       ___,
+                                         ___,   ___, //-----|
+                                                       ___,
 //                                     `--------------------'
 // right hand
 //                                   ,------+------+------+------+------+------+--------.
-/**/                                   ___,   ___,   ___,   ___,   ___,   ___,    ___,
+                                       ___,   ___,   ___,   ___,   ___,   ___,    ___,
 //                                   |------+------+------+------+------+------+--------|
-/**/                                   ___,   ___, KC_LCBR,KC_RCBR,___,   ___,    ___,
+                                       ___,   ___, KC_LCBR,KC_RCBR,___,   ___,    ___,
 //                                   |      |------+------+------+------+------+--------|
-/**/                               /*|------*/___, KC_LPRN,KC_RPRN,___,   ___,    ___,
+                                   /*|------*/___, KC_LPRN,KC_RPRN,___,   ___,    ___,
 //                                   |      |------+------+------+------+------+--------|
-/**/                                   ___,   ___, KC_LBRC,KC_RBRC,___,   ___,    ___,
+                                       ___,   ___, KC_LBRC,KC_RBRC,___,   ___,    ___,
 //                                   `-------------+------+------+------+------+--------'
-/**/                                                KC_LT,  KC_GT, ___,   ___,    ___,
+                                                    KC_LT,  KC_GT, ___,   ___,    ___,
 //                         ,-------------.         `----------------------------------'
-/**/                         ___,   ___,
+                             ___,   ___,
 //                         |------+------+------.
-/**/                         ___, /*     |     */
+                             ___, /*     |     */
 //                         |------|      |      |
-/**/                         ___,   ___,   ___
+                             ___,   ___,   ___
 //                         `--------------------'
 ),
 // Swap Layer: hand swap, all keys are mirrored to the other side of the keyboard
@@ -210,14 +208,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ___, ___, ___, ___, ___, ___, ___,
   ___, ___, ___, ___, ___, ___, ___,
   ___, ___, ___, ___, ___, ___,
-  ___, ___, ___, ___, ___, ___, TT(SWAP),
+  ___, ___, ___, ___, ___, ___, ___,
   ___, ___, ___, ___, ___,
                                 ___, ___,
                                      ___,
                            ___, ___, ___,
   /* right hand */
        ___, ___, ___, ___, ___, ___, ___,
-  TT(SWAP), ___, ___, ___, ___, ___, ___,
+       ___, ___, ___, ___, ___, ___, ___,
             ___, ___, ___, ___, ___, ___,
        ___, ___, ___, ___, ___, ___, ___,
                  ___, ___, ___, ___, ___,
@@ -247,64 +245,35 @@ uint32_t layer_state_set_user(uint32_t state) {
   uint8_t layer = biton32(state);
   switch (layer) {
       case 0:
-        #ifdef RGBLIGHT_COLOR_LAYER_0
-          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
-        #else
-        #ifdef RGBLIGHT_ENABLE
-          rgblight_init();
-        #endif
-        #endif
         break;
       case 1:
         ergodox_right_led_1_on();
-        #ifdef RGBLIGHT_COLOR_LAYER_1
-          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_1);
-        #endif
         break;
       case 2:
         ergodox_right_led_2_on();
-        #ifdef RGBLIGHT_COLOR_LAYER_2
-          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_2);
-        #endif
         break;
       case 3:
         ergodox_right_led_3_on();
-        #ifdef RGBLIGHT_COLOR_LAYER_3
-          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_3);
-        #endif
         break;
       case 4:
         ergodox_right_led_1_on();
         ergodox_right_led_2_on();
-        #ifdef RGBLIGHT_COLOR_LAYER_4
-          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_4);
-        #endif
         break;
       case 5:
         ergodox_right_led_1_on();
         ergodox_right_led_3_on();
-        #ifdef RGBLIGHT_COLOR_LAYER_5
-          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_5);
-        #endif
         break;
       case 6:
         ergodox_right_led_2_on();
         ergodox_right_led_3_on();
-        #ifdef RGBLIGHT_COLOR_LAYER_6
-          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_6);
-        #endif
         break;
       case 7:
         ergodox_right_led_1_on();
         ergodox_right_led_2_on();
         ergodox_right_led_3_on();
-        #ifdef RGBLIGHT_COLOR_LAYER_7
-          rgblight_setrgb(RGBLIGHT_COLOR_LAYER_6);
-        #endif
         break;
       default:
         break;
     }
-
   return state;
 };

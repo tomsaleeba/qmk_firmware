@@ -5,7 +5,7 @@
   1. `make git-submodule`
 
 ## ergodox ez
-  1. `make ergodox_ez:tomsaleeba-minimal:teensy`
+  1. `make ergodox_ez:tomsaleeba:flash`
 
 ## ergodox infinity
   1. `sudo env CFLAGS="-Wno-error=deprecated" make ergodox_infinity:tomsaleeba-minimal:dfu-util`
@@ -18,3 +18,6 @@
 
   Note: you can get away with flashing only the right when it's just a keymap
   change.
+
+## ergotravel
+  1. `sudo make ergotravel:tomsaleeba:flash`
