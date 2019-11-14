@@ -7,3 +7,16 @@ Need to try this under the thumb when I have a key available.
 
 # win + enter
 Currently can't do it because the gui key is on the same key
+
+# 5 col layout
+- control and shift both need to be controlled by thumb or little finger so
+  control+shift+<blah> can be done.
+- tab can't be on the same key as control or shift otherwise you can't go
+  backwards through things
+- control needs to be on the left so I can one-handed copypasta
+- I need to be able to control+home,end,etc so I need to be able to hit the
+  layer switch to bring the keys at the same time as control.
+- need a home for tab,shift,control,\,|,=,+,-,_,',". So 3 on the base layer and 8 on
+  the other layers. Parenthesis can give up their spot on the number layer and
+  live just with the other brackets.
+
