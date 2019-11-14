@@ -41,4 +41,24 @@ enum custom_keycodes {
 #define BRK_SLS LT(BRKT, KC_SLSH)
 #define ALTTAB  A(KC_TAB)
 
+// Wrappers
+#define LAYOUT_ergodox_wrapper(...)              LAYOUT_ergodox(__VA_ARGS__)
+#define LAYOUT_ergotravel_grid_wrapper(...)      LAYOUT(__VA_ARGS__)
+
+#define NUMB_L1_5COL   KC_EXLM,  KC_AT,   KC_HASH,  KC_DLR,  KC_PERC
+#define NUMB_L2_5COL   KC_1,     KC_2,    KC_3,     KC_4,    KC_5
+#define NUMB_L3_5COL   KC_UNDS,  KC_MINS, KC_PLUS,  KC_EQL,  KC_GRV
+
+#define NUMB_R1_5COL                                                 KC_CIRC,  KC_AMPR,  KC_ASTR,  KC_QUOT,  KC_DQT
+#define NUMB_R2_5COL                                                 KC_6,     KC_7,     KC_8,     KC_9,     KC_0
+#define NUMB_R3_5COL                                                 KC_COLN,  KC_TILD,  _______,  _______,  _______
+
+#define MOUS_L1_5COL   _______,  _______, KC_MS_U,  _______, _______
+#define MOUS_L2_5COL   _______,  KC_MS_L, KC_MS_D,  KC_MS_R, _______
+#define MOUS_L3_5COL   KC_END,   KC_PGUP, KC_PGDN,  KC_HOME, _______
+
+#define MOUS_R1_5COL                                                 _______,  _______,  KC_WH_U,  _______,  _______
+#define MOUS_R2_5COL                                                 _______,  KC_BTN3,  KC_WH_D,  _______,  _______
+#define MOUS_R3_5COL                                                 _______,  _______,  _______,  _______,  _______
+
 #endif
