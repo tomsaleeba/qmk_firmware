@@ -37,6 +37,7 @@ enum custom_keycodes {
 #define MED_ESC LT(MDIA, KC_ESC)
 #define GUI_ENT RGUI_T(KC_ENT)
 #define MSE_CLN LT(MOUS, KC_SCLN)
+#define MS_DEL  LT(MOUS, KC_DEL)
 #define BRK_SLS LT(BRKT, KC_SLSH)
 #define ALTTAB  A(KC_TAB)
 
