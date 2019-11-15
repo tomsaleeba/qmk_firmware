@@ -20,9 +20,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //   `----------------------------------'     ,------+------.
                                                 ___,   ___,
 //                                     ,------|------|------|
-                                                       ___,
+                                                      KC_TAB,
 //                                     |      |      |------|
-                                      MO(NUMB),MED_ESC,KC_ESC,
+                                      MO(NUMB),MED_ESC,KC_LCTL,
 //                                     `--------------------'
 // right hand
 //                                   ,------+------+------+------+------+------+--------.
@@ -40,7 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //                         |------+------+------.
                              ___, /*     |     */
 //                         |------|      |      |
-                            KC_ENT,GUI_ENT,KC_SPC
+                           KC_LSFT,GUI_ENT,KC_SPC
 //                         `--------------------'
 ),
 /* Media and F-keys
