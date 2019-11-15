@@ -76,7 +76,7 @@ void matrix_scan_user(void) {
     }
 
     // new terminal in i3
-    SEQ_ONE_KEY(KC_T) {
+    SEQ_ONE_KEY(KC_N) {
       sendTwoKeys(KC_LGUI, KC_ENT);
     }
 
@@ -86,8 +86,23 @@ void matrix_scan_user(void) {
       sendThreeKeys(KC_LCTL, KC_LGUI, KC_LEFT);
     }
 
+    // kitty copy
+    SEQ_ONE_KEY(KC_C) {
+      sendThreeKeys(KC_LCTL, KC_LSHIFT, KC_C);
+    }
+
+    // kitty paste
+    SEQ_ONE_KEY(KC_V) {
+      sendThreeKeys(KC_LCTL, KC_LSHIFT, KC_V);
+    }
+
+    // kitty new tab
+    SEQ_ONE_KEY(KC_T) {
+      sendThreeKeys(KC_LCTL, KC_LSHIFT, KC_T);
+    }
+
     // i3 "toggle scratchpad"
-    SEQ_ONE_KEY(KC_QUOT) {
+    SEQ_ONE_KEY(KC_J) {
       sendTwoKeys(KC_LGUI, KC_MINS);
     }
 
