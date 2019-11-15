@@ -60,6 +60,16 @@ void matrix_scan_user(void) {
       sendTwoKeys(KC_LALT, KC_LEFT);
     }
 
+    // fat arrow
+    SEQ_ONE_KEY(KC_DOT) {
+      sendThreeKeys(KC_EQL, KC_LSHIFT, KC_DOT);
+    }
+
+    // alt tab
+    SEQ_ONE_KEY(KC_LALT) {
+      sendTwoKeys(KC_LALT, KC_TAB);
+    }
+
     // rofi-pass
     SEQ_ONE_KEY(KC_D) {
       sendThreeKeys(KC_LGUI, KC_LSHIFT, KC_D);

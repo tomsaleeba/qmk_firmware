@@ -39,7 +39,6 @@ enum custom_keycodes {
 #define MSE_CLN LT(MOUS, KC_SCLN)
 #define MS_DEL  LT(MOUS, KC_DEL)
 #define BRK_SLS LT(BRKT, KC_SLSH)
-#define ALTTAB  A(KC_TAB)
 
 // Wrappers
 #define LAYOUT_ergodox_wrapper(...)              LAYOUT_ergodox(__VA_ARGS__)
@@ -52,6 +51,7 @@ enum custom_keycodes {
 #define NUMB_R1_5COL                                                 KC_CIRC,  KC_AMPR,  KC_ASTR,  KC_QUOT,  KC_DQT
 #define NUMB_R2_5COL                                                 KC_6,     KC_7,     KC_8,     KC_9,     KC_0
 #define NUMB_R3_5COL                                                 KC_COLN,  KC_TILD,  _______,  _______,  _______
+#define NUMB_R4_4COL                                                 KC_BSLS,  KC_PIPE,  KC_GT,    _______
 
 #define MOUS_L1_5COL   _______,  _______, KC_MS_U,  _______, _______
 #define MOUS_L2_5COL   _______,  KC_MS_L, KC_MS_D,  KC_MS_R, _______
