@@ -120,7 +120,7 @@ uint16_t get_tapping_term(uint16_t keycode) {
     case MED_ESC:
       return 150;
     case MSE_CLN:
-      return 150;
+      return 180;
     default:
       return TAPPING_TERM;
   }
