@@ -24,7 +24,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
       }
       return false;
-      break;
   }
   return true;
 }
@@ -56,55 +55,35 @@ void matrix_scan_user(void) {
     leader_end();
 
     // browser back
-    SEQ_ONE_KEY(KC_B) {
-      sendTwoKeys(KC_LALT, KC_LEFT);
-    }
+    SEQ_ONE_KEY(KC_B) { sendTwoKeys(KC_LALT, KC_LEFT); }
 
     // fat arrow
-    SEQ_ONE_KEY(KC_DOT) {
-      sendThreeKeys(KC_EQL, KC_LSHIFT, KC_DOT);
-    }
+    SEQ_ONE_KEY(KC_DOT) { sendThreeKeys(KC_EQL, KC_LSHIFT, KC_DOT); }
 
     // alt tab
-    SEQ_ONE_KEY(KC_LALT) {
-      sendTwoKeys(KC_LALT, KC_TAB);
-    }
+    SEQ_ONE_KEY(KC_LALT) { sendTwoKeys(KC_LALT, KC_TAB); }
 
     // rofi-pass
-    SEQ_ONE_KEY(KC_D) {
-      sendThreeKeys(KC_LGUI, KC_LSHIFT, KC_D);
-    }
+    SEQ_ONE_KEY(KC_D) { sendThreeKeys(KC_LGUI, KC_LSHIFT, KC_D); }
 
     // new terminal in i3
-    SEQ_ONE_KEY(KC_N) {
-      sendTwoKeys(KC_LGUI, KC_ENT);
-    }
-
-    // i3 "move workspace to monitor"
-    SEQ_ONE_KEY(KC_LEFT) {
-      // don't need one for right. On two monitors, it's the same
-      sendThreeKeys(KC_LCTL, KC_LGUI, KC_LEFT);
-    }
+    SEQ_ONE_KEY(KC_N) { sendTwoKeys(KC_LGUI, KC_ENT); }
 
     // kitty copy
-    SEQ_ONE_KEY(KC_C) {
-      sendThreeKeys(KC_LCTL, KC_LSHIFT, KC_C);
-    }
+    SEQ_ONE_KEY(KC_C) { sendThreeKeys(KC_LCTL, KC_LSHIFT, KC_C); }
 
     // kitty paste
-    SEQ_ONE_KEY(KC_V) {
-      sendThreeKeys(KC_LCTL, KC_LSHIFT, KC_V);
-    }
+    SEQ_ONE_KEY(KC_V) { sendThreeKeys(KC_LCTL, KC_LSHIFT, KC_V); }
 
     // kitty new tab
-    SEQ_ONE_KEY(KC_T) {
-      sendThreeKeys(KC_LCTL, KC_LSHIFT, KC_T);
-    }
+    SEQ_ONE_KEY(KC_T) { sendThreeKeys(KC_LCTL, KC_LSHIFT, KC_T); }
+
+    // i3 "move workspace to monitor"
+    // we don't need one for right. On two monitors, it's the same
+    SEQ_ONE_KEY(KC_LEFT) { sendThreeKeys(KC_LCTL, KC_LGUI, KC_LEFT); }
 
     // i3 "toggle scratchpad"
-    SEQ_ONE_KEY(KC_J) {
-      sendTwoKeys(KC_LGUI, KC_MINS);
-    }
+    SEQ_ONE_KEY(KC_J) { sendTwoKeys(KC_LGUI, KC_MINS); }
 
     // i3 "move window to workspace"
     SEQ_ONE_KEY(KC_1) { sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_1); }
@@ -112,6 +91,11 @@ void matrix_scan_user(void) {
     SEQ_ONE_KEY(KC_3) { sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_3); }
     SEQ_ONE_KEY(KC_4) { sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_4); }
     SEQ_ONE_KEY(KC_5) { sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_5); }
+    SEQ_ONE_KEY(KC_6) { sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_6); }
+    SEQ_ONE_KEY(KC_7) { sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_7); }
+    SEQ_ONE_KEY(KC_8) { sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_8); }
+    SEQ_ONE_KEY(KC_9) { sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_9); }
+    SEQ_ONE_KEY(KC_0) { sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_0); }
   }
 }
 

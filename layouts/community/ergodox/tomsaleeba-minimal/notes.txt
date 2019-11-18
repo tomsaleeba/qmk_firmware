@@ -26,3 +26,29 @@ Currently can't do it because the gui key is on the same key
   5th row so I can hit the layer modifier and control at the same time would fix
   this. Or just have that layer have pre-modified versions of those keys.
 
+# A hacky chording solution
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case VRSN:
+      if (record->event.pressed) {
+        SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
+      }
+      return false;
+    case KC_SPC:
+      isKey1Pressed = record->event.pressed;
+      return processBracketsLayerCombo() && true;
+    case GUI_ENT:
+      isKey2Pressed = record->event.pressed;
+      return processBracketsLayerCombo() && true;
+  }
+  return true;
+}
+
+bool processBracketsLayerCombo(void) {
+  if (isKey2Pressed == true && isKey1Pressed == true) {
+    layer_on(BRKT);
+    return false;
+  }
+  layer_off(BRKT);
+  return true;
+}
