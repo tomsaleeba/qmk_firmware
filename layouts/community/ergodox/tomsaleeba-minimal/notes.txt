@@ -16,8 +16,13 @@ Currently can't do it because the gui key is on the same key
 - control needs to be on the left so I can one-handed copypasta
 - I need to be able to control+home,end,etc so I need to be able to hit the
   layer switch to bring the keys at the same time as control.
-- I need to be able to hit tab at the same as control, and ideally shift too
+- I need to be able to hit tab at the same as control, and ideally shift too.
+  With the ergotravel setup I'm testing, I can use my index finger on the thumb
+  control and my thumb on the tab. It's a hand movement but it work.
 - need a home for tab,shift,control,\,|,=,+,-,_,',". So 3 on the base layer and 8 on
   the other layers. Parenthesis can give up their spot on the number layer and
   live just with the other brackets.
+- with a thumb ctrl, doing left hand only ctrl+tab-ing doesn't work. Having a
+  5th row so I can hit the layer modifier and control at the same time would fix
+  this. Or just have that layer have pre-modified versions of those keys.
 

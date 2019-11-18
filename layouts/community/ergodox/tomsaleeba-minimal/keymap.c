@@ -16,7 +16,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // |--------+------+------+------+------+------|      |
     KC_LSFT,  KC_Z,  KC_X,  KC_C,  KC_V,  KC_B,  ___,
 // `--------+------+------+------+------+-------------'
-    KC_LCTL,KC_LEAD,KC_LALT,MS_DEL,KC_BSPC,
+    KC_LCTL,KC_LEAD,KC_LALT,LFT_DEL,KC_BSPC,
 //   `----------------------------------'     ,------+------.
                                                 ___,   ___,
 //                                     ,------|------|------|
@@ -53,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |  M   |Ctl+/ | Del  | Enter|      |           |      |      |      | Prev | Next | Mute |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      |      |      |Reset |Versn |                                       |      |VolDn |VolUp |      |      |
+ *   |      |      |Reset |Versn |      |                                       |      |VolDn |VolUp |      |      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |      |
@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ___,      KC_F1,   KC_F2,   KC_F3,   KC_F4,    KC_F5,     ___,
         ___,      KC_U,    KC_I,  C(KC_LSFT),A(KC_TAB),KC_F11,
         ___,      ___,     KC_M,  C(KC_SLSH),___,      KC_ENT,    ___,
-        ___,      ___,     ___,    RESET,    VRSN,
+        ___,      ___,     RESET, VRSN,      ___,
                                                        ___,       ___,
                                                                   ___,
                                              ___,      ___,       ___,

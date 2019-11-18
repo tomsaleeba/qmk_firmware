@@ -33,12 +33,13 @@ enum custom_keycodes {
 #define NUMB 2
 #define MOUS 3
 #define BRKT 4
+#define LFTH 5
 
 #define MED_ESC LT(MDIA, KC_ESC)
 #define CTL_ESC CTL_T(KC_ESC)
 #define GUI_ENT RGUI_T(KC_ENT)
 #define MSE_CLN LT(MOUS, KC_SCLN)
-#define MS_DEL  LT(MOUS, KC_DEL)
+#define LFT_DEL LT(LFTH, KC_DEL)
 #define BRK_SLS LT(BRKT, KC_SLSH)
 
 // Wrappers
@@ -56,10 +57,18 @@ enum custom_keycodes {
 
 #define MOUS_L1_5COL   _______,  _______, KC_MS_U,  _______, _______
 #define MOUS_L2_5COL   _______,  KC_MS_L, KC_MS_D,  KC_MS_R, _______
-#define MOUS_L3_5COL   KC_END,   KC_PGUP, KC_PGDN,  KC_HOME, _______
+#define MOUS_L3_5COL   _______,  _______, _______,  _______, _______
 
 #define MOUS_R1_5COL                                                 _______,  _______,  KC_WH_U,  _______,  _______
 #define MOUS_R2_5COL                                                 _______,  KC_BTN3,  KC_WH_D,  _______,  _______
 #define MOUS_R3_5COL                                                 _______,  _______,  _______,  _______,  _______
+
+#define LFTH_L1_5COL   C(S(KC_END)),C(S(KC_PGUP)),C(S(KC_PGDN)),C(S(KC_HOME)), _______
+#define LFTH_L2_5COL   C(KC_END)   ,C(KC_PGUP),  C(KC_PGDN),    C(KC_HOME),    _______
+#define LFTH_L3_5COL   KC_END,     KC_PGUP,      KC_PGDN,       KC_HOME,       _______
+
+#define LFTH_R1_5COL                                                 _______,  _______,  _______,  _______,  _______
+#define LFTH_R2_5COL                                                 _______,  _______,  _______,  _______,  _______
+#define LFTH_R3_5COL                                                 _______,  _______,  _______,  _______,  _______
 
 #endif
