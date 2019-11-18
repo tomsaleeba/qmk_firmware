@@ -112,21 +112,17 @@ uint16_t get_tapping_term(uint16_t keycode) {
 
 enum combo_events {
   ZC_BRKT,
-  SPC_ENT_BRKT
 };
 
 const uint16_t PROGMEM zc_combo[] = {KC_Z, KC_C, COMBO_END};
-const uint16_t PROGMEM spc_ent_combo[] = {KC_SPC, GUI_ENT, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-  [ZC_BRKT] = COMBO_ACTION(zc_combo),
-  [SPC_ENT_BRKT] = COMBO_ACTION(spc_ent_combo),
+  [ZC_BRKT] = COMBO_ACTION(zc_combo)
 };
 
 void process_combo_event(uint8_t combo_index, bool pressed) {
   switch(combo_index) {
     case ZC_BRKT:
-    case SPC_ENT_BRKT:
       if (pressed) {
         layer_on(BRKT);
       } else {
