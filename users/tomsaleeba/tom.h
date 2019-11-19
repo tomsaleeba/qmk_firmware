@@ -35,12 +35,11 @@ enum custom_keycodes {
 #define BRKT 4
 #define LFTH 5
 
-#define MED_ESC LT(MDIA, KC_ESC)
 #define CTL_ESC CTL_T(KC_ESC)
 #define GUI_ENT RGUI_T(KC_ENT)
 #define MSE_CLN LT(MOUS, KC_SCLN)
 #define LFT_DEL LT(LFTH, KC_DEL)
-#define BRK_SLS LT(BRKT, KC_SLSH)
+#define MED_TAB LT(MDIA, KC_TAB)
 
 // Wrappers
 #define LAYOUT_ergodox_wrapper(...)              LAYOUT_ergodox(__VA_ARGS__)
