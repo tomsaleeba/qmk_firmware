@@ -113,12 +113,18 @@ uint16_t get_tapping_term(uint16_t keycode) {
 
 enum combo_events {
   ZC_BRKT,
+  FJ_ENT,
+  DK_TAB,
 };
 
 const uint16_t PROGMEM zc_combo[] = {KC_Z, KC_C, COMBO_END};
+const uint16_t PROGMEM fj_combo[] = {KC_F, KC_J, COMBO_END};
+const uint16_t PROGMEM dk_combo[] = {KC_D, KC_K, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-  [ZC_BRKT] = COMBO_ACTION(zc_combo)
+  [ZC_BRKT] = COMBO_ACTION(zc_combo),
+  [FJ_ENT] = COMBO_ACTION(fj_combo),
+  [DK_TAB] = COMBO_ACTION(dk_combo),
 };
 
 void process_combo_event(uint8_t combo_index, bool pressed) {
@@ -128,6 +134,16 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
         layer_on(BRKT);
       } else {
         layer_off(BRKT);
+      }
+      break;
+    case FJ_ENT:
+      if (pressed) {
+        tap_code16(KC_ENT);
+      }
+      break;
+    case DK_TAB:
+      if (pressed) {
+        tap_code16(KC_TAB);
       }
       break;
   }
