@@ -115,16 +115,20 @@ enum combo_events {
   ZC_BRKT,
   FJ_ENT,
   DK_TAB,
+  ACLN_ALTTAB,
 };
 
 const uint16_t PROGMEM zc_combo[] = {KC_Z, KC_C, COMBO_END};
 const uint16_t PROGMEM fj_combo[] = {KC_F, KC_J, COMBO_END};
 const uint16_t PROGMEM dk_combo[] = {KC_D, KC_K, COMBO_END};
+// Note: only works as ;a. The other way won't work as you can't beat the LT()
+const uint16_t PROGMEM acln_combo[] = {KC_A, MSE_CLN, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   [ZC_BRKT] = COMBO_ACTION(zc_combo),
   [FJ_ENT] = COMBO_ACTION(fj_combo),
   [DK_TAB] = COMBO_ACTION(dk_combo),
+  [ACLN_ALTTAB] = COMBO_ACTION(acln_combo),
 };
 
 void process_combo_event(uint8_t combo_index, bool pressed) {
@@ -144,6 +148,11 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
     case DK_TAB:
       if (pressed) {
         tap_code16(KC_TAB);
+      }
+      break;
+    case ACLN_ALTTAB:
+      if (pressed) {
+        tap_code16(LALT(KC_TAB));
       }
       break;
   }
