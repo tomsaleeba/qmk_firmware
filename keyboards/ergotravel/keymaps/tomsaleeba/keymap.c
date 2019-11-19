@@ -5,16 +5,11 @@ extern keymap_config_t keymap_config;
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-  [BASE] = LAYOUT(
-  //,--------+--------+--------+--------+--------+--------+--------.        ,--------+--------+--------+--------+--------+--------+--------.
-     _______, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_TAB,           _______,  KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    _______,
-  //|--------+--------+--------+--------+--------+--------+--------|        |--------+--------+--------+--------+--------+--------+--------|
-     _______, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    MO(MDIA),          RESET,   KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, _______,
-  //|--------+--------+--------+--------+--------+--------+--------|        |--------+--------+--------+--------+--------+--------+--------|
-     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    CTL_ESC,           GUI_ENT, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-  //|--------+--------+--------+--------+--------+--------+--------|        |--------+--------+--------+--------+--------+--------+--------|
-     _______, KC_LEAD, KC_LALT, LFT_DEL,          KC_BSPC, MO(NUMB),          KC_SPC,           KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______
-  //`--------+--------+--------+--------+--------+--------+--------/        \--------+--------+--------+--------+--------+--------+--------'
+  [BASE] = LAYOUT_ergotravel_grid_wrapper(
+   _______,          BASE_L1_5COL,                       KC_TAB,            _______,                   BASE_R1_5COL,              _______,
+   _______,          BASE_L2_5COL,                       MO(MDIA),          RESET,                     BASE_R2_5COL,              _______,
+   KC_LSFT,          BASE_L3_5COL,                       CTL_ESC,           GUI_ENT,                   BASE_R3_5COL,              KC_RSFT,
+   _______, KC_LEAD, KC_LALT, LFT_DEL,          KC_BSPC, MO(NUMB),          KC_SPC,           KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______
   ),
 
   [MDIA] = LAYOUT(

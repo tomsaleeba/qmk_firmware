@@ -21,7 +21,9 @@
 #include "quantum.h"
 
 // A 'transparent' key code (that falls back to the layers below it).
+#ifndef ___
 #define ___ KC_TRANSPARENT
+#endif
 
 enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE, // can always be here
@@ -44,6 +46,15 @@ enum custom_keycodes {
 // Wrappers
 #define LAYOUT_ergodox_wrapper(...)              LAYOUT_ergodox(__VA_ARGS__)
 #define LAYOUT_ergotravel_grid_wrapper(...)      LAYOUT(__VA_ARGS__)
+#define LAYOUT_25_wrapper(...)                   LAYOUT_split(__VA_ARGS__)
+
+#define BASE_L1_5COL   KC_Q,     KC_W,    KC_E,     KC_R,    KC_T
+#define BASE_L2_5COL   KC_A,     KC_S,    KC_D,     KC_F,    KC_G
+#define BASE_L3_5COL   KC_Z,     KC_X,    KC_C,     KC_V,    KC_B
+
+#define BASE_R1_5COL                                                 KC_Y,     KC_U,     KC_I,     KC_O,     KC_P
+#define BASE_R2_5COL                                                 KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN
+#define BASE_R3_5COL                                                 KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH
 
 #define NUMB_L1_5COL   KC_EXLM,  KC_AT,   KC_HASH,  KC_DLR,  KC_PERC
 #define NUMB_L2_5COL   KC_1,     KC_2,    KC_3,     KC_4,    KC_5
