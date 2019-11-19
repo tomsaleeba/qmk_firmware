@@ -1,8 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "tom.h"
 
-#define SWAP 5 // swap hands (one handed mode)
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [BASE] = LAYOUT_ergodox(
@@ -49,9 +47,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |        |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  |  F10 |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |  U   |  I   |CtlSft|AltTab|  F11 |------|           |------| F12  | Home | PgDn | PgUp | End  |  Play  |
+ * |        |  U   |  I   |CtlSft|      |  F11 |------|           |------| F12  | Home | PgDn | PgUp | End  |  Play  |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |  M   |Ctl+/ | Del  | Enter|      |           |      |      |      | Prev | Next | Mute |        |
+ * |        |      |  M   |Ctl+/ |      | Enter|      |           |      |      |      | Prev | Next | Mute |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |      |Reset |Versn |      |                                       |      |VolDn |VolUp |      |      |
  *   `----------------------------------'                                       `----------------------------------'
@@ -67,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
         ___,      ___,     ___,     ___,     ___,      ___,       ___,
         ___,      KC_F1,   KC_F2,   KC_F3,   KC_F4,    KC_F5,     ___,
-        ___,      KC_U,    KC_I,  C(KC_LSFT),A(KC_TAB),KC_F11,
+        ___,      KC_U,    KC_I,  C(KC_LSFT),_______,  KC_F11,
         ___,      ___,     KC_M,  C(KC_SLSH),___,      KC_ENT,    ___,
         ___,      ___,     RESET, VRSN,      ___,
                                                        ___,       ___,
@@ -159,6 +157,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                              ___, KC_BTN2,KC_BTN1
 //                         `--------------------'
 ),
+[LFTH] = LAYOUT_ergodox_wrapper(
+      ___,    ___,   ___,   ___,   ___,   ___,   ___,
+      ___,           LFTH_L1_5COL,               ___,
+      ___,           LFTH_L2_5COL,
+      ___,           LFTH_L3_5COL,               ___,
+      ___,    ___,   ___,   ___,   ___,
+                                                ___,   ___,
+                                                       ___,
+                                         ___,   ___,
+                                                       ___,
+
+                                       ___,   ___,   ___,   ___,   ___,   ___,    ___,
+                                       ___,                 LFTH_R1_5COL,         ___,
+                                                            LFTH_R2_5COL,         ___,
+                                       ___,                 LFTH_R3_5COL,         ___,
+                                                     ___,   ___,   ___,   ___,    ___,
+                             ___,   ___,
+                             ___,
+                             ___,   ___,   ___
+),
 [BRKT] = LAYOUT_ergodox(
 // left hand
 // ,--------+------+------+------+------+------+------.
@@ -200,7 +218,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Swap Layer: hand swap, all keys are mirrored to the other side of the keyboard
 // except for the layer toggle itself
 [SWAP] = LAYOUT_ergodox(
-  /* left hand */
   ___, ___, ___, ___, ___, ___, ___,
   ___, ___, ___, ___, ___, ___, ___,
   ___, ___, ___, ___, ___, ___,
@@ -209,7 +226,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                 ___, ___,
                                      ___,
                            ___, ___, ___,
-  /* right hand */
        ___, ___, ___, ___, ___, ___, ___,
        ___, ___, ___, ___, ___, ___, ___,
             ___, ___, ___, ___, ___, ___,

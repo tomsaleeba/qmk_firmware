@@ -34,6 +34,7 @@ enum custom_keycodes {
 #define MOUS 3
 #define BRKT 4
 #define LFTH 5
+#define SWAP 15 // swap hands (one handed mode)
 
 #define CTL_ESC CTL_T(KC_ESC)
 #define GUI_ENT RGUI_T(KC_ENT)
