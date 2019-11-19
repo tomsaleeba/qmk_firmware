@@ -113,19 +113,19 @@ enum combo_events {
   FBSPC,
   FJ,
   DK,
-  ZB,
+  ZV,
   ACLN,
 };
 
 const uint16_t PROGMEM fbksp_combo[] = {KC_F, KC_BSPC, COMBO_END};
-const uint16_t PROGMEM zb_combo[] = {KC_Z, KC_B, COMBO_END};
+const uint16_t PROGMEM zv_combo[] = {KC_Z, KC_V, COMBO_END};
 const uint16_t PROGMEM fj_combo[] = {KC_F, KC_J, COMBO_END};
 const uint16_t PROGMEM dk_combo[] = {KC_D, KC_K, COMBO_END};
 const uint16_t PROGMEM acln_combo[] = {KC_A, KC_SCLN, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   [FBSPC] = COMBO_ACTION(fbksp_combo),
-  [ZB] = COMBO_ACTION(zb_combo),
+  [ZV] = COMBO_ACTION(zv_combo),
   [FJ] = COMBO_ACTION(fj_combo),
   [DK] = COMBO_ACTION(dk_combo),
   [ACLN] = COMBO_ACTION(acln_combo),
@@ -157,7 +157,7 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
         tap_code16(KC_TAB);
       }
       break;
-    case ZB:
+    case ZV:
       if (pressed) {
         tap_code16(LALT(KC_TAB));
       }
