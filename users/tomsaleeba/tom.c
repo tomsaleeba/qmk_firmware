@@ -115,6 +115,7 @@ enum combo_events {
   DK,
   ZV,
   ACLN,
+  DOTCOMMA,
 };
 
 const uint16_t PROGMEM fbksp_combo[] = {KC_F, KC_BSPC, COMBO_END};
@@ -122,6 +123,7 @@ const uint16_t PROGMEM zv_combo[] = {KC_Z, KC_V, COMBO_END};
 const uint16_t PROGMEM fj_combo[] = {KC_F, KC_J, COMBO_END};
 const uint16_t PROGMEM dk_combo[] = {KC_D, KC_K, COMBO_END};
 const uint16_t PROGMEM acln_combo[] = {KC_A, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM dotcomma_combo[] = {KC_DOT, KC_COMM, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   [FBSPC] = COMBO_ACTION(fbksp_combo),
@@ -129,6 +131,7 @@ combo_t key_combos[COMBO_COUNT] = {
   [FJ] = COMBO_ACTION(fj_combo),
   [DK] = COMBO_ACTION(dk_combo),
   [ACLN] = COMBO_ACTION(acln_combo),
+  [DOTCOMMA] = COMBO_ACTION(dotcomma_combo),
 };
 
 void process_combo_event(uint8_t combo_index, bool pressed) {
@@ -160,6 +163,11 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
     case ZV:
       if (pressed) {
         tap_code16(LALT(KC_TAB));
+      }
+      break;
+    case DOTCOMMA:
+      if (pressed) {
+        tap_code16(KC_QUOT);
       }
       break;
   }
