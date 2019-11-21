@@ -108,44 +108,44 @@ uint16_t get_tapping_term(uint16_t keycode) {
 
 enum combo_events {
   A_SCLN,
+  DF,
   DK,
   DOTCOMMA,
-  FBSPC,
   FJ,
+  J_K_L,
   LCLN,
   M_SLSH,
+  S_D_F,
   XC,
-  ZV,
-  Z_SLSH,
 };
 
 const uint16_t PROGMEM a_cln_combo[] = {KC_A, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM df_combo[] = {KC_D, KC_F, COMBO_END};
 const uint16_t PROGMEM dk_combo[] = {KC_D, KC_K, COMBO_END};
 const uint16_t PROGMEM dotcomma_combo[] = {KC_DOT, KC_COMM, COMBO_END};
-const uint16_t PROGMEM fbksp_combo[] = {KC_F, KC_BSPC, COMBO_END};
 const uint16_t PROGMEM fj_combo[] = {KC_F, KC_J, COMBO_END};
+const uint16_t PROGMEM j_k_l_combo[] = {KC_J, KC_K, KC_L, COMBO_END};
 const uint16_t PROGMEM lcln_combo[] = {KC_L, KC_SCLN, COMBO_END};
 const uint16_t PROGMEM m_slsh_combo[] = {KC_M, KC_SLSH, COMBO_END};
+const uint16_t PROGMEM s_d_f_combo[] = {KC_S, KC_D, KC_F, COMBO_END};
 const uint16_t PROGMEM xc_combo[] = {KC_X, KC_C, COMBO_END};
-const uint16_t PROGMEM z_slsh_combo[] = {KC_Z, KC_SLSH, COMBO_END};
-const uint16_t PROGMEM zv_combo[] = {KC_Z, KC_V, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   [A_SCLN] = COMBO_ACTION(a_cln_combo),
+  [DF] = COMBO_ACTION(df_combo),
   [DK] = COMBO_ACTION(dk_combo),
   [DOTCOMMA] = COMBO_ACTION(dotcomma_combo),
-  [FBSPC] = COMBO_ACTION(fbksp_combo),
   [FJ] = COMBO_ACTION(fj_combo),
+  [J_K_L] = COMBO_ACTION(j_k_l_combo),
   [LCLN] = COMBO_ACTION(lcln_combo),
   [M_SLSH] = COMBO_ACTION(m_slsh_combo),
+  [S_D_F] = COMBO_ACTION(s_d_f_combo),
   [XC] = COMBO_ACTION(xc_combo),
-  [ZV] = COMBO_ACTION(zv_combo),
-  [Z_SLSH] = COMBO_ACTION(z_slsh_combo),
 };
 
 void process_combo_event(uint8_t combo_index, bool pressed) {
   switch(combo_index) {
-    case FBSPC:
+    case DF:
       if (pressed) {
         layer_on(BRKT);
       } else {
@@ -169,7 +169,7 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
         tap_code16(KC_TAB);
       }
       break;
-    case ZV:
+    case J_K_L:
       if (pressed) {
         tap_code16(LALT(KC_TAB));
       }
@@ -189,7 +189,7 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
         tap_code16(KC_ESC);
       }
       break;
-    case Z_SLSH:
+    case S_D_F:
       if (pressed) {
         tap_code16(KC_BSPC);
       }

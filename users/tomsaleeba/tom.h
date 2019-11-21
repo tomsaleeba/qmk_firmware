@@ -39,6 +39,7 @@ enum custom_keycodes {
 #define SWAP 15 // swap hands (one handed mode)
 
 #define CTL_ESC CTL_T(KC_ESC)
+#define CTL_Z CTL_T(KC_Z)
 #define GUI_ENT RGUI_T(KC_ENT)
 #define LFT_DEL LT(LFTH, KC_DEL)
 #define MED_TAB LT(MDIA, KC_TAB)

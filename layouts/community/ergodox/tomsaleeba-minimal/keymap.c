@@ -12,15 +12,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // |--------+------+------+------+------+------|      |
       ___,    KC_A,  KC_S,  KC_D,  KC_F,  KC_G,//-----|
 // |--------+------+------+------+------+------|      |
-    KC_LSFT,  KC_Z,  KC_X,  KC_C,  KC_V,  KC_B,  ___,
+    KC_LSFT,  CTL_Z, KC_X,  KC_C,  KC_V,  KC_B,  ___,
 // `--------+------+------+------+------+-------------'
-      ___,  KC_LEAD,KC_LALT,LFT_DEL,KC_BSPC,
+      ___,  KC_LEAD,KC_LALT,LFT_DEL,CTL_ESC,
 //   `----------------------------------'     ,------+------.
                                                 ___,   ___,
 //                                     ,------|------|------|
                                                       KC_TAB,
 //                                     |      |      |------|
-                                      MO(NUMB),CTL_ESC,MED_TAB,
+                                      KC_LSFT,MO(NUMB),MED_TAB,
 //                                     `--------------------'
 // right hand
 //                                   ,------+------+------+------+------+------+--------.
