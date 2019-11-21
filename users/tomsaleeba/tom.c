@@ -60,9 +60,6 @@ void matrix_scan_user(void) {
     // fat arrow
     SEQ_ONE_KEY(KC_DOT) { sendThreeKeys(KC_EQL, KC_LSHIFT, KC_DOT); }
 
-    // alt tab
-    SEQ_ONE_KEY(KC_LALT) { sendTwoKeys(KC_LALT, KC_TAB); }
-
     // rofi-pass
     SEQ_ONE_KEY(KC_D) { sendThreeKeys(KC_LGUI, KC_LSHIFT, KC_D); }
 
@@ -110,31 +107,40 @@ uint16_t get_tapping_term(uint16_t keycode) {
 }
 
 enum combo_events {
-  LCLN,
+  A_SCLN,
   DK,
   DOTCOMMA,
   FBSPC,
   FJ,
+  LCLN,
+  M_SLSH,
   XC,
   ZV,
+  Z_SLSH,
 };
 
-const uint16_t PROGMEM lcln_combo[] = {KC_L, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM a_cln_combo[] = {KC_A, KC_SCLN, COMBO_END};
 const uint16_t PROGMEM dk_combo[] = {KC_D, KC_K, COMBO_END};
 const uint16_t PROGMEM dotcomma_combo[] = {KC_DOT, KC_COMM, COMBO_END};
 const uint16_t PROGMEM fbksp_combo[] = {KC_F, KC_BSPC, COMBO_END};
 const uint16_t PROGMEM fj_combo[] = {KC_F, KC_J, COMBO_END};
+const uint16_t PROGMEM lcln_combo[] = {KC_L, KC_SCLN, COMBO_END};
+const uint16_t PROGMEM m_slsh_combo[] = {KC_M, KC_SLSH, COMBO_END};
 const uint16_t PROGMEM xc_combo[] = {KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM z_slsh_combo[] = {KC_Z, KC_SLSH, COMBO_END};
 const uint16_t PROGMEM zv_combo[] = {KC_Z, KC_V, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-  [LCLN] = COMBO_ACTION(lcln_combo),
+  [A_SCLN] = COMBO_ACTION(a_cln_combo),
   [DK] = COMBO_ACTION(dk_combo),
   [DOTCOMMA] = COMBO_ACTION(dotcomma_combo),
   [FBSPC] = COMBO_ACTION(fbksp_combo),
   [FJ] = COMBO_ACTION(fj_combo),
+  [LCLN] = COMBO_ACTION(lcln_combo),
+  [M_SLSH] = COMBO_ACTION(m_slsh_combo),
   [XC] = COMBO_ACTION(xc_combo),
   [ZV] = COMBO_ACTION(zv_combo),
+  [Z_SLSH] = COMBO_ACTION(z_slsh_combo),
 };
 
 void process_combo_event(uint8_t combo_index, bool pressed) {
@@ -176,6 +182,21 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
     case DOTCOMMA:
       if (pressed) {
         tap_code16(KC_QUOT);
+      }
+      break;
+    case A_SCLN:
+      if (pressed) {
+        tap_code16(KC_ESC);
+      }
+      break;
+    case Z_SLSH:
+      if (pressed) {
+        tap_code16(KC_BSPC);
+      }
+      break;
+    case M_SLSH:
+      if (pressed) {
+        tap_code16(KC_SPC);
       }
       break;
   }
