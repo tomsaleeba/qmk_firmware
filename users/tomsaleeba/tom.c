@@ -199,12 +199,16 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
       break;
     case CMB_F_G:
       if (pressed) {
-        tap_code16(KC_ENT);
+        register_code16(KC_ENT);
+      } else {
+        unregister_code16(KC_ENT);
       }
       break;
     case CMB_D_K:
       if (pressed) {
-        tap_code16(KC_TAB);
+        register_code16(KC_TAB);
+      } else {
+        unregister_code16(KC_TAB);
       }
       break;
     case CMB_E_R:
@@ -238,7 +242,9 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
       break;
     case CMB_S_D:
       if (pressed) {
-        tap_code16(KC_BSPC);
+        register_code16(KC_BSPC);
+      } else {
+        unregister_code16(KC_BSPC);
       }
       break;
     case CMB_W_E:
