@@ -14,11 +14,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // |--------+------+------+------+------+------|      |
     KC_LSFT,  CTL_Z, KC_X,  KC_C,  KC_V,  KC_B,  ___,
 // `--------+------+------+------+------+-------------'
-      ___,  KC_LEAD,KC_LALT,LFT_DEL,CTL_ESC,
+      ___,  KC_LEAD,KC_LALT,KC_DEL,CTL_ESC,
 //   `----------------------------------'     ,------+------.
                                                 ___,   ___,
 //                                     ,------|------|------|
-                                                      KC_TAB,
+                                                       ___,
 //                                     |      |      |------|
                                       KC_LSFT,MO(NUMB),MED_TAB,
 //                                     `--------------------'
@@ -38,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //                         |------+------+------.
                              ___, /*     |     */
 //                         |------|      |      |
-                           KC_RSFT,GUI_ENT,KC_SPC
+                             ___, GUI_ENT,KC_SPC
 //                         `--------------------'
 ),
 /* Media and F-keys
@@ -47,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |        |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  |  F10 |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |  U   |  I   |CtlSft|      |  F11 |------|           |------| F12  | Home | PgDn | PgUp | End  |  Play  |
+ * |        |  U   |  I   |      |      |  F11 |------|           |------| F12  |      |      |      |      |  Play  |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |  M   |Ctl+/ |      | Enter|      |           |      |      |      | Prev | Next | Mute |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -65,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
         ___,      ___,     ___,     ___,     ___,      ___,       ___,
         ___,      KC_F1,   KC_F2,   KC_F3,   KC_F4,    KC_F5,     ___,
-        ___,      KC_U,    KC_I,  C(KC_LSFT),_______,  KC_F11,
+        ___,      KC_U,    KC_I,    _______, _______,  KC_F11,
         ___,      ___,     KC_M,  C(KC_SLSH),___,      KC_ENT,    ___,
         ___,      ___,     RESET, VRSN,      ___,
                                                        ___,       ___,
@@ -74,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // right hand
         ___,      ___,     ___,     ___,     ___,      ___,       ___,
         ___,      KC_F6,   KC_F7,   KC_F8,   KC_F9,    KC_F10,    ___,
-                  KC_F12,  KC_HOME, KC_PGDN, KC_PGUP,  KC_END,    KC_MPLY,
+                  KC_F12,  _______, _______, _______,  _______,   KC_MPLY,
         ___,      ___,     ___,     KC_MPRV, KC_MNXT,  KC_MUTE,   ___,
                            ___,     KC_VOLD, KC_VOLU,  ___,       ___,
         ___,      ___,
@@ -156,26 +156,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //                         |------|      |      |
                              ___, KC_BTN2,KC_BTN1
 //                         `--------------------'
-),
-[LFTH] = LAYOUT_ergodox_wrapper(
-      ___,    ___,   ___,   ___,   ___,   ___,   ___,
-      ___,           LFTH_L1_5COL,               ___,
-      ___,           LFTH_L2_5COL,
-      ___,           LFTH_L3_5COL,               ___,
-      ___,    ___,   ___,   ___,   ___,
-                                                ___,   ___,
-                                                       ___,
-                                         ___,   ___,
-                                                       ___,
-
-                                       ___,   ___,   ___,   ___,   ___,   ___,    ___,
-                                       ___,                 LFTH_R1_5COL,         ___,
-                                                            LFTH_R2_5COL,         ___,
-                                       ___,                 LFTH_R3_5COL,         ___,
-                                                     ___,   ___,   ___,   ___,    ___,
-                             ___,   ___,
-                             ___,
-                             ___,   ___,   ___
 ),
 [BRKT] = LAYOUT_ergodox(
 // left hand

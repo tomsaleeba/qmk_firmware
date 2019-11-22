@@ -107,96 +107,128 @@ uint16_t get_tapping_term(uint16_t keycode) {
 }
 
 enum combo_events {
-  A_SCLN,
-  DF,
-  DK,
-  DOTCOMMA,
-  FJ,
-  J_K_L,
-  LCLN,
-  M_SLSH,
-  S_D_F,
-  XC,
+  CMB_A_SCLN,
+  CMB_C_V,
+  CMB_DOT_COMMA,
+  CMB_D_F,
+  CMB_D_K,
+  CMB_E_R,
+  CMB_F_J,
+  CMB_F_G,
+  CMB_H_J,
+  CMB_J_K_L,
+  CMB_K_L,
+  CMB_L_CLN,
+  CMB_S_D_F,
+  CMB_X_C,
 };
 
 const uint16_t PROGMEM a_cln_combo[] = {KC_A, KC_SCLN, COMBO_END};
-const uint16_t PROGMEM df_combo[] = {KC_D, KC_F, COMBO_END};
-const uint16_t PROGMEM dk_combo[] = {KC_D, KC_K, COMBO_END};
-const uint16_t PROGMEM dotcomma_combo[] = {KC_DOT, KC_COMM, COMBO_END};
-const uint16_t PROGMEM fj_combo[] = {KC_F, KC_J, COMBO_END};
+const uint16_t PROGMEM c_v_combo[] = {KC_C, KC_V, COMBO_END};
+const uint16_t PROGMEM d_f_combo[] = {KC_D, KC_F, COMBO_END};
+const uint16_t PROGMEM d_k_combo[] = {KC_D, KC_K, COMBO_END};
+const uint16_t PROGMEM dot_comma_combo[] = {KC_DOT, KC_COMM, COMBO_END};
+const uint16_t PROGMEM e_r_combo[] = {KC_E, KC_R, COMBO_END};
+const uint16_t PROGMEM f_j_combo[] = {KC_F, KC_J, COMBO_END};
+const uint16_t PROGMEM f_g_combo[] = {KC_F, KC_G, COMBO_END};
+const uint16_t PROGMEM h_j_combo[] = {KC_H, KC_J, COMBO_END};
 const uint16_t PROGMEM j_k_l_combo[] = {KC_J, KC_K, KC_L, COMBO_END};
-const uint16_t PROGMEM lcln_combo[] = {KC_L, KC_SCLN, COMBO_END};
-const uint16_t PROGMEM m_slsh_combo[] = {KC_M, KC_SLSH, COMBO_END};
+const uint16_t PROGMEM k_l_combo[] = {KC_K, KC_L, COMBO_END};
+const uint16_t PROGMEM l_cln_combo[] = {KC_L, KC_SCLN, COMBO_END};
 const uint16_t PROGMEM s_d_f_combo[] = {KC_S, KC_D, KC_F, COMBO_END};
-const uint16_t PROGMEM xc_combo[] = {KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM x_c_combo[] = {KC_X, KC_C, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-  [A_SCLN] = COMBO_ACTION(a_cln_combo),
-  [DF] = COMBO_ACTION(df_combo),
-  [DK] = COMBO_ACTION(dk_combo),
-  [DOTCOMMA] = COMBO_ACTION(dotcomma_combo),
-  [FJ] = COMBO_ACTION(fj_combo),
-  [J_K_L] = COMBO_ACTION(j_k_l_combo),
-  [LCLN] = COMBO_ACTION(lcln_combo),
-  [M_SLSH] = COMBO_ACTION(m_slsh_combo),
-  [S_D_F] = COMBO_ACTION(s_d_f_combo),
-  [XC] = COMBO_ACTION(xc_combo),
+  [CMB_A_SCLN] = COMBO_ACTION(a_cln_combo),
+  [CMB_C_V] = COMBO_ACTION(c_v_combo),
+  [CMB_DOT_COMMA] = COMBO_ACTION(dot_comma_combo),
+  [CMB_D_F] = COMBO_ACTION(d_f_combo),
+  [CMB_D_K] = COMBO_ACTION(d_k_combo),
+  [CMB_E_R] = COMBO_ACTION(e_r_combo),
+  [CMB_F_J] = COMBO_ACTION(f_j_combo),
+  [CMB_F_G] = COMBO_ACTION(f_g_combo),
+  [CMB_H_J] = COMBO_ACTION(h_j_combo),
+  [CMB_J_K_L] = COMBO_ACTION(j_k_l_combo),
+  [CMB_K_L] = COMBO_ACTION(k_l_combo),
+  [CMB_L_CLN] = COMBO_ACTION(l_cln_combo),
+  [CMB_S_D_F] = COMBO_ACTION(s_d_f_combo),
+  [CMB_X_C] = COMBO_ACTION(x_c_combo),
 };
 
 void process_combo_event(uint8_t combo_index, bool pressed) {
   switch(combo_index) {
-    case DF:
+    case CMB_A_SCLN:
+      if (pressed) {
+        tap_code16(KC_ESC);
+      }
+      break;
+    case CMB_C_V:
+      if (pressed) {
+        tap_code16(KC_PGDN);
+      }
+      break;
+    case CMB_D_F:
       if (pressed) {
         layer_on(BRKT);
       } else {
         layer_off(BRKT);
       }
       break;
-    case LCLN:
+    case CMB_DOT_COMMA:
+      if (pressed) {
+        tap_code16(KC_QUOT);
+      }
+      break;
+    case CMB_F_J:
+      if (pressed) {
+        tap_code16(KC_ENT);
+      }
+      break;
+    case CMB_F_G:
+      if (pressed) {
+        tap_code16(KC_ENT);
+      }
+      break;
+    case CMB_D_K:
+      if (pressed) {
+        tap_code16(KC_TAB);
+      }
+      break;
+    case CMB_E_R:
+      if (pressed) {
+        tap_code16(KC_PGUP);
+      }
+      break;
+    case CMB_H_J:
+      if (pressed) {
+        tap_code16(KC_HOME);
+      }
+      break;
+    case CMB_J_K_L:
+      if (pressed) {
+        tap_code16(LALT(KC_TAB));
+      }
+      break;
+    case CMB_K_L:
+      if (pressed) {
+        tap_code16(KC_END);
+      }
+      break;
+    case CMB_L_CLN:
       if (pressed) {
         layer_on(MOUS);
       } else {
         layer_off(MOUS);
       }
       break;
-    case FJ:
-      if (pressed) {
-        tap_code16(KC_ENT);
-      }
-      break;
-    case DK:
-      if (pressed) {
-        tap_code16(KC_TAB);
-      }
-      break;
-    case J_K_L:
-      if (pressed) {
-        tap_code16(LALT(KC_TAB));
-      }
-      break;
-    case XC:
-      if (pressed) {
-        tap_code16(KC_MINS);
-      }
-      break;
-    case DOTCOMMA:
-      if (pressed) {
-        tap_code16(KC_QUOT);
-      }
-      break;
-    case A_SCLN:
-      if (pressed) {
-        tap_code16(KC_ESC);
-      }
-      break;
-    case S_D_F:
+    case CMB_S_D_F:
       if (pressed) {
         tap_code16(KC_BSPC);
       }
       break;
-    case M_SLSH:
+    case CMB_X_C:
       if (pressed) {
-        tap_code16(KC_SPC);
+        tap_code16(KC_MINS);
       }
       break;
   }
