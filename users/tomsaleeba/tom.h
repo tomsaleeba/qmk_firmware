@@ -51,7 +51,7 @@ enum custom_keycodes {
 
 #define BASE_L1_5COL   KC_Q,     KC_W,    KC_E,     KC_R,    KC_T
 #define BASE_L2_5COL   KC_A,     KC_S,    KC_D,     KC_F,    KC_G
-#define BASE_L3_5COL   KC_Z,     KC_X,    KC_C,     KC_V,    KC_B
+#define BASE_L3_5COL  CTL_Z,     KC_X,    KC_C,     KC_V,    KC_B
 
 #define BASE_R1_5COL                                                 KC_Y,     KC_U,     KC_I,     KC_O,     KC_P
 #define BASE_R2_5COL                                                 KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN
