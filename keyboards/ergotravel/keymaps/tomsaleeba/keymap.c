@@ -6,9 +6,9 @@ extern keymap_config_t keymap_config;
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [BASE] = LAYOUT_ergotravel_grid_wrapper(
-   _______,          BASE_L1_5COL,                       KC_TAB,            _______,                   BASE_R1_5COL,              _______,
-   _______,          BASE_L2_5COL,                       MO(MDIA),          RESET,                     BASE_R2_5COL,              _______,
-   _______,          BASE_L3_5COL,                       MO(NUMB),          GUI_ENT,                   BASE_R3_5COL,              _______,
+   _______,          BASE_L1_5COL,                       KC_TAB,            RGB_TOG,                   BASE_R1_5COL,              RGB_MOD,
+   _______,          BASE_L2_5COL,                       MO(MDIA),          RESET,                     BASE_R2_5COL,              RGB_VAI,
+   _______,          BASE_L3_5COL,                       MO(NUMB),          GUI_ENT,                   BASE_R3_5COL,              RGB_VAD,
    _______, KC_LEAD, KC_LALT, KC_DEL,           CTL_ESC, KC_LSFT,           KC_SPC,           KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______
   ),
 
