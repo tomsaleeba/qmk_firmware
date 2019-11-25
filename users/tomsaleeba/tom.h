@@ -43,6 +43,14 @@ enum custom_keycodes {
 #define GUI_ENT RGUI_T(KC_ENT)
 #define MED_TAB LT(MDIA, KC_TAB)
 
+
+#define TOM_BRIGHTNESS 112
+#define HSV_TOM_ORANGE 28, 255, 16
+#define HSV_TOM_RED 0, 255, TOM_BRIGHTNESS
+#define HSV_TOM_GREEN 85, 255, TOM_BRIGHTNESS
+#define HSV_TOM_CYAN 128, 255, TOM_BRIGHTNESS
+#define HSV_TOM_PURPLE 191, 255, TOM_BRIGHTNESS
+
 // Wrappers
 #define LAYOUT_ergodox_wrapper(...)              LAYOUT_ergodox(__VA_ARGS__)
 #define LAYOUT_ergotravel_grid_wrapper(...)      LAYOUT(__VA_ARGS__)

@@ -45,3 +45,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       _______, _______, _______,  _______,     _______, _______, _______, _______
   ),
 };
+
+#if defined(RGBLIGHT_ENABLE)
+uint32_t layer_state_set_user(uint32_t state) {
+  uint8_t layer = biton32(state);
+  switch (layer) {
+      case BASE:
+          rgblight_sethsv(HSV_TOM_ORANGE);
+        break;
+      case MDIA:
+          rgblight_sethsv(HSV_TOM_RED);
+        break;
+      case NUMB:
+          rgblight_sethsv(HSV_TOM_GREEN);
+        break;
+      case MOUS:
+          rgblight_sethsv(HSV_TOM_CYAN);
+        break;
+      case BRKT:
+          rgblight_sethsv(HSV_TOM_PURPLE);
+        break;
+      default:
+        break;
+    }
+  return state;
+};
+#endif
