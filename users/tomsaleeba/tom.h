@@ -41,7 +41,6 @@ enum custom_keycodes {
 #define CTL_ESC CTL_T(KC_ESC)
 #define CTL_Z CTL_T(KC_Z)
 #define GUI_ENT RGUI_T(KC_ENT)
-#define LFT_DEL LT(LFTH, KC_DEL)
 #define MED_TAB LT(MDIA, KC_TAB)
 
 // Wrappers
@@ -74,12 +73,12 @@ enum custom_keycodes {
 #define MOUS_R2_5COL                                                 _______,  KC_BTN3,  KC_WH_D,  _______,  _______
 #define MOUS_R3_5COL                                                 _______,  _______,  _______,  _______,  _______
 
-#define LFTH_L1_5COL   C(S(KC_END)),C(S(KC_PGUP)),C(S(KC_PGDN)),C(S(KC_HOME)), _______
-#define LFTH_L2_5COL   C(KC_END)   ,C(KC_PGUP),  C(KC_PGDN),    C(KC_HOME),    _______
-#define LFTH_L3_5COL   KC_END,     KC_PGUP,      KC_PGDN,       KC_HOME,       _______
+#define BRKT_L1_5COL   _______,  _______, _______,  _______, _______
+#define BRKT_L2_5COL   _______,  _______, _______,  _______, _______
+#define BRKT_L3_5COL   _______,  _______, _______,  _______, _______
 
-#define LFTH_R1_5COL                                                 _______,  _______,  _______,  _______,  _______
-#define LFTH_R2_5COL                                                 _______,  _______,  _______,  _______,  _______
-#define LFTH_R3_5COL                                                 _______,  _______,  _______,  _______,  _______
+#define BRKT_R1_5COL                                                 _______, KC_LCBR, KC_RCBR, _______, _______
+#define BRKT_R2_5COL                                                 _______, KC_LPRN, KC_RPRN, _______, _______
+#define BRKT_R3_5COL                                                 _______, KC_LBRC, KC_RBRC, _______, _______
 
 #endif

@@ -17,3 +17,9 @@
 #pragma once
 
 // place overrides here
+#define MASTER_RIGHT
+
+/* ws2812 RGB LED */
+#define RGB_DI_PIN D3
+
+#define RGBLED_NUM 1    // Number of LEDs
