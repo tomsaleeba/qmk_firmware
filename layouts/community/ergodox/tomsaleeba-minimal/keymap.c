@@ -3,7 +3,7 @@
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-[BASE] = LAYOUT_ergodox(
+[BASE] = LAYOUT_ergodox_wrapper(
 // left hand
 // ,--------+------+------+------+------+------+------.
       ___,    ___,   ___,   ___,   ___,   ___,   ___,
