@@ -1,0 +1,3 @@
+FIXME (1-based) row 4, col 3 switch doesn't register
+
+Add swap hands mode and use the unused switch on the bottom row.
