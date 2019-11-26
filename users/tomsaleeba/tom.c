@@ -101,6 +101,8 @@ uint16_t get_tapping_term(uint16_t keycode) {
     case CTL_ESC:
     case MED_TAB:
       return 150;
+    case CTL_Z:
+      return 400;
     default:
       return TAPPING_TERM;
   }
