@@ -10,7 +10,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              BASE_L2_5COL,                                                                BASE_R2_5COL,
              BASE_L3_5COL,                                                                BASE_R3_5COL,
     KC_LEAD, KC_LALT, KC_DEL,  KC_LCTL, KC_LSFT, MO(NUMB),     GUI_ENT, KC_SPC,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,
-                      KC_DEL,  KC_BSPC, MO(MDIA),MO(BRKT),     KC_TAB,  KC_RSFT, KC_ESC,  _______
+                      TG(SWAP),KC_BSPC, MO(MDIA),MO(BRKT),     KC_TAB,  KC_RSFT, KC_ESC,  TG(SWAP)
   ),
 
   [MDIA] = LAYOUT_25_2move_wrapper(
@@ -44,10 +44,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______,  _______,     _______, _______, KC_LT,   KC_GT,   _______, _______,
                       _______, _______, _______,  _______,     _______, _______, _______, _______
   ),
+
+  // FIXME left hand is mirrored so a becomes h not ;
+  [SWAP] = LAYOUT_25_2move_wrapper(
+    _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______,  _______,     _______, _______, _______, _______, _______, _______,
+                      _______, _______, _______,  _______,     _______, _______, _______, _______
+  ),
 };
+
+#ifdef SWAP_HANDS_ENABLE
+  // The current set of active layers (as a bitmask).
+  // There is a global 'layer_state' variable but it is set after the call
+  // to layer_state_set_user().
+  static uint32_t current_layer_state = 0;
+
+  // Whether the given layer (one of the constant defined at the top) is active.
+  #define LAYER_ON(layer) (current_layer_state & (1<<layer))
+#endif
 
 #if defined(RGBLIGHT_ENABLE)
 uint32_t layer_state_set_user(uint32_t state) {
+  #ifdef SWAP_HANDS_ENABLE
+    current_layer_state = state;
+    swap_hands = LAYER_ON(SWAP) && !LAYER_ON(MOUS); // can't deal with mirrored mouse
+  #endif
   uint8_t layer = biton32(state);
   switch (layer) {
       case BASE:
@@ -64,6 +87,9 @@ uint32_t layer_state_set_user(uint32_t state) {
         break;
       case BRKT:
           rgblight_sethsv(HSV_TOM_PURPLE);
+        break;
+      case SWAP:
+          rgblight_sethsv(HSV_TOM_WHITE);
         break;
       default:
         break;

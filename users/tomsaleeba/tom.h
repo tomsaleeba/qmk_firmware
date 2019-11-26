@@ -41,10 +41,14 @@ enum custom_keycodes {
 #define CTL_ESC CTL_T(KC_ESC)
 #define GUI_ENT RGUI_T(KC_ENT)
 #define MED_TAB LT(MDIA, KC_TAB)
+#define CS_LEFT LCTL(LSFT(KC_LEFT))
+#define CS_RGHT LCTL(LSFT(KC_RGHT))
 
 
+// from quantum/rgblight_list.h
 #define TOM_BRIGHTNESS 112
 #define HSV_TOM_ORANGE 28, 255, 16
+#define HSV_TOM_WHITE 0, 0, TOM_BRIGHTNESS
 #define HSV_TOM_RED 0, 255, TOM_BRIGHTNESS
 #define HSV_TOM_GREEN 85, 255, TOM_BRIGHTNESS
 #define HSV_TOM_CYAN 128, 255, TOM_BRIGHTNESS
@@ -81,7 +85,7 @@ enum custom_keycodes {
 #define MOUS_R3_5COL                                                 _______,  _______,  _______,  _______,  _______
 
 #define BRKT_L1_5COL   _______,  _______, _______,  _______, _______
-#define BRKT_L2_5COL   _______,  _______, _______,  _______, _______
+#define BRKT_L2_5COL   CS_LEFT,  _______, _______,  CS_RGHT, _______
 #define BRKT_L3_5COL   _______,  _______, _______,  _______, _______
 
 #define BRKT_R1_5COL                                                 _______, KC_LCBR, KC_RCBR, _______, _______
