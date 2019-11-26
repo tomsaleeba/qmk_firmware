@@ -101,8 +101,6 @@ uint16_t get_tapping_term(uint16_t keycode) {
     case CTL_ESC:
     case MED_TAB:
       return 150;
-    case CTL_Z:
-      return 400;
     default:
       return TAPPING_TERM;
   }
@@ -127,6 +125,7 @@ enum combo_events {
   CMB_V_B,
   CMB_W_E,
   CMB_X_C,
+  CMB_Z_X,
 };
 
 const uint16_t PROGMEM a_cln_combo[] = {KC_A, KC_SCLN, COMBO_END};
@@ -147,6 +146,7 @@ const uint16_t PROGMEM s_d_combo[] = {KC_S, KC_D, COMBO_END};
 const uint16_t PROGMEM v_b_combo[] = {KC_V, KC_B, COMBO_END};
 const uint16_t PROGMEM w_e_combo[] = {KC_W, KC_E, COMBO_END};
 const uint16_t PROGMEM x_c_combo[] = {KC_X, KC_C, COMBO_END};
+const uint16_t PROGMEM z_x_combo[] = {KC_Z, KC_X, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   [CMB_A_SCLN] = COMBO_ACTION(a_cln_combo),
@@ -167,6 +167,7 @@ combo_t key_combos[COMBO_COUNT] = {
   [CMB_V_B] = COMBO_ACTION(v_b_combo),
   [CMB_W_E] = COMBO_ACTION(w_e_combo),
   [CMB_X_C] = COMBO_ACTION(x_c_combo),
+  [CMB_Z_X] = COMBO_ACTION(z_x_combo),
 };
 
 void process_combo_event(uint8_t combo_index, bool pressed) {
@@ -257,6 +258,13 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
     case CMB_X_C:
       if (pressed) {
         tap_code16(KC_UNDS);
+      }
+      break;
+    case CMB_Z_X:
+      if (pressed) {
+        register_code16(KC_RCTL);
+      } else {
+        unregister_code16(KC_RCTL);
       }
       break;
   }
