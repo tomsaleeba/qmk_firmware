@@ -10,14 +10,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              BASE_L2_5COL,                                                                BASE_R2_5COL,
              BASE_L3_5COL,                                                                BASE_R3_5COL,
     KC_LEAD, KC_LALT, KC_DEL,  KC_LCTL, KC_LSFT, MO(NUMB),     GUI_ENT, KC_SPC,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,
-                      TG(SWAP),KC_BSPC, MO(MDIA),MO(BRKT),     KC_TAB,  KC_RSFT, KC_ESC,  TG(SWAP)
+                      TG(SWAP),KC_ESC,  MO(MDIA),MO(BRKT),     KC_TAB,  KC_RSFT, KC_BSPC, TG(SWAP)
   ),
 
   [MDIA] = LAYOUT_25_2move_wrapper(
     KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                          KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,
-    RGB_MOD, RGB_TOG, _______, _______, KC_F11,                         KC_F12,  KC_HOME, KC_PGDN, KC_PGUP, KC_END,
-    RGB_VAI, _______, _______, _______, _______,                        _______, _______, _______, _______, KC_MUTE,
-    RGB_VAD, RESET,   VRSN,    _______, _______,  _______,     _______, _______, _______, KC_VOLD, KC_VOLU, _______,
+    _______, RGB_TOG, _______, _______, KC_F11,                         KC_F12,  KC_HOME, KC_PGDN, KC_PGUP, KC_END,
+    _______, _______, _______, _______, _______,                        _______, _______, _______, _______, KC_MUTE,
+    _______, RESET,   VRSN,    _______, _______,  _______,     _______, _______, _______, KC_VOLD, KC_VOLU, _______,
                       _______, _______, _______,  _______,     _______, _______, _______, _______
   ),
 

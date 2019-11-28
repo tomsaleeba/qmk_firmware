@@ -45,6 +45,8 @@ enum custom_keycodes {
 #define CS_RGHT LCTL(LSFT(KC_RGHT))
 #define CS_PGUP LCTL(LSFT(KC_PGUP))
 #define CS_PGDN LCTL(LSFT(KC_PGDN))
+#define C_PGUP LCTL(KC_PGUP)
+#define C_PGDN LCTL(KC_PGDN)
 
 
 // from quantum/rgblight_list.h
@@ -86,9 +88,9 @@ enum custom_keycodes {
 #define MOUS_R2_5COL                                                 _______,  KC_BTN3,  KC_WH_D,  _______,  _______
 #define MOUS_R3_5COL                                                 _______,  _______,  _______,  _______,  _______
 
-#define BRKT_L1_5COL   _______,  _______, _______,  CS_PGUP, C(KC_PGUP)
-#define BRKT_L2_5COL   CS_LEFT,  _______, _______,  CS_RGHT, _______
-#define BRKT_L3_5COL   _______,  _______, _______,  CS_PGDN, C(KC_PGDN)
+#define BRKT_L1_5COL   _______,  _______, CS_PGUP,  _______, _______
+#define BRKT_L2_5COL   _______,  CS_LEFT, CS_PGDN,  CS_RGHT, _______
+#define BRKT_L3_5COL   _______,  _______, _______,  C_PGUP,  C_PGDN
 
 #define BRKT_R1_5COL                                                 _______, KC_LCBR, KC_RCBR, _______, _______
 #define BRKT_R2_5COL                                                 _______, KC_LPRN, KC_RPRN, _______, _______
