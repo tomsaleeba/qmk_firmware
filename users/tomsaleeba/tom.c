@@ -79,6 +79,12 @@ void matrix_scan_user(void) {
     // we don't need one for right. On two monitors, it's the same
     SEQ_ONE_KEY(KC_LEFT) { sendThreeKeys(KC_LCTL, KC_LGUI, KC_LEFT); }
 
+    // restart command in terminal
+    SEQ_ONE_KEY(KC_UP) {
+      sendTwoKeys(KC_LCTL, KC_C);
+      sendTwoKeys(KC_UP, KC_ENT);
+    }
+
     // i3 "toggle scratchpad"
     SEQ_ONE_KEY(KC_J) { sendTwoKeys(KC_LGUI, KC_MINS); }
 
