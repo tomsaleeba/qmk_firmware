@@ -9,8 +9,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              BASE_L1_5COL,                                                                BASE_R1_5COL,
              BASE_L2_5COL,                                                                BASE_R2_5COL,
              BASE_L3_5COL,                                                                BASE_R3_5COL,
-    KC_LEAD, KC_LALT, KC_DEL,  KC_LCTL, KC_LSFT, MO(NUMB),     GUI_ENT, KC_SPC,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,
-                      TG(SWAP),KC_ESC,  MO(MDIA),MO(BRKT),     KC_TAB,  KC_RSFT, KC_BSPC, TG(SWAP)
+    KC_LEAD, KC_LALT, KC_DEL,  GUI_ENT, KC_LSFT, KC_LCTL,      NMB_ENT, KC_SPC,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,
+                      TG(SWAP),KC_ESC,  MO(MDIA),MO(BRKT),     KC_TAB,  ALT_TAB, KC_BSPC, TG(SWAP)
   ),
 
   [MDIA] = LAYOUT_25_2move_wrapper(

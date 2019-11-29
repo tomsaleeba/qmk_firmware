@@ -41,6 +41,8 @@ enum custom_keycodes {
 #define CTL_ESC CTL_T(KC_ESC)
 #define GUI_ENT RGUI_T(KC_ENT)
 #define MED_TAB LT(MDIA, KC_TAB)
+#define NMB_ENT LT(NUMB, KC_ENT)
+#define ALT_TAB LALT(KC_TAB)
 #define CS_LEFT LCTL(LSFT(KC_LEFT))
 #define CS_RGHT LCTL(LSFT(KC_RGHT))
 #define CS_PGUP LCTL(LSFT(KC_PGUP))

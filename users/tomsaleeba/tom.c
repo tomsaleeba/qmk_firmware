@@ -106,6 +106,7 @@ uint16_t get_tapping_term(uint16_t keycode) {
   switch (keycode) {
     case CTL_ESC:
     case MED_TAB:
+    case NMB_ENT:
       return 150;
     default:
       return TAPPING_TERM;

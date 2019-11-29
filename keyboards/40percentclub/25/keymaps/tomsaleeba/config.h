@@ -23,3 +23,6 @@
 #define RGB_DI_PIN D3
 
 #define RGBLED_NUM 1    // Number of LEDs
+
+#define NO_ACTION_ONESHOT
+#define NO_ACTION_MACRO
