@@ -22,7 +22,11 @@
 /* ws2812 RGB LED */
 #define RGB_DI_PIN D3
 
-#define RGBLED_NUM 1    // Number of LEDs
+#define RGBLED_NUM 1
+// FIXME this should work for split LEDs but it doesn't. Cannot communicate
+// between halves anymore.
+//#define RGBLED_NUM 2    // Number of LEDs
+//#define RGBLED_SPLIT {1,1}
 
 #define NO_ACTION_ONESHOT
 #define NO_ACTION_MACRO
