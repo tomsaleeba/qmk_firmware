@@ -43,7 +43,7 @@
 
 #define COMBO_COUNT 19
 #undef COMBO_TERM
-#define COMBO_TERM 22
+#define COMBO_TERM 13
 
 #undef TAPPING_TERM_PER_KEY
 // https://github.com/qmk/qmk_firmware/blob/master/docs/custom_quantum_functions.md#custom-tapping-term
