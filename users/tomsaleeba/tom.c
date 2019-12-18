@@ -180,9 +180,8 @@ combo_t key_combos[COMBO_COUNT] = {
 void process_combo_event(uint8_t combo_index, bool pressed) {
   switch(combo_index) {
     case CMB_A_SCLN:
-    case CMB_Q_W:
       if (pressed) {
-        tap_code16(KC_ESC);
+        tap_code16(LALT(KC_TAB));
       }
       break;
     case CMB_C_V:
@@ -203,8 +202,9 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
       }
       break;
     case CMB_F_J:
+    case CMB_Q_W:
       if (pressed) {
-        tap_code16(LALT(KC_TAB));
+        tap_code16(KC_ESC);
       }
       break;
     case CMB_F_G:
