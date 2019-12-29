@@ -64,6 +64,7 @@ enum custom_keycodes {
 #define LAYOUT_ergodox_wrapper(...)              LAYOUT_ergodox(__VA_ARGS__)
 #define LAYOUT_ergotravel_grid_wrapper(...)      LAYOUT(__VA_ARGS__)
 #define LAYOUT_25_wrapper(...)                   LAYOUT_split(__VA_ARGS__)
+#define LAYOUT_ergoslab_wrapper(...)             LAYOUT_ergoslab(__VA_ARGS__)
 
 #define BASE_L1_5COL   KC_Q,     KC_W,    KC_E,     KC_R,    KC_T
 #define BASE_L2_5COL   KC_A,     KC_S,    KC_D,     KC_F,    KC_G
