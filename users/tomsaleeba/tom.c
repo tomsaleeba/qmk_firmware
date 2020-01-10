@@ -178,18 +178,22 @@ combo_t key_combos[COMBO_COUNT] = {
   [CMB_Z_X] = COMBO_ACTION(z_x_combo),
 };
 
+
+void do_combo_keypress(uint16_t kc, bool pressed) {
+  if (pressed) {
+    register_code16(kc);
+  } else {
+    unregister_code16(kc);
+  }
+
+}
+
 void process_combo_event(uint8_t combo_index, bool pressed) {
   switch(combo_index) {
     case CMB_A_SCLN:
-      if (pressed) {
-        tap_code16(LALT(KC_TAB));
-      }
-      break;
+      return do_combo_keypress(LALT(KC_TAB), pressed);
     case CMB_C_V:
-      if (pressed) {
-        tap_code16(KC_PGDN);
-      }
-      break;
+      return do_combo_keypress(KC_PGDN, pressed);
     case CMB_D_F:
       if (pressed) {
         layer_on(BRKT);
@@ -198,52 +202,24 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
       }
       break;
     case CMB_DOT_COMMA:
-      if (pressed) {
-        tap_code16(KC_DQT);
-      }
-      break;
+      return do_combo_keypress(KC_DQT, pressed);
     case CMB_F_J:
     case CMB_Q_W:
-      if (pressed) {
-        tap_code16(KC_ESC);
-      }
-      break;
+      return do_combo_keypress(KC_ESC, pressed);
     case CMB_F_G:
-      if (pressed) {
-        register_code16(KC_ENT);
-      } else {
-        unregister_code16(KC_ENT);
-      }
-      break;
+      return do_combo_keypress(KC_ENTER, pressed);
     case CMB_D_K:
-      if (pressed) {
-        register_code16(KC_TAB);
-      } else {
-        unregister_code16(KC_TAB);
-      }
-      break;
+      return do_combo_keypress(KC_TAB, pressed);
     case CMB_E_R:
-      if (pressed) {
-        tap_code16(KC_PGUP);
-      }
-      break;
+      return do_combo_keypress(KC_PGUP, pressed);
     case CMB_H_J:
     case CMB_R_T:
-      if (pressed) {
-        tap_code16(KC_HOME);
-      }
-      break;
+      return do_combo_keypress(KC_HOME, pressed);
     case CMB_I_O:
-      if (pressed) {
-        tap_code16(KC_QUOT);
-      }
-      break;
+      return do_combo_keypress(KC_QUOT, pressed);
     case CMB_K_L:
     case CMB_V_B:
-      if (pressed) {
-        tap_code16(KC_END);
-      }
-      break;
+      return do_combo_keypress(KC_END, pressed);
     case CMB_L_CLN:
       if (pressed) {
         layer_on(MOUS);
@@ -252,28 +228,12 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
       }
       break;
     case CMB_S_D:
-      if (pressed) {
-        register_code16(KC_BSPC);
-      } else {
-        unregister_code16(KC_BSPC);
-      }
-      break;
+      return do_combo_keypress(KC_BSPC, pressed);
     case CMB_W_E:
-      if (pressed) {
-        tap_code16(KC_MINS);
-      }
-      break;
+      return do_combo_keypress(KC_MINS, pressed);
     case CMB_X_C:
-      if (pressed) {
-        tap_code16(KC_UNDS);
-      }
-      break;
+      return do_combo_keypress(KC_UNDS, pressed);
     case CMB_Z_X:
-      if (pressed) {
-        register_code16(KC_RCTL);
-      } else {
-        unregister_code16(KC_RCTL);
-      }
-      break;
+      return do_combo_keypress(KC_RCTL, pressed);
   }
 }
