@@ -1,17 +1,10 @@
-# Jarred's user space
+# Tom Saleeba's user space
 
 Keymaps:
 
-- [Ortho 4x12](../../layouts/community/ortho_4x12/jarred/readme.md)
-
-- [Planck](../../keyboards/planck/keymaps/jarred/readme.md)
-- [CRKBD](../../keyboards/crkbd/keymaps/jarred/readme.md)
-- [Atreus 62](../../keyboards/ergotravel/keymaps/jarred/readme.md)
-- [ErgoTravel](../../keyboards/ergotravel/keymaps/jarred/readme.md)
-- [xd75](../../keyboards/xd75/keymaps/jarred/readme.md)
-
-- [satan](../../keyboards/satan/keymaps/jarred/readme.md)
-- [dz60](../../keyboards/dz60/keymaps/jarred/readme.md)
-- [org60](../../keyboards/org60/keymaps/jarred/readme.md)
-- [Leaf60](../../keyboards/foxlab/leaf60/universal/keymaps/jarred/readme.md)
-- [Tada68](../../keyboards/tada68/keymaps/jarred/readme.md)
+- [Ergoslab](../../keyboards/ergoslab/keymaps/tomsaleeba/keymap.c)
+- [Ergodox](../../layouts/community/ergodox/tomsaleeba/keymap.c)
+- [Ergodox minimal](../../layouts/community/ergodox/tomsaleeba-minimal/keymap.c)
+    (a test to see how few keys I can live with)
+- [Ergotravel](../../keyboards/ergotravel/keymaps/tomsaleeba/keymap.c)
+- [40percentclub 25](../../keyboards/40percentclub/25/keymaps/tomsaleeba/keymap.c)
