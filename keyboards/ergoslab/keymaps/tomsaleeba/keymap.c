@@ -7,7 +7,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              BASE_L2_5COL,                                                                  BASE_R2_5COL,
              BASE_L3_5COL,                                                                  BASE_R3_5COL,
     KC_LEAD, KC_LALT, KC_DEL,  GUI_ENT, KC_LSFT, KC_LCTL,     NMB_ENT,  KC_SPC,   KC_LEFT,  KC_DOWN,  KC_UP,   KC_RGHT,
-             KC_LBRC, TG(SWAP),MO(BRKT),MO(MDIA),KC_ESC,      KC_TAB,   ALT_TAB,  KC_BSPC,  TG(SWAP), KC_RBRC
+             DF(CMAK),TG(SWAP),MO(BRKT),MO(MDIA),KC_ESC,      KC_TAB,   ALT_TAB,  KC_BSPC,  TG(SWAP), TG(CMAK)
+  ),
+
+  [CMAK] = LAYOUT_ergoslab_wrapper(
+             CMAK_L1_5COL,                                                                  CMAK_R1_5COL,
+             CMAK_L2_5COL,                                                                  CMAK_R2_5COL,
+             CMAK_L3_5COL,                                                                  CMAK_R3_5COL,
+    KC_LEAD, KC_LALT, KC_DEL,  GUI_ENT, KC_LSFT, KC_LCTL,     NMB_ENT,  KC_SPC,   KC_LEFT,  KC_DOWN,  KC_UP,   KC_RGHT,
+             DF(BASE),TG(SWAP),MO(BRKT),MO(MDIA),KC_ESC,      KC_TAB,   ALT_TAB,  KC_BSPC,  TG(SWAP), _______
   ),
 
   [MDIA] = LAYOUT_ergoslab_wrapper(
@@ -83,6 +91,9 @@ uint32_t layer_state_set_user(uint32_t state) {
         break;
       case BRKT:
           rgblight_sethsv(HSV_TOM_PURPLE);
+        break;
+      case CMAK:
+          rgblight_sethsv(HSV_TOM_YELLOW);
         break;
       case SWAP:
           rgblight_sethsv(HSV_TOM_WHITE);

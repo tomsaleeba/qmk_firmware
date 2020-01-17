@@ -30,13 +30,16 @@ enum custom_keycodes {
   VRSN,
 };
 
-#define BASE 0
-#define MDIA 1
-#define NUMB 2
-#define MOUS 3
-#define BRKT 4
-#define LFTH 5
-#define SWAP 15 // swap hands (one handed mode)
+enum layer_names {
+  BASE,
+  MDIA,
+  NUMB,
+  MOUS,
+  BRKT,
+  LFTH,
+  CMAK,
+  SWAP,
+};
 
 #define CTL_ESC CTL_T(KC_ESC)
 #define GUI_ENT RGUI_T(KC_ENT)
@@ -59,6 +62,7 @@ enum custom_keycodes {
 #define HSV_TOM_GREEN 85, 255, TOM_BRIGHTNESS
 #define HSV_TOM_CYAN 128, 255, TOM_BRIGHTNESS
 #define HSV_TOM_PURPLE 191, 255, TOM_BRIGHTNESS
+#define HSV_TOM_YELLOW 43, 255, TOM_BRIGHTNESS
 
 // Wrappers
 #define LAYOUT_ergodox_wrapper(...)              LAYOUT_ergodox(__VA_ARGS__)
@@ -73,6 +77,14 @@ enum custom_keycodes {
 #define BASE_R1_5COL                                                 KC_Y,     KC_U,     KC_I,     KC_O,     KC_P
 #define BASE_R2_5COL                                                 KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN
 #define BASE_R3_5COL                                                 KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH
+
+#define CMAK_L1_5COL   KC_Q,     KC_W,    KC_F,     KC_P,    KC_B
+#define CMAK_L2_5COL   KC_A,     KC_R,    KC_S,     KC_T,    KC_G
+#define CMAK_L3_5COL   KC_Z,     KC_X,    KC_C,     KC_D,    KC_V
+
+#define CMAK_R1_5COL                                                 KC_J,     KC_L,     KC_U,     KC_Y,     KC_SCLN
+#define CMAK_R2_5COL                                                 KC_K,     KC_N,     KC_E,     KC_I,     KC_O
+#define CMAK_R3_5COL                                                 KC_M,     KC_H,     KC_COMM,  KC_DOT,   KC_SLSH
 
 #define NUMB_L1_5COL   KC_EXLM,  KC_AT,   KC_HASH,  KC_DLR,  KC_PERC
 #define NUMB_L2_5COL   KC_1,     KC_2,    KC_3,     KC_4,    KC_5

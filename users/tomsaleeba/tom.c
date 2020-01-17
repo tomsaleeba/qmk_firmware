@@ -121,21 +121,23 @@ enum combo_events {
   CMB_D_F,
   CMB_D_K,
   CMB_E_R,
-  CMB_F_G,
-  CMB_F_J,
+  CMB_ESC1,
+  CMB_ESC2,
   CMB_H_J,
   CMB_I_O,
   CMB_K_L,
   CMB_L_CLN,
-  CMB_Q_W,
   CMB_R_T,
-  CMB_S_D,
+  CMB_BACKSPACE1,
+  CMB_BACKSPACE2,
   CMB_V_B,
-  CMB_W_E,
-  CMB_X_C,
+  CMB_MINUS1,
+  CMB_MINUS2,
+  CMB_UNDERSCORE,
   CMB_Z_X,
 };
 
+// QWERTY
 const uint16_t PROGMEM a_cln_combo[] = {KC_A, KC_SCLN, COMBO_END};
 const uint16_t PROGMEM c_v_combo[] = {KC_C, KC_V, COMBO_END};
 const uint16_t PROGMEM d_f_combo[] = {KC_D, KC_F, COMBO_END};
@@ -155,26 +157,30 @@ const uint16_t PROGMEM v_b_combo[] = {KC_V, KC_B, COMBO_END};
 const uint16_t PROGMEM w_e_combo[] = {KC_W, KC_E, COMBO_END};
 const uint16_t PROGMEM x_c_combo[] = {KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM z_x_combo[] = {KC_Z, KC_X, COMBO_END};
+// Colemak DH
+const uint16_t PROGMEM r_s_combo[] = {KC_R, KC_S, COMBO_END};
+const uint16_t PROGMEM w_f_combo[] = {KC_W, KC_F, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
   [CMB_A_SCLN] = COMBO_ACTION(a_cln_combo),
+  [CMB_BACKSPACE1] = COMBO_ACTION(s_d_combo),
+  [CMB_BACKSPACE2] = COMBO_ACTION(r_s_combo),
   [CMB_C_V] = COMBO_ACTION(c_v_combo),
   [CMB_DOT_COMMA] = COMBO_ACTION(dot_comma_combo),
   [CMB_D_F] = COMBO_ACTION(d_f_combo),
   [CMB_D_K] = COMBO_ACTION(d_k_combo),
+  [CMB_ESC1] = COMBO_ACTION(f_j_combo),
+  [CMB_ESC2] = COMBO_ACTION(q_w_combo),
   [CMB_E_R] = COMBO_ACTION(e_r_combo),
-  [CMB_F_G] = COMBO_ACTION(f_g_combo),
-  [CMB_F_J] = COMBO_ACTION(f_j_combo),
   [CMB_H_J] = COMBO_ACTION(h_j_combo),
   [CMB_I_O] = COMBO_ACTION(i_o_combo),
   [CMB_K_L] = COMBO_ACTION(k_l_combo),
   [CMB_L_CLN] = COMBO_ACTION(l_cln_combo),
-  [CMB_Q_W] = COMBO_ACTION(q_w_combo),
   [CMB_R_T] = COMBO_ACTION(r_t_combo),
-  [CMB_S_D] = COMBO_ACTION(s_d_combo),
   [CMB_V_B] = COMBO_ACTION(v_b_combo),
-  [CMB_W_E] = COMBO_ACTION(w_e_combo),
-  [CMB_X_C] = COMBO_ACTION(x_c_combo),
+  [CMB_MINUS1] = COMBO_ACTION(w_e_combo),
+  [CMB_MINUS2] = COMBO_ACTION(w_f_combo),
+  [CMB_UNDERSCORE] = COMBO_ACTION(x_c_combo),
   [CMB_Z_X] = COMBO_ACTION(z_x_combo),
 };
 
@@ -203,11 +209,9 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
       break;
     case CMB_DOT_COMMA:
       return do_combo_keypress(KC_DQT, pressed);
-    case CMB_F_J:
-    case CMB_Q_W:
+    case CMB_ESC1:
+    case CMB_ESC2:
       return do_combo_keypress(KC_ESC, pressed);
-    case CMB_F_G:
-      return do_combo_keypress(KC_ENTER, pressed);
     case CMB_D_K:
       return do_combo_keypress(KC_TAB, pressed);
     case CMB_E_R:
@@ -227,11 +231,13 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
         layer_off(MOUS);
       }
       break;
-    case CMB_S_D:
+    case CMB_BACKSPACE1:
+    case CMB_BACKSPACE2:
       return do_combo_keypress(KC_BSPC, pressed);
-    case CMB_W_E:
+    case CMB_MINUS1:
+    case CMB_MINUS2:
       return do_combo_keypress(KC_MINS, pressed);
-    case CMB_X_C:
+    case CMB_UNDERSCORE:
       return do_combo_keypress(KC_UNDS, pressed);
     case CMB_Z_X:
       return do_combo_keypress(KC_RCTL, pressed);
