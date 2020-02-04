@@ -144,7 +144,6 @@ const uint16_t PROGMEM d_f_combo[] = {KC_D, KC_F, COMBO_END};
 const uint16_t PROGMEM d_k_combo[] = {KC_D, KC_K, COMBO_END};
 const uint16_t PROGMEM dot_comma_combo[] = {KC_DOT, KC_COMM, COMBO_END};
 const uint16_t PROGMEM e_r_combo[] = {KC_E, KC_R, COMBO_END};
-const uint16_t PROGMEM f_g_combo[] = {KC_F, KC_G, COMBO_END};
 const uint16_t PROGMEM f_j_combo[] = {KC_F, KC_J, COMBO_END};
 const uint16_t PROGMEM h_j_combo[] = {KC_H, KC_J, COMBO_END};
 const uint16_t PROGMEM i_o_combo[] = {KC_I, KC_O, COMBO_END};
