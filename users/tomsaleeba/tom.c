@@ -196,7 +196,13 @@ void do_combo_keypress(uint16_t kc, bool pressed) {
 void process_combo_event(uint8_t combo_index, bool pressed) {
   switch(combo_index) {
     case CMB_A_SCLN:
-      return do_combo_keypress(LALT(KC_TAB), pressed);
+    case CMB_V_B:
+      if (pressed) {
+        tap_code(KC_COMM);
+        tap_code(KC_COMM);
+        tap_code(KC_S);
+      }
+      return;
     case CMB_C_V:
       return do_combo_keypress(KC_PGDN, pressed);
     case CMB_D_F:
@@ -221,7 +227,6 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
     case CMB_I_O:
       return do_combo_keypress(KC_QUOT, pressed);
     case CMB_K_L:
-    case CMB_V_B:
       return do_combo_keypress(KC_END, pressed);
     case CMB_L_CLN:
       if (pressed) {
