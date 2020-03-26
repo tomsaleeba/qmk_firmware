@@ -41,9 +41,9 @@
 #undef TAPPING_TERM
 #define TAPPING_TERM    200
 
-#define COMBO_COUNT 20
+#define COMBO_COUNT 17
 #undef COMBO_TERM
-#define COMBO_TERM 13
+#define COMBO_TERM 13 // milliseconds
 
 #undef TAPPING_TERM_PER_KEY
 // https://github.com/qmk/qmk_firmware/blob/master/docs/custom_quantum_functions.md#custom-tapping-term

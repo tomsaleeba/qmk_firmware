@@ -115,36 +115,30 @@ uint16_t get_tapping_term(uint16_t keycode) {
 }
 
 enum combo_events {
-  CMB_A_SCLN,
-  CMB_C_V,
-  CMB_DOT_COMMA,
-  CMB_D_F,
-  CMB_D_K,
-  CMB_E_R,
-  CMB_ESC1,
-  CMB_ESC2,
-  CMB_H_J,
-  CMB_I_O,
-  CMB_K_L,
-  CMB_L_CLN,
-  CMB_R_T,
   CMB_BACKSPACE1,
   CMB_BACKSPACE2,
-  CMB_V_B,
+  CMB_BRKT,
+  CMB_DQUOT,
+  CMB_END,
+  CMB_ESC1,
+  CMB_HOME,
   CMB_MINUS1,
   CMB_MINUS2,
+  CMB_MOUS,
+  CMB_PGDN,
+  CMB_PGUP,
+  CMB_QUOT,
+  CMB_RCTL,
+  CMB_TAB,
   CMB_UNDERSCORE,
-  CMB_Z_X,
+  CMB_VIM_EASYMOTION1,
 };
 
 // QWERTY
-const uint16_t PROGMEM a_cln_combo[] = {KC_A, KC_SCLN, COMBO_END};
 const uint16_t PROGMEM c_v_combo[] = {KC_C, KC_V, COMBO_END};
 const uint16_t PROGMEM d_f_combo[] = {KC_D, KC_F, COMBO_END};
 const uint16_t PROGMEM d_k_combo[] = {KC_D, KC_K, COMBO_END};
 const uint16_t PROGMEM dot_comma_combo[] = {KC_DOT, KC_COMM, COMBO_END};
-const uint16_t PROGMEM e_r_combo[] = {KC_E, KC_R, COMBO_END};
-const uint16_t PROGMEM f_j_combo[] = {KC_F, KC_J, COMBO_END};
 const uint16_t PROGMEM h_j_combo[] = {KC_H, KC_J, COMBO_END};
 const uint16_t PROGMEM i_o_combo[] = {KC_I, KC_O, COMBO_END};
 const uint16_t PROGMEM k_l_combo[] = {KC_K, KC_L, COMBO_END};
@@ -161,26 +155,23 @@ const uint16_t PROGMEM r_s_combo[] = {KC_R, KC_S, COMBO_END};
 const uint16_t PROGMEM w_f_combo[] = {KC_W, KC_F, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-  [CMB_A_SCLN] = COMBO_ACTION(a_cln_combo),
   [CMB_BACKSPACE1] = COMBO_ACTION(s_d_combo),
   [CMB_BACKSPACE2] = COMBO_ACTION(r_s_combo),
-  [CMB_C_V] = COMBO_ACTION(c_v_combo),
-  [CMB_DOT_COMMA] = COMBO_ACTION(dot_comma_combo),
-  [CMB_D_F] = COMBO_ACTION(d_f_combo),
-  [CMB_D_K] = COMBO_ACTION(d_k_combo),
-  [CMB_ESC1] = COMBO_ACTION(f_j_combo),
-  [CMB_ESC2] = COMBO_ACTION(q_w_combo),
-  [CMB_E_R] = COMBO_ACTION(e_r_combo),
-  [CMB_H_J] = COMBO_ACTION(h_j_combo),
-  [CMB_I_O] = COMBO_ACTION(i_o_combo),
-  [CMB_K_L] = COMBO_ACTION(k_l_combo),
-  [CMB_L_CLN] = COMBO_ACTION(l_cln_combo),
-  [CMB_R_T] = COMBO_ACTION(r_t_combo),
-  [CMB_V_B] = COMBO_ACTION(v_b_combo),
+  [CMB_BRKT] = COMBO_ACTION(d_f_combo),
+  [CMB_DQUOT] = COMBO_ACTION(dot_comma_combo),
+  [CMB_END] = COMBO_ACTION(k_l_combo),
+  [CMB_ESC1] = COMBO_ACTION(q_w_combo),
+  [CMB_HOME] = COMBO_ACTION(h_j_combo),
   [CMB_MINUS1] = COMBO_ACTION(w_e_combo),
   [CMB_MINUS2] = COMBO_ACTION(w_f_combo),
+  [CMB_MOUS] = COMBO_ACTION(l_cln_combo),
+  [CMB_PGDN] = COMBO_ACTION(c_v_combo),
+  [CMB_PGUP] = COMBO_ACTION(r_t_combo),
+  [CMB_QUOT] = COMBO_ACTION(i_o_combo),
+  [CMB_RCTL] = COMBO_ACTION(z_x_combo),
+  [CMB_TAB] = COMBO_ACTION(d_k_combo),
   [CMB_UNDERSCORE] = COMBO_ACTION(x_c_combo),
-  [CMB_Z_X] = COMBO_ACTION(z_x_combo),
+  [CMB_VIM_EASYMOTION1] = COMBO_ACTION(v_b_combo),
 };
 
 
@@ -195,40 +186,37 @@ void do_combo_keypress(uint16_t kc, bool pressed) {
 
 void process_combo_event(uint8_t combo_index, bool pressed) {
   switch(combo_index) {
-    case CMB_A_SCLN:
-    case CMB_V_B:
+    case CMB_VIM_EASYMOTION1:
       if (pressed) {
         tap_code(KC_COMM);
         tap_code(KC_COMM);
         tap_code(KC_S);
       }
       return;
-    case CMB_C_V:
+    case CMB_PGDN:
       return do_combo_keypress(KC_PGDN, pressed);
-    case CMB_D_F:
+    case CMB_BRKT:
       if (pressed) {
         layer_on(BRKT);
       } else {
         layer_off(BRKT);
       }
       break;
-    case CMB_DOT_COMMA:
+    case CMB_DQUOT:
       return do_combo_keypress(KC_DQT, pressed);
     case CMB_ESC1:
-    case CMB_ESC2:
       return do_combo_keypress(KC_ESC, pressed);
-    case CMB_D_K:
+    case CMB_TAB:
       return do_combo_keypress(KC_TAB, pressed);
-    case CMB_E_R:
+    case CMB_PGUP:
       return do_combo_keypress(KC_PGUP, pressed);
-    case CMB_H_J:
-    case CMB_R_T:
+    case CMB_HOME:
       return do_combo_keypress(KC_HOME, pressed);
-    case CMB_I_O:
+    case CMB_QUOT:
       return do_combo_keypress(KC_QUOT, pressed);
-    case CMB_K_L:
+    case CMB_END:
       return do_combo_keypress(KC_END, pressed);
-    case CMB_L_CLN:
+    case CMB_MOUS:
       if (pressed) {
         layer_on(MOUS);
       } else {
@@ -243,7 +231,7 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
       return do_combo_keypress(KC_MINS, pressed);
     case CMB_UNDERSCORE:
       return do_combo_keypress(KC_UNDS, pressed);
-    case CMB_Z_X:
+    case CMB_RCTL:
       return do_combo_keypress(KC_RCTL, pressed);
   }
 }
