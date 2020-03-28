@@ -135,10 +135,10 @@ enum combo_events {
 };
 
 // QWERTY
-const uint16_t PROGMEM c_v_combo[] = {KC_C, KC_V, COMBO_END};
 const uint16_t PROGMEM d_f_combo[] = {KC_D, KC_F, COMBO_END};
 const uint16_t PROGMEM d_k_combo[] = {KC_D, KC_K, COMBO_END};
 const uint16_t PROGMEM dot_comma_combo[] = {KC_DOT, KC_COMM, COMBO_END};
+const uint16_t PROGMEM f_g_combo[] = {KC_F, KC_G, COMBO_END};
 const uint16_t PROGMEM h_j_combo[] = {KC_H, KC_J, COMBO_END};
 const uint16_t PROGMEM i_o_combo[] = {KC_I, KC_O, COMBO_END};
 const uint16_t PROGMEM k_l_combo[] = {KC_K, KC_L, COMBO_END};
@@ -165,7 +165,7 @@ combo_t key_combos[COMBO_COUNT] = {
   [CMB_MINUS1] = COMBO_ACTION(w_e_combo),
   [CMB_MINUS2] = COMBO_ACTION(w_f_combo),
   [CMB_MOUS] = COMBO_ACTION(l_cln_combo),
-  [CMB_PGDN] = COMBO_ACTION(c_v_combo),
+  [CMB_PGDN] = COMBO_ACTION(f_g_combo),
   [CMB_PGUP] = COMBO_ACTION(r_t_combo),
   [CMB_QUOT] = COMBO_ACTION(i_o_combo),
   [CMB_RCTL] = COMBO_ACTION(z_x_combo),
