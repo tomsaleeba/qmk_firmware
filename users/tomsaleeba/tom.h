@@ -103,8 +103,8 @@ enum layer_names {
 #define MOUS_R2_5COL                                                 _______,  KC_BTN3,  KC_WH_D,  _______,  _______
 #define MOUS_R3_5COL                                                 _______,  _______,  _______,  _______,  _______
 
-#define BRKT_L1_5COL   _______,  _______, CS_PGUP,  _______, _______
-#define BRKT_L2_5COL   _______,  CS_LEFT, CS_PGDN,  CS_RGHT, _______
+#define BRKT_L1_5COL   _______,  _______, CS_PGUP,  _______, A(KC_PGUP)
+#define BRKT_L2_5COL   _______,  CS_LEFT, CS_PGDN,  CS_RGHT, A(KC_PGDN)
 #define BRKT_L3_5COL   _______,  _______, _______,  C_PGUP,  C_PGDN
 
 #define BRKT_R1_5COL                                                 _______, KC_LCBR, KC_RCBR, _______, _______
