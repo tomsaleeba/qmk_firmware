@@ -41,17 +41,18 @@ enum layer_names {
   SWAP,
 };
 
-#define CTL_ESC CTL_T(KC_ESC)
-#define GUI_ENT RGUI_T(KC_ENT)
-#define MED_TAB LT(MDIA, KC_TAB)
-#define NMB_ENT LT(NUMB, KC_ENT)
-#define ALT_TAB LALT(KC_TAB)
-#define CS_LEFT LCTL(LSFT(KC_LEFT))
-#define CS_RGHT LCTL(LSFT(KC_RGHT))
-#define CS_PGUP LCTL(LSFT(KC_PGUP))
-#define CS_PGDN LCTL(LSFT(KC_PGDN))
-#define C_PGUP LCTL(KC_PGUP)
-#define C_PGDN LCTL(KC_PGDN)
+#define CTL_ESC  CTL_T(KC_ESC)
+#define GUI_ENT  RGUI_T(KC_ENT)
+#define MED_TAB  LT(MDIA, KC_TAB)
+#define NMB_ENT  LT(NUMB, KC_ENT)
+#define ALT_TAB  LALT(KC_TAB)
+#define ALT_TABT ALT_T(KC_TAB)
+#define CS_LEFT  LCTL(LSFT(KC_LEFT))
+#define CS_RGHT  LCTL(LSFT(KC_RGHT))
+#define CS_PGUP  LCTL(LSFT(KC_PGUP))
+#define CS_PGDN  LCTL(LSFT(KC_PGDN))
+#define C_PGUP   LCTL(KC_PGUP)
+#define C_PGDN   LCTL(KC_PGDN)
 
 
 // from quantum/rgblight_list.h
@@ -78,13 +79,14 @@ enum layer_names {
 #define BASE_R2_5COL                                                 KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN
 #define BASE_R3_5COL                                                 KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH
 
+// Colemak DHm (AKA Mod-DH Rev 1) https://colemakmods.github.io/mod-dh/keyboards.html
 #define CMAK_L1_5COL   KC_Q,     KC_W,    KC_F,     KC_P,    KC_B
 #define CMAK_L2_5COL   KC_A,     KC_R,    KC_S,     KC_T,    KC_G
 #define CMAK_L3_5COL   KC_Z,     KC_X,    KC_C,     KC_D,    KC_V
 
 #define CMAK_R1_5COL                                                 KC_J,     KC_L,     KC_U,     KC_Y,     KC_SCLN
-#define CMAK_R2_5COL                                                 KC_K,     KC_N,     KC_E,     KC_I,     KC_O
-#define CMAK_R3_5COL                                                 KC_M,     KC_H,     KC_COMM,  KC_DOT,   KC_SLSH
+#define CMAK_R2_5COL                                                 KC_M,     KC_N,     KC_E,     KC_I,     KC_O
+#define CMAK_R3_5COL                                                 KC_K,     KC_H,     KC_COMM,  KC_DOT,   KC_SLSH
 
 #define NUMB_L1_5COL   KC_EXLM,  KC_AT,   KC_HASH,  KC_DLR,  KC_PERC
 #define NUMB_L2_5COL   KC_1,     KC_2,    KC_3,     KC_4,    KC_5
