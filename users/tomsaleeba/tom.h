@@ -32,13 +32,13 @@ enum custom_keycodes {
 
 enum layer_names {
   BASE,
+  CMAK,
+  SWAP,
   MDIA,
   NUMB,
   MOUS,
   BRKT,
   LFTH,
-  CMAK,
-  SWAP,
 };
 
 #define CTL_ESC  CTL_T(KC_ESC)
