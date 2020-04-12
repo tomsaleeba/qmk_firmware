@@ -15,7 +15,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              CMAK_L2_5COL,                                                                  CMAK_R2_5COL,
              CMAK_L3_5COL,                                                                  CMAK_R3_5COL,
     KC_LEAD, KC_LALT, KC_DEL,  GUI_ENT, KC_LSFT, KC_LCTL,     NMB_ENT,  KC_SPC,   KC_LEFT,  KC_DOWN,  KC_UP,   KC_RGHT,
-             DF(BASE),TG(SWAP),MO(BRKT),MO(MDIA),KC_ESC,      ALT_TABT, ALT_TAB,  KC_BSPC,  TG(SWAP), _______
+             DF(BASE),TG(SWAP),KC_ESC  ,MO(MDIA),MO(BRKT),    ALT_TABT, ALT_TAB,  KC_BSPC,  TG(SWAP), _______
   ),
 
   [MDIA] = LAYOUT_ergoslab_wrapper(
@@ -70,37 +70,39 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #endif
 
 #if defined(RGBLIGHT_ENABLE)
-uint32_t layer_state_set_user(uint32_t state) {
-  #ifdef SWAP_HANDS_ENABLE
+  uint32_t layer_state_set_user(uint32_t state) {
+#ifdef SWAP_HANDS_ENABLE
     current_layer_state = state;
     swap_hands = LAYER_ON(SWAP) && !LAYER_ON(MOUS); // can't deal with mirrored mouse
-  #endif
-  uint8_t layer = biton32(state);
-  switch (layer) {
+#endif
+    uint8_t layer = biton32(state);
+    switch (layer) {
       case BASE:
-          rgblight_sethsv(HSV_TOM_ORANGE);
+        rgblight_sethsv(HSV_TOM_ORANGE);
         break;
       case MDIA:
-          rgblight_sethsv(HSV_TOM_RED);
+        rgblight_sethsv(HSV_TOM_RED);
         break;
       case NUMB:
-          rgblight_sethsv(HSV_TOM_GREEN);
+        rgblight_sethsv(HSV_TOM_GREEN);
         break;
       case MOUS:
-          rgblight_sethsv(HSV_TOM_CYAN);
+        rgblight_sethsv(HSV_TOM_CYAN);
         break;
       case BRKT:
-          rgblight_sethsv(HSV_TOM_PURPLE);
+        rgblight_sethsv(HSV_TOM_PURPLE);
         break;
       case CMAK:
-          rgblight_sethsv(HSV_TOM_YELLOW);
+        rgblight_sethsv(HSV_TOM_BLUE);
         break;
       case SWAP:
-          rgblight_sethsv(HSV_TOM_WHITE);
+        rgblight_sethsv(HSV_TOM_WHITE);
         break;
       default:
+        // FIXME would be good to have default handled for both Colemak and Qwerty
+        rgblight_sethsv(HSV_TOM_YELLOW);
         break;
     }
-  return state;
-};
+    return state;
+  };
 #endif
