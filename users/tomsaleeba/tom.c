@@ -192,9 +192,6 @@ void do_combo_keypress(uint16_t kc, bool pressed) {
   }
 }
 
-// layer_state is a global var
-#define LAYER_ON(layer) (layer_state & (1<<layer))
-
 void process_combo_event(uint8_t combo_index, bool pressed) {
   switch (combo_index) {
     case CMB_DQUOT:
@@ -206,7 +203,7 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
     case CMB_RCTL:
       return do_combo_keypress(KC_RCTL, pressed);
   }
-  bool isColemak = LAYER_ON(CMAK);
+  bool isColemak = layer_state_is(CMAK);
   if (isColemak) {
     switch(combo_index) {
       case CMB_BRKT_C:
@@ -220,9 +217,7 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
         return do_combo_keypress(KC_HOME, pressed);
       case CMB_QUOT_Q_OR_MOUS_C:
         if (pressed) {
-          layer_on(MOUS);
-        } else {
-          layer_off(MOUS);
+          layer_invert(MOUS);
         }
         break;
       case CMB_QUOT_C:
@@ -263,9 +258,7 @@ void process_combo_event(uint8_t combo_index, bool pressed) {
       return do_combo_keypress(KC_END, pressed);
     case CMB_MOUS_Q:
       if (pressed) {
-        layer_on(MOUS);
-      } else {
-        layer_off(MOUS);
+        layer_invert(MOUS);
       }
       break;
     case CMB_BACKSPACE_Q:

@@ -59,21 +59,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 
-#ifdef SWAP_HANDS_ENABLE
-  // The current set of active layers (as a bitmask).
-  // There is a global 'layer_state' variable but it is set after the call
-  // to layer_state_set_user().
-  static uint32_t current_layer_state = 0;
-
-  // Whether the given layer (one of the constant defined at the top) is active.
-  #define LAYER_ON(layer) (current_layer_state & (1<<layer))
-#endif
-
 #if defined(RGBLIGHT_ENABLE)
   uint32_t layer_state_set_user(uint32_t state) {
 #ifdef SWAP_HANDS_ENABLE
-    current_layer_state = state;
-    swap_hands = LAYER_ON(SWAP) && !LAYER_ON(MOUS); // can't deal with mirrored mouse
+    // disable swap_hands when mouse is on, I can't deal with a mirrored mouse
+    swap_hands = layer_state_cmp(state, SWAP) && !layer_state_cmp(state, MOUS);
 #endif
     uint8_t layer = biton32(state);
     switch (layer) {
