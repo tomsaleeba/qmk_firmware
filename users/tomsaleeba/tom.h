@@ -38,6 +38,7 @@ enum layer_names {
   NUMB,
   MOUS,
   BRKT,
+  GAME,
   LFTH,
 };
 
@@ -64,6 +65,7 @@ enum layer_names {
 #define HSV_TOM_CYAN 128, 255, TOM_BRIGHTNESS
 #define HSV_TOM_BLUE 170, 255, 16
 #define HSV_TOM_PURPLE 191, 255, TOM_BRIGHTNESS
+#define HSV_TOM_DIM_PURPLE 191, 255, 16
 #define HSV_TOM_YELLOW 43, 255, TOM_BRIGHTNESS
 
 // Wrappers

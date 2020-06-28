@@ -7,7 +7,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              BASE_L2_5COL,                                                                  BASE_R2_5COL,
              BASE_L3_5COL,                                                                  BASE_R3_5COL,
     KC_LEAD, KC_LALT, KC_DEL,  GUI_ENT, KC_LSFT, KC_LCTL,     NMB_ENT,  KC_SPC,   KC_LEFT,  KC_DOWN,  KC_UP,   KC_RGHT,
-             DF(CMAK),TG(SWAP),KC_ESC , MO(MDIA),MO(BRKT),    ALT_TABT, ALT_TAB,  KC_BSPC,  TG(SWAP), TG(CMAK)
+             TG(GAME),TG(SWAP),KC_ESC , MO(MDIA),MO(BRKT),    ALT_TABT, ALT_TAB,  KC_BSPC,  TG(SWAP), TG(CMAK)
   ),
 
   [CMAK] = LAYOUT_ergoslab_wrapper(
@@ -50,6 +50,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              _______, _______, _______, _______, _______,     _______,  _______,  _______,  _______,  _______
   ),
 
+  [GAME] = LAYOUT_ergoslab_wrapper(
+             BASE_L1_5COL,                                              _______,  _______,  KC_UP,    _______, _______,
+             BASE_L2_5COL,                                              _______,  KC_LEFT,  KC_DOWN,  KC_RGHT, _______,
+             BASE_L3_5COL,                                                                  BASE_R3_5COL,
+    _______, _______, _______, _______, _______, _______,     KC_ENT,   _______,  _______,  _______,  _______, _______,
+             _______, _______, _______, _______, _______,     _______,  _______,  _______,  _______,  _______
+  ),
+
   [SWAP] = LAYOUT_ergoslab_wrapper(
     _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______,
@@ -87,6 +95,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         break;
       case SWAP:
         rgblight_sethsv(HSV_TOM_WHITE);
+        break;
+      case GAME:
+        rgblight_sethsv(HSV_TOM_DIM_PURPLE);
         break;
       default:
         // FIXME would be good to have default handled for both Colemak and Qwerty
