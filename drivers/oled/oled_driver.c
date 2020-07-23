@@ -23,9 +23,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <string.h>
 
 #include "progmem.h"
-#ifndef __AVR__
-#    define memcpy_P(des, src, len) memcpy(des, src, len)
-#endif
 
 // Used commands from spec sheet: https://cdn-shop.adafruit.com/datasheets/SSD1306.pdf
 // for SH1106: https://www.velleman.eu/downloads/29/infosheets/sh1106_datasheet.pdf
@@ -465,6 +462,19 @@ void oled_write_raw(const char *data, uint16_t size) {
     }
 }
 
+void oled_write_pixel(uint8_t x, uint8_t y, bool on) {
+    if (x >= OLED_DISPLAY_WIDTH || y >= OLED_DISPLAY_HEIGHT) {
+        return;
+    }
+    uint16_t index = x + (y / 8) * OLED_DISPLAY_WIDTH;
+    if (on) {
+        oled_buffer[index] |= (1 << (y % 8));
+    } else {
+        oled_buffer[index] &= ~(1 << (y % 8));
+    }
+    oled_dirty |= (1 << (index / OLED_BLOCK_SIZE));
+}
+
 #if defined(__AVR__)
 void oled_write_P(const char *data, bool invert) {
     uint8_t c = pgm_read_byte(data);
@@ -482,7 +492,7 @@ void oled_write_ln_P(const char *data, bool invert) {
 void oled_write_raw_P(const char *data, uint16_t size) {
     if (size > OLED_MATRIX_SIZE) size = OLED_MATRIX_SIZE;
     for (uint16_t i = 0; i < size; i++) {
-        uint8_t c = pgm_read_byte(++data);
+        uint8_t c = pgm_read_byte(data++);
         if (oled_buffer[i] == c) continue;
         oled_buffer[i] = c;
         oled_dirty |= (1 << (i / OLED_BLOCK_SIZE));
