@@ -1,18 +1,18 @@
 ## Setup
-  1. git clone
-  1. cd qmk_firmware
-  1. util/qmk_install.sh
-  1. `make git-submodule`
+  1. `git clone`
+  1. `cd qmk_firmware`
+  1. `util/qmk_install.sh`
+  1. `bin/qmk doctor` (will setup submodules and give you link to setup udev so
+     sudo is not required)
 
-Can also use `flash` instead of `compile`. It seems that `sudo` is
-*not* required any longer, yay.
+Can also use `compile` instead of `flash`.
 
 ## ergoslab
-  1. `bin/qmk compile -kb ergoslab -km tomsaleeba`
+  1. `bin/qmk flash -kb ergoslab -km tomsaleeba`
 
 ## ergodox ez
-  1. `bin/qmk compile -kb ergodox_ez -km tomsaleeba`, or
-  1. `bin/qmk compile -kb ergodox_ez -km tomsaleeba-minimal`
+  1. `bin/qmk flash -kb ergodox_ez -km tomsaleeba`, or
+  1. `bin/qmk flash -kb ergodox_ez -km tomsaleeba-minimal`
 
 ## ergodox infinity
   1. `sudo env CFLAGS="-Wno-error=deprecated" make ergodox_infinity:tomsaleeba:dfu-util`
@@ -29,4 +29,4 @@ Can also use `flash` instead of `compile`. It seems that `sudo` is
   Note2: you can also use `tomsaleeba-minimal` for the ergodox infinity
 
 ## ergotravel
-  1. `bin/qmk compile -kb ergotravel -km tomsaleeba`
+  1. `bin/qmk flash -kb ergotravel -km tomsaleeba`
