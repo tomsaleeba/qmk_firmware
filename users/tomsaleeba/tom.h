@@ -33,6 +33,7 @@ enum custom_keycodes {
 enum layer_names {
   BASE,
   CMAK,
+  QWDF,
   SWAP,
   MDIA,
   NUMB,
@@ -57,15 +58,17 @@ enum layer_names {
 
 
 // from quantum/rgblight_list.h
-#define TOM_BRIGHTNESS 112
 #define HSV_TOM_ORANGE 28, 255, 16
+#define HSV_TOM_BLUE 170, 255, 16
+#define HSV_TOM_DIM_PURPLE 210, 255, 16
+#define HSV_TOM_DIM_GREEN 85, 255, 16
+
+#define TOM_BRIGHTNESS 112
 #define HSV_TOM_WHITE 0, 0, TOM_BRIGHTNESS
 #define HSV_TOM_RED 0, 255, TOM_BRIGHTNESS
 #define HSV_TOM_GREEN 85, 255, TOM_BRIGHTNESS
 #define HSV_TOM_CYAN 128, 255, TOM_BRIGHTNESS
-#define HSV_TOM_BLUE 170, 255, 16
 #define HSV_TOM_PURPLE 191, 255, TOM_BRIGHTNESS
-#define HSV_TOM_DIM_PURPLE 191, 255, 16
 #define HSV_TOM_YELLOW 43, 255, TOM_BRIGHTNESS
 
 // Wrappers
@@ -90,6 +93,15 @@ enum layer_names {
 #define CMAK_R1_5COL                                                 KC_J,     KC_L,     KC_U,     KC_Y,     KC_SCLN
 #define CMAK_R2_5COL                                                 KC_M,     KC_N,     KC_E,     KC_I,     KC_O
 #define CMAK_R3_5COL                                                 KC_K,     KC_H,     KC_COMM,  KC_DOT,   KC_SLSH
+
+// QWDFGY row swap https://www.reddit.com/r/Colemak/comments/jm9m3j/wow_check_out_this_layout_qwdfgy_row_swap/
+#define QWDF_L1_5COL   KC_Q,     KC_W,    KC_D,     KC_F,    KC_G
+#define QWDF_L2_5COL   KC_A,     KC_S,    KC_E,     KC_R,    KC_T
+#define QWDF_L3_5COL   KC_Z,     KC_X,    KC_C,     KC_V,    KC_B
+
+#define QWDF_R1_5COL                                                 KC_Y,     KC_J,     KC_K,     KC_L,     KC_SCLN
+#define QWDF_R2_5COL                                                 KC_H,     KC_U,     KC_I,     KC_O,     KC_P
+#define QWDF_R3_5COL                                                 KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH
 
 #define NUMB_L1_5COL   KC_EXLM,  KC_AT,   KC_HASH,  KC_DLR,  KC_PERC
 #define NUMB_L2_5COL   KC_1,     KC_2,    KC_3,     KC_4,    KC_5

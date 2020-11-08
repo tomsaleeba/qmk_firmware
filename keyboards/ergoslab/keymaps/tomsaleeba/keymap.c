@@ -1,21 +1,35 @@
 #include QMK_KEYBOARD_H
 #include "tom.h"
 
+#define ROW4_LEFT KC_LEAD, KC_LALT, KC_DEL,  GUI_ENT, KC_LSFT, KC_LCTL
+#define ROW4_RGHT NMB_ENT, KC_SPC,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+
+#define ROW5_L_PARTIAL TG(SWAP), KC_ESC,  MO(MDIA), MO(BRKT)
+#define ROW5_R_PARTIAL ALT_TABT, ALT_TAB, KC_BSPC,  TG(SWAP)
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_ergoslab_wrapper(
              BASE_L1_5COL,                                                                  BASE_R1_5COL,
              BASE_L2_5COL,                                                                  BASE_R2_5COL,
              BASE_L3_5COL,                                                                  BASE_R3_5COL,
-    KC_LEAD, KC_LALT, KC_DEL,  GUI_ENT, KC_LSFT, KC_LCTL,     NMB_ENT,  KC_SPC,   KC_LEFT,  KC_DOWN,  KC_UP,   KC_RGHT,
-             TG(GAME),TG(SWAP),KC_ESC , MO(MDIA),MO(BRKT),    ALT_TABT, ALT_TAB, TG(MOUS),  TG(SWAP), TG(CMAK)
+             ROW4_LEFT,                                                                     ROW4_RGHT,
+             TG(GAME),      ROW5_L_PARTIAL,                                 ROW5_R_PARTIAL,           TO(CMAK)
   ),
 
   [CMAK] = LAYOUT_ergoslab_wrapper(
              CMAK_L1_5COL,                                                                  CMAK_R1_5COL,
              CMAK_L2_5COL,                                                                  CMAK_R2_5COL,
              CMAK_L3_5COL,                                                                  CMAK_R3_5COL,
-    KC_LEAD, KC_LALT, KC_DEL,  GUI_ENT, KC_LSFT, KC_LCTL,     NMB_ENT,  KC_SPC,   KC_LEFT,  KC_DOWN,  KC_UP,   KC_RGHT,
-             DF(BASE),TG(SWAP),KC_ESC  ,MO(MDIA),MO(BRKT),    ALT_TABT, ALT_TAB,  KC_BSPC,  TG(SWAP), _______
+             ROW4_LEFT,                                                                     ROW4_RGHT,
+             _______,       ROW5_L_PARTIAL,                                 ROW5_R_PARTIAL,           TO(QWDF)
+  ),
+
+  [QWDF] = LAYOUT_ergoslab_wrapper(
+             QWDF_L1_5COL,                                                                  QWDF_R1_5COL,
+             QWDF_L2_5COL,                                                                  QWDF_R2_5COL,
+             QWDF_L3_5COL,                                                                  QWDF_R3_5COL,
+             ROW4_LEFT,                                                                     ROW4_RGHT,
+             _______,       ROW5_L_PARTIAL,                                 ROW5_R_PARTIAL,           TO(BASE)
   ),
 
   [MDIA] = LAYOUT_ergoslab_wrapper(
@@ -76,32 +90,36 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     uint8_t layer = biton32(state);
     switch (layer) {
       case BASE:
-        rgblight_sethsv(HSV_TOM_ORANGE);
-        break;
-      case MDIA:
-        rgblight_sethsv(HSV_TOM_RED);
-        break;
-      case NUMB:
-        rgblight_sethsv(HSV_TOM_GREEN);
-        break;
-      case MOUS:
-        rgblight_sethsv(HSV_TOM_CYAN);
-        break;
-      case BRKT:
-        rgblight_sethsv(HSV_TOM_PURPLE);
+        rgblight_sethsv_noeeprom(HSV_TOM_ORANGE);
         break;
       case CMAK:
-        rgblight_sethsv(HSV_TOM_BLUE);
+        rgblight_sethsv_noeeprom(HSV_TOM_BLUE);
+        break;
+      case QWDF:
+        rgblight_sethsv_noeeprom(HSV_TOM_DIM_GREEN);
+        break;
+      case MDIA:
+        rgblight_sethsv_noeeprom(HSV_TOM_RED);
+        break;
+      case NUMB:
+        rgblight_sethsv_noeeprom(HSV_TOM_GREEN);
+        break;
+      case MOUS:
+        rgblight_sethsv_noeeprom(HSV_TOM_CYAN);
+        break;
+      case BRKT:
+        rgblight_sethsv_noeeprom(HSV_TOM_PURPLE);
         break;
       case SWAP:
-        rgblight_sethsv(HSV_TOM_WHITE);
+        rgblight_sethsv_noeeprom(HSV_TOM_WHITE);
         break;
       case GAME:
-        rgblight_sethsv(HSV_TOM_DIM_PURPLE);
+        rgblight_sethsv_noeeprom(HSV_TOM_DIM_PURPLE);
         break;
       default:
-        // FIXME would be good to have default handled for both Colemak and Qwerty
-        rgblight_sethsv(HSV_TOM_YELLOW);
+        // FIXME handle this based on what the default layer actually
+        // is. Might be able to do it with: layer_state_is(CMAK).
+        rgblight_sethsv_noeeprom(HSV_TOM_YELLOW);
         break;
     }
     return state;

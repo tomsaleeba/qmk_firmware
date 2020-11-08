@@ -116,37 +116,43 @@ uint16_t get_tapping_term(uint16_t keycode) {
 
 enum combo_events {
   CMB_BACKSPACE_Q,
+  CMB_BACKSPACE_Q2,
   CMB_BACKSPACE_C,
   CMB_BRKT_C,
   CMB_BRKT_Q,
+  CMB_BRKT_Q2,
   CMB_DQUOT,
   CMB_END_C,
-  CMB_END_Q,
+  CMB_END_Q_OR_QUOT_Q2,
   CMB_ESC,
   CMB_HOME_C,
   CMB_HOME_Q,
+  CMB_HOME_Q2,
   CMB_MINUS_Q,
+  CMB_MINUS_Q2,
   CMB_MINUS_C,
   CMB_MOUS_Q,
-  CMB_PGDN_Q,
-  CMB_PGUP_Q,
+  CMB_MOUS_Q2,
+  CMB_PGDN_Q_OR_PGUP_Q2,
+  CMB_PGUP_Q_OR_PGDN_Q2,
   CMB_QUOT_C,
-  CMB_QUOT_Q_OR_MOUS_C,
+  CMB_QUOT_Q_OR_MOUS_C_OR_END_Q2,
   CMB_RCTL,
   CMB_UNDERSCORE,
   CMB_VIM_EASYMOTION_Q,
 };
 
+// common
+const uint16_t PROGMEM i_o_combo[] = {KC_I, KC_O, COMBO_END};
+const uint16_t PROGMEM k_l_combo[] = {KC_K, KC_L, COMBO_END};
+const uint16_t PROGMEM f_g_combo[] = {KC_F, KC_G, COMBO_END};
+const uint16_t PROGMEM r_t_combo[] = {KC_R, KC_T, COMBO_END};
 // QWERTY
 const uint16_t PROGMEM d_f_combo[] = {KC_D, KC_F, COMBO_END};
 const uint16_t PROGMEM dot_comma_combo[] = {KC_DOT, KC_COMM, COMBO_END};
-const uint16_t PROGMEM f_g_combo[] = {KC_F, KC_G, COMBO_END};
 const uint16_t PROGMEM h_j_combo[] = {KC_H, KC_J, COMBO_END};
-const uint16_t PROGMEM i_o_combo[] = {KC_I, KC_O, COMBO_END};
-const uint16_t PROGMEM k_l_combo[] = {KC_K, KC_L, COMBO_END};
 const uint16_t PROGMEM l_cln_combo[] = {KC_L, KC_SCLN, COMBO_END};
 const uint16_t PROGMEM q_w_combo[] = {KC_Q, KC_W, COMBO_END};
-const uint16_t PROGMEM r_t_combo[] = {KC_R, KC_T, COMBO_END};
 const uint16_t PROGMEM s_d_combo[] = {KC_S, KC_D, COMBO_END};
 const uint16_t PROGMEM v_b_combo[] = {KC_V, KC_B, COMBO_END};
 const uint16_t PROGMEM w_e_combo[] = {KC_W, KC_E, COMBO_END};
@@ -159,25 +165,36 @@ const uint16_t PROGMEM r_s_combo[] = {KC_R, KC_S, COMBO_END};
 const uint16_t PROGMEM s_t_combo[] = {KC_S, KC_T, COMBO_END};
 const uint16_t PROGMEM u_y_combo[] = {KC_U, KC_Y, COMBO_END};
 const uint16_t PROGMEM w_f_combo[] = {KC_W, KC_F, COMBO_END};
+// QWDFGY
+const uint16_t PROGMEM w_d_combo[] = {KC_W, KC_D, COMBO_END};
+const uint16_t PROGMEM s_e_combo[] = {KC_S, KC_E, COMBO_END};
+const uint16_t PROGMEM o_p_combo[] = {KC_O, KC_P, COMBO_END};
+const uint16_t PROGMEM e_r_combo[] = {KC_E, KC_R, COMBO_END};
+const uint16_t PROGMEM h_u_combo[] = {KC_H, KC_U, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-  [CMB_BACKSPACE_Q] = COMBO_ACTION(s_d_combo),
   [CMB_BACKSPACE_C] = COMBO_ACTION(r_s_combo),
+  [CMB_BACKSPACE_Q] = COMBO_ACTION(s_d_combo),
+  [CMB_BACKSPACE_Q2] = COMBO_ACTION(s_e_combo),
   [CMB_BRKT_C] = COMBO_ACTION(s_t_combo),
   [CMB_BRKT_Q] = COMBO_ACTION(d_f_combo),
+  [CMB_BRKT_Q2] = COMBO_ACTION(e_r_combo),
   [CMB_DQUOT] = COMBO_ACTION(dot_comma_combo),
   [CMB_END_C] = COMBO_ACTION(e_i_combo),
-  [CMB_END_Q] = COMBO_ACTION(k_l_combo),
+  [CMB_END_Q_OR_QUOT_Q2] = COMBO_ACTION(k_l_combo),
   [CMB_ESC] = COMBO_ACTION(q_w_combo),
   [CMB_HOME_C] = COMBO_ACTION(m_n_combo),
   [CMB_HOME_Q] = COMBO_ACTION(h_j_combo),
-  [CMB_MINUS_Q] = COMBO_ACTION(w_e_combo),
+  [CMB_HOME_Q2] = COMBO_ACTION(h_u_combo),
   [CMB_MINUS_C] = COMBO_ACTION(w_f_combo),
+  [CMB_MINUS_Q] = COMBO_ACTION(w_e_combo),
+  [CMB_MINUS_Q2] = COMBO_ACTION(w_d_combo),
   [CMB_MOUS_Q] = COMBO_ACTION(l_cln_combo),
-  [CMB_PGDN_Q] = COMBO_ACTION(f_g_combo),
-  [CMB_PGUP_Q] = COMBO_ACTION(r_t_combo),
-  [CMB_QUOT_Q_OR_MOUS_C] = COMBO_ACTION(i_o_combo),
+  [CMB_MOUS_Q2] = COMBO_ACTION(o_p_combo),
+  [CMB_PGDN_Q_OR_PGUP_Q2] = COMBO_ACTION(f_g_combo),
+  [CMB_PGUP_Q_OR_PGDN_Q2] = COMBO_ACTION(r_t_combo),
   [CMB_QUOT_C] = COMBO_ACTION(u_y_combo),
+  [CMB_QUOT_Q_OR_MOUS_C_OR_END_Q2] = COMBO_ACTION(i_o_combo),
   [CMB_RCTL] = COMBO_ACTION(z_x_combo),
   [CMB_UNDERSCORE] = COMBO_ACTION(x_c_combo),
   [CMB_VIM_EASYMOTION_Q] = COMBO_ACTION(v_b_combo),
@@ -215,7 +232,7 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         break;
       case CMB_HOME_C:
         return do_combo_keypress(KC_HOME, pressed);
-      case CMB_QUOT_Q_OR_MOUS_C:
+      case CMB_QUOT_Q_OR_MOUS_C_OR_END_Q2:
         if (pressed) {
           layer_invert(MOUS);
         }
@@ -231,39 +248,72 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
     }
     return;
   }
-  switch(combo_index) {
-    case CMB_VIM_EASYMOTION_Q:
-      if (pressed) {
-        tap_code(KC_COMM);
-        tap_code(KC_COMM);
-        tap_code(KC_S);
-      }
-      return;
-    case CMB_PGDN_Q:
-      return do_combo_keypress(KC_PGDN, pressed);
-    case CMB_BRKT_Q:
+  bool isQwdfgy = layer_state_is(QWDF);
+  if (isQwdfgy) {
+    switch(combo_index) {
+      // QWDFGY combos
+    case CMB_PGDN_Q_OR_PGUP_Q2:
+      return do_combo_keypress(KC_PGUP, pressed);
+    case CMB_BRKT_Q2:
       if (pressed) {
         layer_on(BRKT);
       } else {
         layer_off(BRKT);
       }
       break;
-    case CMB_PGUP_Q:
-      return do_combo_keypress(KC_PGUP, pressed);
-    case CMB_HOME_Q:
+    case CMB_PGUP_Q_OR_PGDN_Q2:
+      return do_combo_keypress(KC_PGDN, pressed);
+    case CMB_HOME_Q2:
       return do_combo_keypress(KC_HOME, pressed);
-    case CMB_QUOT_Q_OR_MOUS_C:
-      return do_combo_keypress(KC_QUOT, pressed);
-    case CMB_END_Q:
+    case CMB_QUOT_Q_OR_MOUS_C_OR_END_Q2:
       return do_combo_keypress(KC_END, pressed);
-    case CMB_MOUS_Q:
+    case CMB_END_Q_OR_QUOT_Q2:
+      return do_combo_keypress(KC_QUOT, pressed);
+    case CMB_MOUS_Q2:
       if (pressed) {
         layer_invert(MOUS);
       }
       break;
-    case CMB_BACKSPACE_Q:
+    case CMB_BACKSPACE_Q2:
       return do_combo_keypress(KC_BSPC, pressed);
-    case CMB_MINUS_Q:
+    case CMB_MINUS_Q2:
       return do_combo_keypress(KC_MINS, pressed);
+    }
+  }
+  switch(combo_index) {
+    // QWERTY combos
+  case CMB_VIM_EASYMOTION_Q:
+    if (pressed) {
+      tap_code(KC_COMM);
+      tap_code(KC_COMM);
+      tap_code(KC_S);
+    }
+    return;
+  case CMB_PGDN_Q_OR_PGUP_Q2:
+    return do_combo_keypress(KC_PGDN, pressed);
+  case CMB_BRKT_Q:
+    if (pressed) {
+      layer_on(BRKT);
+    } else {
+      layer_off(BRKT);
+    }
+    break;
+  case CMB_PGUP_Q_OR_PGDN_Q2:
+    return do_combo_keypress(KC_PGUP, pressed);
+  case CMB_HOME_Q:
+    return do_combo_keypress(KC_HOME, pressed);
+  case CMB_QUOT_Q_OR_MOUS_C_OR_END_Q2:
+    return do_combo_keypress(KC_QUOT, pressed);
+  case CMB_END_Q_OR_QUOT_Q2:
+    return do_combo_keypress(KC_END, pressed);
+  case CMB_MOUS_Q:
+    if (pressed) {
+      layer_invert(MOUS);
+    }
+    break;
+  case CMB_BACKSPACE_Q:
+    return do_combo_keypress(KC_BSPC, pressed);
+  case CMB_MINUS_Q:
+    return do_combo_keypress(KC_MINS, pressed);
   }
 }
