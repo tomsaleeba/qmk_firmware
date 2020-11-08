@@ -192,7 +192,7 @@ void do_combo_keypress(uint16_t kc, bool pressed) {
   }
 }
 
-void process_combo_event(uint8_t combo_index, bool pressed) {
+void process_combo_event(uint16_t combo_index, bool pressed) {
   switch (combo_index) {
     case CMB_DQUOT:
       return do_combo_keypress(KC_DQT, pressed);

@@ -4,9 +4,15 @@
   1. util/qmk_install.sh
   1. `make git-submodule`
 
+Can also use `flash` instead of `compile`. It seems that `sudo` is
+*not* required any longer, yay.
+
+## ergoslab
+  1. `bin/qmk compile -kb ergoslab -km tomsaleeba`
+
 ## ergodox ez
-  1. `make ergodox_ez:tomsaleeba:flash`, or
-  1. `make ergodox_ez:tomsaleeba-minimal:flash`
+  1. `bin/qmk compile -kb ergodox_ez -km tomsaleeba`, or
+  1. `bin/qmk compile -kb ergodox_ez -km tomsaleeba-minimal`
 
 ## ergodox infinity
   1. `sudo env CFLAGS="-Wno-error=deprecated" make ergodox_infinity:tomsaleeba:dfu-util`
@@ -23,4 +29,4 @@
   Note2: you can also use `tomsaleeba-minimal` for the ergodox infinity
 
 ## ergotravel
-  1. `sudo make ergotravel:tomsaleeba:flash`
+  1. `bin/qmk compile -kb ergotravel -km tomsaleeba`
