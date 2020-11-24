@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
- 
+
 #ifndef USERSPACE
 #define USERSPACE
 
@@ -55,7 +55,10 @@ enum layer_names {
 #define CS_PGDN  LCTL(LSFT(KC_PGDN))
 #define C_PGUP   LCTL(KC_PGUP)
 #define C_PGDN   LCTL(KC_PGDN)
-
+#define AS_LEFT  LALT(LSFT(KC_LEFT))
+#define AS_RGHT  LALT(LSFT(KC_RGHT))
+#define AS_UP    LALT(LSFT(KC_UP))
+#define AS_DOWN  LALT(LSFT(KC_DOWN))
 
 // from quantum/rgblight_list.h
 #define HSV_TOM_ORANGE 28, 255, 16
@@ -110,7 +113,7 @@ enum layer_names {
 #define NUMB_R1_5COL                                                 KC_CIRC,  KC_AMPR,  KC_ASTR,  KC_BSLS,  KC_PIPE
 #define NUMB_R2_5COL                                                 KC_6,     KC_7,     KC_8,     KC_9,     KC_0
 #define NUMB_R3_5COL                                                 KC_COLN,  KC_TILD,  _______,  _______,  _______
-#define NUMB_R4_4COL                                                 KC_QUOT,  KC_DQT,   KC_GT,    _______
+#define NUMB_R4_4COL                                                           KC_QUOT,  KC_DQT,   KC_GT,    _______
 
 #define MOUS_L1_5COL   _______,  _______, KC_MS_U,  _______, _______
 #define MOUS_L2_5COL   _______,  KC_MS_L, KC_MS_D,  KC_MS_R, _______
