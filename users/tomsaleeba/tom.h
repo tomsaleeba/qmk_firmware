@@ -20,9 +20,10 @@
 
 #include "quantum.h"
 
+
 // A 'transparent' key code (that falls back to the layers below it).
 #ifndef ___
-#define ___ KC_TRANSPARENT
+  #define ___ KC_TRANSPARENT
 #endif
 
 enum custom_keycodes {
@@ -34,6 +35,7 @@ enum layer_names {
   BASE,
   CMAK,
   QWDF,
+  ARRW,
   SWAP,
   MDIA,
   NUMB,

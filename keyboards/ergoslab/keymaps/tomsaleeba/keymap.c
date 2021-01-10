@@ -1,11 +1,11 @@
 #include QMK_KEYBOARD_H
 #include "tom.h"
 
-#define ROW4_LEFT KC_LEAD, KC_LALT, KC_DEL,  GUI_ENT, KC_LSFT, KC_LCTL
-#define ROW4_RGHT NMB_ENT, KC_SPC,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+#define ROW4_LEFT KC_LEAD, KC_LALT,  KC_DEL,   GUI_ENT, KC_LSFT,  KC_LCTL
+#define ROW4_RGHT                                          NMB_ENT,  KC_SPC,  MO(ARRW), KC_NO,   KC_NO,   KC_NO
 
-#define ROW5_L_PARTIAL TG(SWAP), KC_ESC,  MO(MDIA), MO(BRKT)
-#define ROW5_R_PARTIAL ALT_TABT, ALT_TAB, KC_BSPC,  TG(SWAP)
+#define ROW5_L_PARTIAL               TG(SWAP), KC_ESC,  MO(MDIA), MO(BRKT)
+#define ROW5_R_PARTIAL                                     ALT_TABT, ALT_TAB, KC_BSPC,  TG(SWAP)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_ergoslab_wrapper(
@@ -30,6 +30,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              QWDF_L3_5COL,                                                                  QWDF_R3_5COL,
              ROW4_LEFT,                                                                     ROW4_RGHT,
              _______,       ROW5_L_PARTIAL,                                 ROW5_R_PARTIAL,           TO(BASE)
+  ),
+
+  [ARRW] = LAYOUT_ergoslab_wrapper(
+    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO,    KC_NO,    KC_NO,    KC_NO,   KC_NO,
+    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO,    KC_LEFT,  KC_DOWN,  KC_UP,   KC_RGHT,
+    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO,    KC_LEFT,  KC_DOWN,  KC_UP,   KC_RGHT,
+    _______, _______, KC_NO,   _______, _______, _______,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,   KC_NO,
+             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,       KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO
   ),
 
   [MDIA] = LAYOUT_ergoslab_wrapper(
