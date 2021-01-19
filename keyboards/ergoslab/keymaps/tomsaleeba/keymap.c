@@ -32,14 +32,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              _______,       ROW5_L_PARTIAL,                                 ROW5_R_PARTIAL,           TO(BASE)
   ),
 
-  [ARRW] = LAYOUT_ergoslab_wrapper(
-    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO,    KC_NO,    KC_NO,    KC_NO,   KC_NO,
-    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO,    KC_LEFT,  KC_DOWN,  KC_UP,   KC_RGHT,
-    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO,    KC_LEFT,  KC_DOWN,  KC_UP,   KC_RGHT,
-    _______, _______, KC_NO,   _______, _______, _______,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,   KC_NO,
-             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,       KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO
-  ),
-
   [MDIA] = LAYOUT_ergoslab_wrapper(
     KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                          KC_F6,    KC_F7,    KC_F8,    KC_F9,   KC_F10,
     KC_COMM, KC_PLUS, KC_MINS, KC_DOT,  KC_F11,                         KC_F12,   KC_HOME,  KC_PGDN,  KC_PGUP, KC_END,
@@ -76,8 +68,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              BASE_L1_5COL,                                              _______,  _______,  KC_UP,    _______, _______,
              BASE_L2_5COL,                                              _______,  KC_LEFT,  KC_DOWN,  KC_RGHT, _______,
              BASE_L3_5COL,                                                                  BASE_R3_5COL,
-    _______, _______, _______, _______, _______, _______,     KC_ENT,   _______,  _______,  _______,  _______, _______,
-             _______, _______, _______, _______, _______,     _______,  _______,  _______,  _______,  _______
+    _______, _______, _______, KC_TAB,  _______, _______,     KC_ENT,   _______,  _______,  _______,  _______, _______,
+             _______, _______, _______, _______, KC_SPACE,    _______,  _______,  _______,  _______,  _______
+  ),
+
+  [ARRW] = LAYOUT_ergoslab_wrapper(
+    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO,    KC_NO,    KC_NO,    KC_NO,   KC_NO,
+    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO,    KC_LEFT,  KC_DOWN,  KC_UP,   KC_RGHT,
+    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO,    KC_LEFT,  KC_DOWN,  KC_UP,   KC_RGHT,
+    _______, _______, KC_NO,   _______, _______, _______,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,   KC_NO,
+             KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,       KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO
   ),
 
   [SWAP] = LAYOUT_ergoslab_wrapper(
