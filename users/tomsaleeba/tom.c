@@ -99,6 +99,14 @@ void matrix_scan_user(void) {
     SEQ_ONE_KEY(KC_8) { sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_8); }
     SEQ_ONE_KEY(KC_9) { sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_9); }
     SEQ_ONE_KEY(KC_0) { sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_0); }
+
+    // emoji
+    SEQ_ONE_KEY(KC_F) { send_unicode_string("(ノಠ痊ಠ)ノ彡┻━┻"); }
+    SEQ_TWO_KEYS(KC_E, KC_P) { send_unicode_string("💩"); }
+    SEQ_TWO_KEYS(KC_E, KC_T) { send_unicode_string("🤔"); }
+    SEQ_TWO_KEYS(KC_E, KC_U) { send_unicode_string("👍"); }
+    SEQ_TWO_KEYS(KC_E, KC_O) { send_unicode_string("🥺"); }
+    SEQ_TWO_KEYS(KC_E, KC_A) { send_unicode_string("🍆"); }
   }
 }
 
