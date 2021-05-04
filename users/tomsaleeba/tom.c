@@ -110,7 +110,7 @@ void matrix_scan_user(void) {
   }
 }
 
-uint16_t get_tapping_term(uint16_t keycode) {
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case CTL_ESC:
     case MED_TAB:
