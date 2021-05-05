@@ -57,6 +57,8 @@ enum layer_names {
 #define CS_PGDN  LCTL(LSFT(KC_PGDN))
 #define C_PGUP   LCTL(KC_PGUP)
 #define C_PGDN   LCTL(KC_PGDN)
+#define A_LEFT   LALT(KC_LEFT)
+#define A_RGHT   LALT(KC_RGHT)
 #define AS_LEFT  LALT(LSFT(KC_LEFT))
 #define AS_RGHT  LALT(LSFT(KC_RGHT))
 #define AS_UP    LALT(LSFT(KC_UP))
