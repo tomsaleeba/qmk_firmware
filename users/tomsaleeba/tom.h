@@ -29,6 +29,7 @@
 enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE, // can always be here
   VRSN,
+  ALT_TAB,
 };
 
 enum layer_names {
@@ -49,7 +50,6 @@ enum layer_names {
 #define GUI_ENT  RGUI_T(KC_ENT)
 #define MED_TAB  LT(MDIA, KC_TAB)
 #define NMB_ENT  LT(NUMB, KC_ENT)
-#define ALT_TAB  LALT(KC_TAB)
 #define ALT_TABT ALT_T(KC_TAB)
 #define CS_LEFT  LCTL(LSFT(KC_LEFT))
 #define CS_RGHT  LCTL(LSFT(KC_RGHT))

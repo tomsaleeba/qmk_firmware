@@ -24,6 +24,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
       }
       return false;
+    case ALT_TAB:
+      if (record->event.pressed) {
+        register_code(KC_LALT);
+        register_code(KC_TAB);
+        unregister_code(KC_TAB);
+        unregister_code(KC_LALT);
+      }
+      return false;
   }
   return true;
 }
