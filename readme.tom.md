@@ -10,6 +10,9 @@ Can also use `compile` instead of `flash`.
 ## ergoslab
   1. `bin/qmk flash -kb ergoslab -km tomsaleeba`
 
+## Concertina
+  1. `./bin/qmk flash -kb handwired/concertina/64key -km tomsaleeba`
+
 ## ergodox ez
   1. `bin/qmk flash -kb ergodox_ez -km tomsaleeba`, or
   1. `bin/qmk flash -kb ergodox_ez -km tomsaleeba-minimal`
