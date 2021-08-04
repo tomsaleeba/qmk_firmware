@@ -4,8 +4,8 @@
 #define ROW4_LEFT KC_LEAD, KC_LALT,  KC_DEL,   GUI_ENT, KC_LSFT,  KC_LCTL
 #define ROW4_RGHT                                          NMB_ENT,  KC_SPC,  MO(ARRW), KC_NO,   KC_NO,   KC_NO
 
-#define ROW5_L_PARTIAL               TG(SWAP), KC_ESC,  MO(MDIA), MO(BRKT)
-#define ROW5_R_PARTIAL                                     ALT_TABT, ALT_TAB, KC_BSPC,  TG(SWAP)
+#define ROW5_L_PARTIAL               KC_NO,    KC_ESC,  MO(MDIA), MO(BRKT)
+#define ROW5_R_PARTIAL                                     ALT_TABT, ALT_TAB, KC_BSPC,  KC_NO
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_ergoslab_wrapper(
@@ -60,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              BRKT_L1_5COL,                                                                  BRKT_R1_5COL,
              BRKT_L2_5COL,                                                                  BRKT_R2_5COL,
              BRKT_L3_5COL,                                                                  BRKT_R3_5COL,
-    _______, _______, _______, _______, _______, _______,     _______,  _______,  AS_LEFT,  AS_DOWN,  AS_UP, AS_RGHT,
+    _______, _______, _______, _______, _______, _______,     _______,  _______,  _______,  _______,  _______, _______,
              _______, _______, _______, _______, _______,     _______,  _______,  _______,  _______,  _______
   ),
 
@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              BASE_L2_5COL,                                              _______,  KC_KP_4,  KC_KP_5,  KC_KP_6, _______,
              BASE_L3_5COL,                                                                  BASE_R3_5COL,
     _______, _______, _______, KC_TAB,  _______, _______,     KC_ENT,   _______,  KC_LEFT,  KC_DOWN,  KC_UP,   KC_RGHT,
-             _______, _______, _______, _______, KC_SPACE,    _______,  _______,  _______,  _______,  _______
+             _______, _______, _______, _______, KC_SPACE,    KC_TAB,   _______,  _______,  _______,  _______
   ),
 
   [ARRW] = LAYOUT_ergoslab_wrapper(
@@ -79,22 +79,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, KC_NO,   _______, _______, _______,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,   KC_NO,
              KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,       KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO
   ),
-
-  [SWAP] = LAYOUT_ergoslab_wrapper(
-    _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______,  _______,     _______, _______, _______, _______, _______, _______,
-             _______, _______, _______, _______,  _______,     _______, _______, _______, _______, _______
-  ),
 };
 
 #if defined(RGBLIGHT_ENABLE)
   uint32_t layer_state_set_user(uint32_t state) {
-#ifdef SWAP_HANDS_ENABLE
-    // disable swap_hands when mouse is on, I can't deal with a mirrored mouse
-    swap_hands = layer_state_cmp(state, SWAP) && !layer_state_cmp(state, MOUS);
-#endif
     uint8_t layer = biton32(state);
     switch (layer) {
       case BASE:
@@ -133,3 +121,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     return state;
   };
 #endif
+
+void keyboard_post_init_user(void) {
+  rgblight_sethsv_noeeprom(HSV_TOM_ORANGE);
+}
