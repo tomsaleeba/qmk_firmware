@@ -4,8 +4,8 @@
 #define ROW4_LEFT KC_LEAD, KC_LALT,  KC_DEL,   GUI_ENT, KC_LSFT,  KC_LCTL
 #define ROW4_RGHT                                          NMB_ENT,  KC_SPC,  MO(ARRW), KC_NO,   KC_NO,   KC_NO
 
-#define ROW5_L_PARTIAL               KC_NO,    KC_ESC,  MO(MDIA), MO(BRKT)
-#define ROW5_R_PARTIAL                                     ALT_TABT, ALT_TAB, KC_BSPC,  KC_NO
+#define ROW5_L_PARTIAL               KC_SPC,   KC_ESC,  MO(MDIA), MO(BRKT)
+#define ROW5_R_PARTIAL                                     ALT_TABT, ALT_TAB, KC_APP,   KC_NO
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_ergoslab_wrapper(
