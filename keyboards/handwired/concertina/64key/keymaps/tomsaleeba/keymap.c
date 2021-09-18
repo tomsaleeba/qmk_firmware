@@ -4,15 +4,17 @@
 #include "tom.h"
 
 #define MO_MDIA MO(MDIA)
-#define MO_BRKT MO(BRKT)
+#define ESC_BRKT LT(BRKT, KC_ESC)
 #define MO_ARRW MO(ARRW)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
+// FIXME might want to put escape on the same key as MO_BRKT
+
 [BASE] = LAYOUT_64key(
                       _______, _______, _______,                          _______, _______, _______,
-                      GUI_ENT, MO_MDIA, MO_BRKT, _______,        _______, ALT_TABT,ALT_TAB, MO_ARRW,
-                               KC_LSFT, KC_LCTL, _______,        _______, NMB_ENT, KC_SPC,
+                      GUI_ENT, MO_MDIA, _______, _______,        _______, ALT_TABT,_______, MO_ARRW,
+                               KC_LSFT, KC_LCTL, ESC_BRKT,       ALT_TAB, NMB_ENT, KC_SPC,
 
                       KC_W,    KC_E,    KC_R,    KC_T,           KC_Y,    KC_U,    KC_I,    KC_O,
     _______, KC_Q,    KC_S,    KC_D,    KC_F,    KC_G,           KC_H,    KC_J,    KC_K,    KC_L,    KC_P,    _______,
@@ -42,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, KC_EXLM, KC_2,    KC_3,    KC_4,    KC_5,           KC_6,    KC_7,    KC_8,    KC_9,    KC_PIPE, _______,
     _______, KC_1,    KC_MINS, KC_PLUS, KC_EQL,  KC_GRV,         KC_COLN, KC_TILD, _______, _______, KC_0,    _______,
     _______, KC_UNDS, _______, _______, _______,                          _______, _______, _______, _______, _______,
-                               _______,                                            _______ // FIXME '">
+                               _______,                                            _______ // FIXME add '">
 ),
 
 [BRKT] = LAYOUT_64key(
