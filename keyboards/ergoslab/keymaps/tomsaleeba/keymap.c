@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              BASE_L2_5COL,                                              _______,  KC_KP_4,  KC_KP_5,  KC_KP_6, _______,
              BASE_L3_5COL,                                                                  BASE_R3_5COL,
     _______, _______, _______, KC_TAB,  _______, _______,     KC_ENT,   _______,  KC_LEFT,  KC_DOWN,  KC_UP,   KC_RGHT,
-             _______, _______, _______, _______, KC_SPACE,    KC_TAB,   _______,  _______,  _______,  _______
+             _______, _______, _______, _______, KC_SPACE,    KC_TAB,   KC_ESC,   _______,  _______,  _______
   ),
 
   [ARRW] = LAYOUT_ergoslab_wrapper(
