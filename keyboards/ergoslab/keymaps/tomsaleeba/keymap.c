@@ -2,10 +2,10 @@
 #include "tom.h"
 
 #define ROW4_LEFT KC_LEAD, KC_LALT,  KC_DEL,   GUI_ENT, KC_LSFT,  KC_LCTL
-#define ROW4_RGHT                                          NMB_ENT,  KC_SPC,  MO(ARRW), KC_NO,   KC_NO,   KC_NO
+#define ROW4_RGHT                                          NMB_ENT,  KC_SPC,  MO(ARRW), OSM(MOD_LGUI), OSM(MOD_LCTL), OSM(MOD_LSFT)
 
 #define ROW5_L_PARTIAL               KC_SPC,   KC_ESC,  MO(MDIA), MO(BRKT)
-#define ROW5_R_PARTIAL                                     ALT_TABT, ALT_TAB, KC_APP,   KC_NO
+#define ROW5_R_PARTIAL                                     ALT_TABT, ALT_TAB, KC_APP,   LCTL(MOD_LSFT)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_ergoslab_wrapper(
@@ -36,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                          KC_F6,    KC_F7,    KC_F8,    KC_F9,   KC_F10,
     KC_COMM, KC_PLUS, KC_MINS, KC_DOT,  KC_F11,                         KC_F12,   KC_HOME,  KC_PGDN,  KC_PGUP, KC_END,
     KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                           RGB_TOG,  _______,  KC_BRID,  KC_BRIU, KC_MUTE,
-    KC_0,    RESET,   VRSN,    KC_COMM, KC_DOT,  _______,     _______,  _______,  _______,  KC_VOLD,  KC_VOLU, _______,
+    KC_0,    RESET,   VRSN,    KC_DOT,  _______, _______,     _______,  _______,  _______,  KC_VOLD,  KC_VOLU, _______,
              _______, _______, _______, _______, _______,     _______,  _______,  _______,  _______,  _______
   ),
 
