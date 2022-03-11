@@ -29,3 +29,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define EE_HANDS
 
 #define NO_ACTION_MACRO
+
+#define ONESHOT_TAP_TOGGLE 2
+#define ONESHOT_TIMEOUT 1500
