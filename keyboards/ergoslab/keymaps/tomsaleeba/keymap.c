@@ -83,10 +83,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 #if defined(RGBLIGHT_ENABLE)
   uint32_t layer_state_set_user(uint32_t state) {
-    uint8_t mods = get_oneshot_mods();
-    if (mods) {
-      // LED for mods should clobber layers
-      // FIXME doesn't work, mods is always falsey
+    if (get_oneshot_locked_mods() ||
+        (get_oneshot_mods() && !has_oneshot_mods_timed_out())) {
       return state;
     }
     uint8_t layer = biton32(state);
@@ -115,10 +113,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       case GAME:
         rgblight_sethsv_noeeprom(HSV_TOM_DIM_PURPLE);
         break;
-      default:
-        // FIXME handle this based on what the default layer actually
-        // is. Might be able to do it with: layer_state_is(CMAK).
+      case ARRW:
         rgblight_sethsv_noeeprom(HSV_TOM_YELLOW);
+        break;
+      default:
+        rgblight_sethsv_noeeprom(HSV_MAGENTA);
         break;
     }
     return state;
@@ -129,13 +128,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       rgblight_sethsv_noeeprom(HSV_TOM_WHITE);
       return;
     }
-    // FIXME handle this based on what the default layer actually is. Can we
-    // call the layer logic, need to get current layer though.
-    rgblight_sethsv_noeeprom(HSV_TOM_ORANGE);
+    layer_state_set_user(layer_state | default_layer_state);
   }
 
   void oneshot_locked_mods_changed_user(uint8_t mods) {
-    // FIXME doesn't clear locked mods
     oneshot_mods_changed_user(mods);
   }
 

@@ -17,6 +17,12 @@
 #include "tom.h"
 #include "version.h"
 
+void clear_oneshots(void) {
+  clear_oneshot_locked_mods();
+  clear_oneshot_mods();
+  unregister_mods(get_mods());
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case VRSN:
@@ -33,30 +39,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
     case CLROSM:
-      // FIXME locked mods are not cleared
-      clear_oneshot_locked_mods();
-      unregister_mods(get_oneshot_locked_mods());
-      clear_oneshot_mods();
-      unregister_mods(get_oneshot_mods());
+      clear_oneshots();
       return false;
-    case KC_ESC:
-      // FIXME doesn't seem to work
-      // thanks users/dshields/dshields.c
-      if (record->event.pressed) {
-        bool rc = true;
-        uint8_t mods = 0;
-        if ((mods = get_oneshot_mods()) && !has_oneshot_mods_timed_out()) {
-          clear_oneshot_mods();
-          unregister_mods(mods);
-          rc = false;
-        }
-        if ((mods = get_oneshot_locked_mods())) {
-          clear_oneshot_locked_mods();
-          unregister_mods(mods);
-          rc = false;
-        }
-        return rc;
-      }
+    // tried to hook KC_ESC like users/dshields/dshields.c but the locked mods
+    // weren't unlocking. Ended up solving it in the combo handler.
   }
   return true;
 }
@@ -265,6 +251,10 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
     case CMB_DQUOT:
       return do_combo_keypress(KC_DQT, pressed);
     case CMB_ESC:
+      if (get_oneshot_locked_mods() ||
+          (get_oneshot_mods() && !has_oneshot_mods_timed_out())) {
+        return clear_oneshots();
+      }
       return do_combo_keypress(KC_ESC, pressed);
     case CMB_UNDERSCORE:
       return do_combo_keypress(KC_UNDS, pressed);
