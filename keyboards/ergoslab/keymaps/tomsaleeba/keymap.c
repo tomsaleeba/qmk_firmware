@@ -2,10 +2,10 @@
 #include "tom.h"
 
 #define ROW4_LEFT KC_LEAD, KC_LALT,  KC_DEL,   GUI_ENT, KC_LSFT,  KC_LCTL
-#define ROW4_RGHT                                          NMB_ENT,  KC_SPC,  MO(ARRW), OSM(MOD_LGUI), OSM(MOD_LCTL), OSM(MOD_LSFT)
+#define ROW4_RGHT                                          NMB_ENT,  KC_SPC,  MO(ARRW), OSM(MOD_LGUI), OSM(MOD_LSFT), OSM(MOD_LCTL)
 
 #define ROW5_L_PARTIAL               KC_SPC,   KC_ESC,  MO(MDIA), MO(BRKT)
-#define ROW5_R_PARTIAL                                     ALT_TABT, ALT_TAB, KC_APP,   LCTL(MOD_LSFT)
+#define ROW5_R_PARTIAL                                     ALT_TABT, ALT_TAB, KC_APP,   CLROSM
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_ergoslab_wrapper(
@@ -83,6 +83,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 #if defined(RGBLIGHT_ENABLE)
   uint32_t layer_state_set_user(uint32_t state) {
+    uint8_t mods = get_oneshot_mods();
+    if (mods) {
+      // LED for mods should clobber layers
+      // FIXME doesn't work, mods is always falsey
+      return state;
+    }
     uint8_t layer = biton32(state);
     switch (layer) {
       case BASE:
@@ -106,9 +112,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       case BRKT:
         rgblight_sethsv_noeeprom(HSV_TOM_PURPLE);
         break;
-      case SWAP:
-        rgblight_sethsv_noeeprom(HSV_TOM_WHITE);
-        break;
       case GAME:
         rgblight_sethsv_noeeprom(HSV_TOM_DIM_PURPLE);
         break;
@@ -120,8 +123,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     }
     return state;
   };
-#endif
 
-void keyboard_post_init_user(void) {
-  rgblight_sethsv_noeeprom(HSV_TOM_ORANGE);
-}
+  void oneshot_mods_changed_user(uint8_t mods) {
+    if (mods & MOD_MASK_SHIFT || mods & MOD_MASK_CTRL || mods & MOD_MASK_GUI) {
+      rgblight_sethsv_noeeprom(HSV_TOM_WHITE);
+      return;
+    }
+    // FIXME handle this based on what the default layer actually is. Can we
+    // call the layer logic, need to get current layer though.
+    rgblight_sethsv_noeeprom(HSV_TOM_ORANGE);
+  }
+
+  void oneshot_locked_mods_changed_user(uint8_t mods) {
+    // FIXME doesn't clear locked mods
+    oneshot_mods_changed_user(mods);
+  }
+
+  void keyboard_post_init_user(void) {
+    rgblight_sethsv_noeeprom(HSV_TOM_ORANGE);
+  }
+#endif

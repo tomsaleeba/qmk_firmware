@@ -32,6 +32,31 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         unregister_code(KC_LALT);
       }
       return false;
+    case CLROSM:
+      // FIXME locked mods are not cleared
+      clear_oneshot_locked_mods();
+      unregister_mods(get_oneshot_locked_mods());
+      clear_oneshot_mods();
+      unregister_mods(get_oneshot_mods());
+      return false;
+    case KC_ESC:
+      // FIXME doesn't seem to work
+      // thanks users/dshields/dshields.c
+      if (record->event.pressed) {
+        bool rc = true;
+        uint8_t mods = 0;
+        if ((mods = get_oneshot_mods()) && !has_oneshot_mods_timed_out()) {
+          clear_oneshot_mods();
+          unregister_mods(mods);
+          rc = false;
+        }
+        if ((mods = get_oneshot_locked_mods())) {
+          clear_oneshot_locked_mods();
+          unregister_mods(mods);
+          rc = false;
+        }
+        return rc;
+      }
   }
   return true;
 }
