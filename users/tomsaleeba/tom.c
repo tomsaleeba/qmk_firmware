@@ -39,10 +39,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
     case CLROSM:
-      clear_oneshots();
+      if (record->event.pressed) {
+        clear_oneshots();
+      }
       return false;
     // tried to hook KC_ESC like users/dshields/dshields.c but the locked mods
-    // weren't unlocking. Ended up solving it in the combo handler.
+    // weren't unlocking. Ended up solving it in the combo handler for Esc lower.
   }
   return true;
 }
