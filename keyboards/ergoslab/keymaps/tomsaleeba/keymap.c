@@ -1,10 +1,10 @@
 #include QMK_KEYBOARD_H
 #include "tom.h"
 
-#define ROW4_LEFT KC_LEAD, KC_LALT,  KC_DEL,   GUI_ENT, KC_LSFT,  KC_LCTL
+#define ROW4_LEFT KC_LEAD, KC_LALT,  KC_DEL,   GUI_ENT, OSM(MOD_LSFT), OSM(MOD_LCTL)
 #define ROW4_RGHT                                          NMB_ENT,  KC_SPC,  MO(ARRW), OSM(MOD_LGUI), OSM(MOD_LSFT), OSM(MOD_LCTL)
 
-#define ROW5_L_PARTIAL               KC_SPC,   KC_ESC,  MO(MDIA), MO(BRKT)
+#define ROW5_L_PARTIAL               KC_SPC,   KC_ESC,  MO(MDIA),      MO(BRKT)
 #define ROW5_R_PARTIAL                                     ALT_TABT, ALT_TAB, KC_APP,   CLROSM
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {

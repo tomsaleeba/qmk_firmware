@@ -22,4 +22,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MASTER_RIGHT
 
 #define ONESHOT_TAP_TOGGLE 2
-#define ONESHOT_TIMEOUT 1500
+#define ONESHOT_TIMEOUT 700
