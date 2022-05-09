@@ -43,6 +43,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         clear_oneshots();
       }
       return false;
+    case FAT_ARW:
+      if (record->event.pressed) {
+        SEND_STRING("() => {}");
+        tap_code(KC_LEFT);
+      }
+      return false;
+    case IIFEJS:
+      if (record->event.pressed) {
+        SEND_STRING("(() => {})()");
+        tap_code(KC_LEFT);
+        tap_code(KC_LEFT);
+        tap_code(KC_LEFT);
+        tap_code(KC_LEFT);
+      }
+      return false;
     // tried to hook KC_ESC like users/dshields/dshields.c but the locked mods
     // weren't unlocking. Ended up solving it in the combo handler for Esc lower.
   }
@@ -198,41 +213,41 @@ const uint16_t PROGMEM w_e_combo[] = {KC_W, KC_E, COMBO_END};
 const uint16_t PROGMEM x_c_combo[] = {KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM z_x_combo[] = {KC_Z, KC_X, COMBO_END};
 // Colemak DHm
-const uint16_t PROGMEM e_i_combo[] = {KC_E, KC_I, COMBO_END};
-const uint16_t PROGMEM m_n_combo[] = {KC_M, KC_N, COMBO_END};
-const uint16_t PROGMEM r_s_combo[] = {KC_R, KC_S, COMBO_END};
-const uint16_t PROGMEM s_t_combo[] = {KC_S, KC_T, COMBO_END};
-const uint16_t PROGMEM u_y_combo[] = {KC_U, KC_Y, COMBO_END};
-const uint16_t PROGMEM w_f_combo[] = {KC_W, KC_F, COMBO_END};
+// const uint16_t PROGMEM e_i_combo[] = {KC_E, KC_I, COMBO_END};
+// const uint16_t PROGMEM m_n_combo[] = {KC_M, KC_N, COMBO_END};
+// const uint16_t PROGMEM r_s_combo[] = {KC_R, KC_S, COMBO_END};
+// const uint16_t PROGMEM s_t_combo[] = {KC_S, KC_T, COMBO_END};
+// const uint16_t PROGMEM u_y_combo[] = {KC_U, KC_Y, COMBO_END};
+// const uint16_t PROGMEM w_f_combo[] = {KC_W, KC_F, COMBO_END};
 // QWDFGY
-const uint16_t PROGMEM w_d_combo[] = {KC_W, KC_D, COMBO_END};
-const uint16_t PROGMEM s_e_combo[] = {KC_S, KC_E, COMBO_END};
-const uint16_t PROGMEM o_p_combo[] = {KC_O, KC_P, COMBO_END};
-const uint16_t PROGMEM e_r_combo[] = {KC_E, KC_R, COMBO_END};
-const uint16_t PROGMEM h_u_combo[] = {KC_H, KC_U, COMBO_END};
+// const uint16_t PROGMEM w_d_combo[] = {KC_W, KC_D, COMBO_END};
+// const uint16_t PROGMEM s_e_combo[] = {KC_S, KC_E, COMBO_END};
+// const uint16_t PROGMEM o_p_combo[] = {KC_O, KC_P, COMBO_END};
+// const uint16_t PROGMEM e_r_combo[] = {KC_E, KC_R, COMBO_END};
+// const uint16_t PROGMEM h_u_combo[] = {KC_H, KC_U, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-  [CMB_BACKSPACE_C] = COMBO_ACTION(r_s_combo),
+  // [CMB_BACKSPACE_C] = COMBO_ACTION(r_s_combo),
   [CMB_BACKSPACE_Q] = COMBO_ACTION(s_d_combo),
-  [CMB_BACKSPACE_Q2] = COMBO_ACTION(s_e_combo),
-  [CMB_BRKT_C] = COMBO_ACTION(s_t_combo),
+  // [CMB_BACKSPACE_Q2] = COMBO_ACTION(s_e_combo),
+  // [CMB_BRKT_C] = COMBO_ACTION(s_t_combo),
   [CMB_BRKT_Q] = COMBO_ACTION(d_f_combo),
-  [CMB_BRKT_Q2] = COMBO_ACTION(e_r_combo),
+  // [CMB_BRKT_Q2] = COMBO_ACTION(e_r_combo),
   [CMB_DQUOT] = COMBO_ACTION(dot_comma_combo),
-  [CMB_END_C] = COMBO_ACTION(e_i_combo),
+  // [CMB_END_C] = COMBO_ACTION(e_i_combo),
   [CMB_END_Q_OR_QUOT_Q2] = COMBO_ACTION(k_l_combo),
   [CMB_ESC] = COMBO_ACTION(q_w_combo),
-  [CMB_HOME_C] = COMBO_ACTION(m_n_combo),
+  // [CMB_HOME_C] = COMBO_ACTION(m_n_combo),
   [CMB_HOME_Q] = COMBO_ACTION(h_j_combo),
-  [CMB_HOME_Q2] = COMBO_ACTION(h_u_combo),
-  [CMB_MINUS_C] = COMBO_ACTION(w_f_combo),
+  // [CMB_HOME_Q2] = COMBO_ACTION(h_u_combo),
+  // [CMB_MINUS_C] = COMBO_ACTION(w_f_combo),
   [CMB_MINUS_Q] = COMBO_ACTION(w_e_combo),
-  [CMB_MINUS_Q2] = COMBO_ACTION(w_d_combo),
+  // [CMB_MINUS_Q2] = COMBO_ACTION(w_d_combo),
   [CMB_MOUS_Q] = COMBO_ACTION(l_cln_combo),
-  [CMB_MOUS_Q2] = COMBO_ACTION(o_p_combo),
+  // [CMB_MOUS_Q2] = COMBO_ACTION(o_p_combo),
   [CMB_PGDN_Q_OR_PGUP_Q2] = COMBO_ACTION(f_g_combo),
   [CMB_PGUP_Q_OR_PGDN_Q2] = COMBO_ACTION(r_t_combo),
-  [CMB_QUOT_C] = COMBO_ACTION(u_y_combo),
+  // [CMB_QUOT_C] = COMBO_ACTION(u_y_combo),
   [CMB_QUOT_Q_OR_MOUS_C_OR_END_Q2] = COMBO_ACTION(i_o_combo),
   [CMB_RCTL] = COMBO_ACTION(z_x_combo),
   [CMB_UNDERSCORE] = COMBO_ACTION(x_c_combo),
@@ -263,66 +278,66 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
     case CMB_RCTL:
       return do_combo_keypress(KC_RCTL, pressed);
   }
-  bool isColemak = layer_state_is(CMAK);
-  if (isColemak) {
-    switch(combo_index) {
-      case CMB_BRKT_C:
-        if (pressed) {
-          layer_on(BRKT);
-        } else {
-          layer_off(BRKT);
-        }
-        break;
-      case CMB_HOME_C:
-        return do_combo_keypress(KC_HOME, pressed);
-      case CMB_QUOT_Q_OR_MOUS_C_OR_END_Q2:
-        if (pressed) {
-          layer_invert(MOUS);
-        }
-        break;
-      case CMB_QUOT_C:
-        return do_combo_keypress(KC_QUOT, pressed);
-      case CMB_END_C:
-        return do_combo_keypress(KC_END, pressed);
-      case CMB_BACKSPACE_C:
-        return do_combo_keypress(KC_BSPC, pressed);
-      case CMB_MINUS_C:
-        return do_combo_keypress(KC_MINS, pressed);
-    }
-    return;
-  }
-  bool isQwdfgy = layer_state_is(QWDF);
-  if (isQwdfgy) {
-    switch(combo_index) {
-      // QWDFGY combos
-    case CMB_PGDN_Q_OR_PGUP_Q2:
-      return do_combo_keypress(KC_PGUP, pressed);
-    case CMB_BRKT_Q2:
-      if (pressed) {
-        layer_on(BRKT);
-      } else {
-        layer_off(BRKT);
-      }
-      break;
-    case CMB_PGUP_Q_OR_PGDN_Q2:
-      return do_combo_keypress(KC_PGDN, pressed);
-    case CMB_HOME_Q2:
-      return do_combo_keypress(KC_HOME, pressed);
-    case CMB_QUOT_Q_OR_MOUS_C_OR_END_Q2:
-      return do_combo_keypress(KC_END, pressed);
-    case CMB_END_Q_OR_QUOT_Q2:
-      return do_combo_keypress(KC_QUOT, pressed);
-    case CMB_MOUS_Q2:
-      if (pressed) {
-        layer_invert(MOUS);
-      }
-      break;
-    case CMB_BACKSPACE_Q2:
-      return do_combo_keypress(KC_BSPC, pressed);
-    case CMB_MINUS_Q2:
-      return do_combo_keypress(KC_MINS, pressed);
-    }
-  }
+  // bool isColemak = layer_state_is(CMAK);
+  // if (isColemak) {
+  //   switch(combo_index) {
+  //     case CMB_BRKT_C:
+  //       if (pressed) {
+  //         layer_on(BRKT);
+  //       } else {
+  //         layer_off(BRKT);
+  //       }
+  //       break;
+  //     case CMB_HOME_C:
+  //       return do_combo_keypress(KC_HOME, pressed);
+  //     case CMB_QUOT_Q_OR_MOUS_C_OR_END_Q2:
+  //       if (pressed) {
+  //         layer_invert(MOUS);
+  //       }
+  //       break;
+  //     case CMB_QUOT_C:
+  //       return do_combo_keypress(KC_QUOT, pressed);
+  //     case CMB_END_C:
+  //       return do_combo_keypress(KC_END, pressed);
+  //     case CMB_BACKSPACE_C:
+  //       return do_combo_keypress(KC_BSPC, pressed);
+  //     case CMB_MINUS_C:
+  //       return do_combo_keypress(KC_MINS, pressed);
+  //   }
+  //   return;
+  // }
+  // bool isQwdfgy = layer_state_is(QWDF);
+  // if (isQwdfgy) {
+  //   switch(combo_index) {
+  //     // QWDFGY combos
+  //   case CMB_PGDN_Q_OR_PGUP_Q2:
+  //     return do_combo_keypress(KC_PGUP, pressed);
+  //   case CMB_BRKT_Q2:
+  //     if (pressed) {
+  //       layer_on(BRKT);
+  //     } else {
+  //       layer_off(BRKT);
+  //     }
+  //     break;
+  //   case CMB_PGUP_Q_OR_PGDN_Q2:
+  //     return do_combo_keypress(KC_PGDN, pressed);
+  //   case CMB_HOME_Q2:
+  //     return do_combo_keypress(KC_HOME, pressed);
+  //   case CMB_QUOT_Q_OR_MOUS_C_OR_END_Q2:
+  //     return do_combo_keypress(KC_END, pressed);
+  //   case CMB_END_Q_OR_QUOT_Q2:
+  //     return do_combo_keypress(KC_QUOT, pressed);
+  //   case CMB_MOUS_Q2:
+  //     if (pressed) {
+  //       layer_invert(MOUS);
+  //     }
+  //     break;
+  //   case CMB_BACKSPACE_Q2:
+  //     return do_combo_keypress(KC_BSPC, pressed);
+  //   case CMB_MINUS_Q2:
+  //     return do_combo_keypress(KC_MINS, pressed);
+  //   }
+  // }
   switch(combo_index) {
     // QWERTY combos
   case CMB_VIM_EASYMOTION_Q:

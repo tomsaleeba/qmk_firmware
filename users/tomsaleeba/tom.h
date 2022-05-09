@@ -31,6 +31,8 @@ enum custom_keycodes {
   VRSN,
   CLROSM,
   ALT_TAB,
+  FAT_ARW,
+  IIFEJS,
 };
 
 enum layer_names {
@@ -135,7 +137,7 @@ enum layer_names {
 #define BRKT_L3_5COL   _______,  _______, _______,  C_PGUP,  C_PGDN
 
 #define BRKT_R1_5COL                                                 _______, KC_LCBR, KC_RCBR, _______, _______
-#define BRKT_R2_5COL                                                 _______, KC_LPRN, KC_RPRN, _______, _______
-#define BRKT_R3_5COL                                                 _______, KC_LBRC, KC_RBRC, _______, _______
+#define BRKT_R2_5COL                                                 FAT_ARW, KC_LPRN, KC_RPRN, _______, _______
+#define BRKT_R3_5COL                                                 IIFEJS,  KC_LBRC, KC_RBRC, _______, _______
 
 #endif

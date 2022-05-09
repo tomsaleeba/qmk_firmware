@@ -1,7 +1,7 @@
 #include QMK_KEYBOARD_H
 #include "tom.h"
 
-#define ROW4_LEFT KC_LEAD, KC_LALT,  KC_DEL,   GUI_ENT, OSM(MOD_LSFT), OSM(MOD_LCTL)
+#define ROW4_LEFT KC_LEAD, KC_LALT,  KC_DEL,   GUI_ENT, OSM(MOD_LSFT), KC_LCTL
 #define ROW4_RGHT                                          NMB_ENT,  KC_SPC,  MO(ARRW), OSM(MOD_LGUI), OSM(MOD_LSFT), OSM(MOD_LCTL)
 
 #define ROW5_L_PARTIAL               KC_SPC,   KC_ESC,  MO(MDIA),      MO(BRKT)
@@ -17,11 +17,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [CMAK] = LAYOUT_ergoslab_wrapper(
-             CMAK_L1_5COL,                                                                  CMAK_R1_5COL,
-             CMAK_L2_5COL,                                                                  CMAK_R2_5COL,
-             CMAK_L3_5COL,                                                                  CMAK_R3_5COL,
+    _______, S(KC_SPC),C(KC_PLUS), C(KC_SPC),  _______,                     _______,  _______,  _______,  _______, _______,
+    KC_A,    KC_X,     C(KC_MINS), KC_SPC,     _______,                     _______,  _______,  _______,  _______, _______,
+    C(KC_Z), RCS(KC_Z),_______,    _______,    KC_B,                        _______,  _______,  _______,  _______, _______,
              ROW4_LEFT,                                                                     ROW4_RGHT,
-             _______,       ROW5_L_PARTIAL,                                 ROW5_R_PARTIAL,           TO(QWDF)
+             _______,       ROW5_L_PARTIAL,                                 ROW5_R_PARTIAL,           TO(BASE)
   ),
 
   [QWDF] = LAYOUT_ergoslab_wrapper(
