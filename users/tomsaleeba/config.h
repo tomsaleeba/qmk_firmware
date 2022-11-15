@@ -50,3 +50,7 @@
 #define TAPPING_TERM_PER_KEY
 
 #define UNICODE_SELECTED_MODES UC_LNX
+
+// get pin names from https://docs.qmk.fm/#/easy_maker?id=direct-pin
+#define UD_PIN         B5
+#define LR_PIN         B6

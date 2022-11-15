@@ -16,11 +16,18 @@
 
 #include "tom.h"
 #include "version.h"
+#include "analog.h"
+#include "print.h" // for debugging
 
 void clear_oneshots(void) {
   clear_oneshot_locked_mods();
   clear_oneshot_mods();
   unregister_mods(get_mods());
+}
+
+void keyboard_pre_init_user(void) {
+  setPinInput(LR_PIN);
+  setPinInput(UD_PIN);
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -86,6 +93,28 @@ void sendThreeKeys(int key1, int key2, int key3) {
 LEADER_EXTERNS();
 // Runs constantly in the background, in a loop.
 void matrix_scan_user(void) {
+  // 140 < val < 865
+  int16_t udVal = analogReadPin(UD_PIN);
+  if (udVal > 800) {
+    register_code(KC_ENT);
+  } else if (udVal < 200) {
+    register_code(KC_LALT);
+    register_code(KC_TAB);
+  } else {
+    unregister_code(KC_ENT);
+    unregister_code(KC_LALT);
+    unregister_code(KC_TAB);
+  }
+  int16_t lrVal = analogReadPin(LR_PIN);
+  if (lrVal > 800) {
+    register_code(KC_SPC);
+  } else if (lrVal < 200) {
+    register_code(KC_TAB);
+  } else {
+    unregister_code(KC_SPC);
+    unregister_code(KC_TAB);
+  }
+  uprintf("ud: %2u, lr: %2u \n", udVal, lrVal);
   LEADER_DICTIONARY() {
     leading = false;
     leader_end();
