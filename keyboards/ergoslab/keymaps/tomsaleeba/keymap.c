@@ -73,9 +73,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [ARRW] = LAYOUT_ergoslab_wrapper(
-    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO,    AS_LEFT,  AS_DOWN,  AS_UP,   AS_RGHT,
-    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO,    KC_LEFT,  KC_DOWN,  KC_UP,   KC_RGHT,
-    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO,    CS_LEFT,  A_LEFT,   A_RGHT,  CS_RGHT,
+    KC_NO,   KC_NO,   KC_NO,   KC_NO,   W_THE,                          KC_NO,    AS_LEFT,  AS_DOWN,  AS_UP,   AS_RGHT,
+    W_AND,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO,    KC_LEFT,  KC_DOWN,  KC_UP,   KC_RGHT,
+    KC_NO,   KC_NO,   W_CONST, KC_NO,   KC_NO,                          KC_NO,    CS_LEFT,  A_LEFT,   A_RGHT,  CS_RGHT,
     _______, _______, KC_NO,   _______, _______, _______,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,   KC_NO,
              KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,       KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO
   ),

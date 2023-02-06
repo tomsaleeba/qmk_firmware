@@ -33,6 +33,9 @@ enum custom_keycodes {
   ALT_TAB,
   FAT_ARW,
   IIFEJS,
+  W_THE,
+  W_CONST,
+  W_AND,
 };
 
 enum layer_names {

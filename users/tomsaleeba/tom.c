@@ -58,6 +58,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         tap_code(KC_LEFT);
       }
       return false;
+    case W_THE:
+      if (record->event.pressed) {
+        SEND_STRING("the");
+      }
+      return false;
+    case W_CONST:
+      if (record->event.pressed) {
+        SEND_STRING("const");
+      }
+      return false;
+    case W_AND:
+      if (record->event.pressed) {
+        SEND_STRING("and");
+      }
+      return false;
     // tried to hook KC_ESC like users/dshields/dshields.c but the locked mods
     // weren't unlocking. Ended up solving it in the combo handler for Esc lower.
   }
@@ -96,10 +111,10 @@ void matrix_scan_user(void) {
     // fat arrow
     SEQ_ONE_KEY(KC_DOT) { sendThreeKeys(KC_EQL, KC_LSHIFT, KC_DOT); }
 
-    // rofi-pass
+    // app launcher
     SEQ_ONE_KEY(KC_D) { sendThreeKeys(KC_LGUI, KC_LSHIFT, KC_D); }
 
-    // new terminal in i3
+    // new terminal
     SEQ_ONE_KEY(KC_N) { sendTwoKeys(KC_LGUI, KC_ENT); }
 
     // kitty copy
@@ -107,9 +122,6 @@ void matrix_scan_user(void) {
 
     // kitty paste
     SEQ_ONE_KEY(KC_V) { sendThreeKeys(KC_LCTL, KC_LSHIFT, KC_V); }
-
-    // kitty new tab
-    SEQ_ONE_KEY(KC_T) { sendThreeKeys(KC_LCTL, KC_LSHIFT, KC_T); }
 
     // i3 "move workspace to monitor"
     // we don't need one for right. On two monitors, it's the same
@@ -123,18 +135,6 @@ void matrix_scan_user(void) {
 
     // i3 "toggle scratchpad"
     SEQ_ONE_KEY(KC_J) { sendTwoKeys(KC_LGUI, KC_MINS); }
-
-    // i3 "move window to workspace"
-    SEQ_ONE_KEY(KC_1) { sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_1); }
-    SEQ_ONE_KEY(KC_2) { sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_2); }
-    SEQ_ONE_KEY(KC_3) { sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_3); }
-    SEQ_ONE_KEY(KC_4) { sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_4); }
-    SEQ_ONE_KEY(KC_5) { sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_5); }
-    SEQ_ONE_KEY(KC_6) { sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_6); }
-    SEQ_ONE_KEY(KC_7) { sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_7); }
-    SEQ_ONE_KEY(KC_8) { sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_8); }
-    SEQ_ONE_KEY(KC_9) { sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_9); }
-    SEQ_ONE_KEY(KC_0) { sendThreeKeys(KC_LSHIFT, KC_LGUI, KC_0); }
 
     // emoji
     SEQ_ONE_KEY(KC_F) { send_unicode_string("(╯°□°)╯︵ ┻━┻"); }
@@ -153,6 +153,8 @@ void matrix_scan_user(void) {
     SEQ_TWO_KEYS(KC_E, KC_S) { send_unicode_string("🤷"); }
     SEQ_TWO_KEYS(KC_E, KC_T) { send_unicode_string("🤔"); }
     SEQ_TWO_KEYS(KC_E, KC_U) { send_unicode_string("👍"); }
+
+    SEQ_ONE_KEY(KC_T) { send_unicode_string("the"); }
   }
 }
 
