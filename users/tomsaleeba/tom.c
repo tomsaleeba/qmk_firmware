@@ -24,54 +24,42 @@ void clear_oneshots(void) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  if (!record->event.pressed) {
+    // I only care about presses at this stage
+    return true;
+  }
   switch (keycode) {
     case VRSN:
-      if (record->event.pressed) {
-        SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
-      }
+      SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
       return false;
     case ALT_TAB:
-      if (record->event.pressed) {
-        register_code(KC_LALT);
-        register_code(KC_TAB);
-        unregister_code(KC_TAB);
-        unregister_code(KC_LALT);
-      }
+      register_code(KC_LALT);
+      register_code(KC_TAB);
+      unregister_code(KC_TAB);
+      unregister_code(KC_LALT);
       return false;
     case CLROSM:
-      if (record->event.pressed) {
-        clear_oneshots();
-      }
+      clear_oneshots();
       return false;
     case FAT_ARW:
-      if (record->event.pressed) {
-        SEND_STRING("() => {}");
-        tap_code(KC_LEFT);
-      }
+      SEND_STRING("() => {}");
+      tap_code(KC_LEFT);
       return false;
     case IIFEJS:
-      if (record->event.pressed) {
-        SEND_STRING("(() => {})()");
-        tap_code(KC_LEFT);
-        tap_code(KC_LEFT);
-        tap_code(KC_LEFT);
-        tap_code(KC_LEFT);
-      }
+      SEND_STRING("(() => {})()");
+      tap_code(KC_LEFT);
+      tap_code(KC_LEFT);
+      tap_code(KC_LEFT);
+      tap_code(KC_LEFT);
       return false;
     case W_THE:
-      if (record->event.pressed) {
-        SEND_STRING("the");
-      }
+      SEND_STRING("the ");
       return false;
     case W_CONST:
-      if (record->event.pressed) {
-        SEND_STRING("const");
-      }
+      SEND_STRING("const ");
       return false;
     case W_AND:
-      if (record->event.pressed) {
-        SEND_STRING("and");
-      }
+      SEND_STRING("and ");
       return false;
     // tried to hook KC_ESC like users/dshields/dshields.c but the locked mods
     // weren't unlocking. Ended up solving it in the combo handler for Esc lower.
