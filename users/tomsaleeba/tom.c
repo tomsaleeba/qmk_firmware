@@ -86,63 +86,114 @@ void sendThreeKeys(int key1, int key2, int key3) {
   sendKeys(keys, 3);
 }
 
-LEADER_EXTERNS();
-// Runs constantly in the background, in a loop.
-void matrix_scan_user(void) {
-  LEADER_DICTIONARY() {
-    leading = false;
-    leader_end();
 
-    // browser back
-    SEQ_ONE_KEY(KC_B) { sendTwoKeys(KC_LALT, KC_LEFT); }
-
-    // fat arrow
-    SEQ_ONE_KEY(KC_DOT) { sendThreeKeys(KC_EQL, KC_LSHIFT, KC_DOT); }
-
-    // app launcher
-    SEQ_ONE_KEY(KC_D) { sendThreeKeys(KC_LGUI, KC_LSHIFT, KC_D); }
-
-    // new terminal
-    SEQ_ONE_KEY(KC_N) { sendTwoKeys(KC_LGUI, KC_ENT); }
-
-    // kitty copy
-    SEQ_ONE_KEY(KC_C) { sendThreeKeys(KC_LCTL, KC_LSHIFT, KC_C); }
-
-    // kitty paste
-    SEQ_ONE_KEY(KC_V) { sendThreeKeys(KC_LCTL, KC_LSHIFT, KC_V); }
-
-    // i3 "move workspace to monitor"
-    // we don't need one for right. On two monitors, it's the same
-    SEQ_ONE_KEY(KC_LEFT) { sendThreeKeys(KC_LCTL, KC_LGUI, KC_LEFT); }
-
-    // restart command in terminal
-    SEQ_ONE_KEY(KC_UP) {
-      sendTwoKeys(KC_LCTL, KC_C);
-      sendTwoKeys(KC_UP, KC_ENT);
-    }
-
-    // i3 "toggle scratchpad"
-    SEQ_ONE_KEY(KC_J) { sendTwoKeys(KC_LGUI, KC_MINS); }
-
-    // emoji
-    SEQ_ONE_KEY(KC_F) { send_unicode_string("(╯°□°)╯︵ ┻━┻"); }
-    SEQ_TWO_KEYS(KC_E, KC_A) { send_unicode_string("🍆"); }
-    SEQ_TWO_KEYS(KC_E, KC_C) { send_unicode_string("✅"); }
-    SEQ_TWO_KEYS(KC_E, KC_D) { send_unicode_string("👎"); }
-    SEQ_TWO_KEYS(KC_E, KC_E) { send_unicode_string("🤯"); }
-    SEQ_TWO_KEYS(KC_E, KC_F) { send_unicode_string("🤦"); }
-    SEQ_TWO_KEYS(KC_E, KC_G) { send_unicode_string("😬"); }
-    SEQ_TWO_KEYS(KC_E, KC_H) { send_unicode_string("😍"); }
-    SEQ_TWO_KEYS(KC_E, KC_L) { send_unicode_string("🥺"); }
-    SEQ_TWO_KEYS(KC_E, KC_M) { send_unicode_string("💪"); }
-    SEQ_TWO_KEYS(KC_E, KC_N) { send_unicode_string("😁"); }
-    SEQ_TWO_KEYS(KC_E, KC_O) { send_unicode_string("👌"); }
-    SEQ_TWO_KEYS(KC_E, KC_P) { send_unicode_string("💩"); }
-    SEQ_TWO_KEYS(KC_E, KC_S) { send_unicode_string("🤷"); }
-    SEQ_TWO_KEYS(KC_E, KC_T) { send_unicode_string("🤔"); }
-    SEQ_TWO_KEYS(KC_E, KC_U) { send_unicode_string("👍"); }
-
-    SEQ_ONE_KEY(KC_T) { send_unicode_string("the"); }
+void leader_end_user(void) {
+  // app launcher
+  if (leader_sequence_one_key(KC_D)) {
+    sendThreeKeys(KC_LGUI, KC_LSFT, KC_D);
+    return;
+  }
+  // new terminal
+  if (leader_sequence_one_key(KC_N)) {
+    sendTwoKeys(KC_LGUI, KC_ENT);
+    return;
+  }
+  // kitty copy
+  if (leader_sequence_one_key(KC_C)) {
+    sendThreeKeys(KC_LCTL, KC_LSFT, KC_C);
+    return;
+  }
+  // kitty paste
+  if (leader_sequence_one_key(KC_V)) {
+    sendThreeKeys(KC_LCTL, KC_LSFT, KC_V);
+    return;
+  }
+  // i3 "move workspace to monitor"
+  // we don't need one for right. On two monitors, it's the same
+  if (leader_sequence_one_key(KC_LEFT)) {
+    sendThreeKeys(KC_LCTL, KC_LGUI, KC_LEFT);
+    return;
+  }
+  // restart command in terminal
+  if (leader_sequence_one_key(KC_UP)) {
+    sendTwoKeys(KC_LCTL, KC_C);
+    sendTwoKeys(KC_UP, KC_ENT);
+    return;
+  }
+  // i3 "toggle scratchpad"
+  if (leader_sequence_one_key(KC_J)) {
+    sendTwoKeys(KC_LGUI, KC_MINS);
+    return;
+  }
+  // emoji
+  if (leader_sequence_one_key(KC_F)) {
+    send_unicode_string("(╯°□°)╯︵ ┻━┻");
+    return;
+  }
+  if (leader_sequence_two_keys(KC_E, KC_A)) {
+    send_unicode_string("🍆");
+    return;
+  }
+  if (leader_sequence_two_keys(KC_E, KC_C)) {
+    send_unicode_string("✅");
+    return;
+  }
+  if (leader_sequence_two_keys(KC_E, KC_D)) {
+    send_unicode_string("👎");
+    return;
+  }
+  if (leader_sequence_two_keys(KC_E, KC_E)) {
+    send_unicode_string("🤯");
+    return;
+  }
+  if (leader_sequence_two_keys(KC_E, KC_F)) {
+    send_unicode_string("🤦");
+    return;
+  }
+  if (leader_sequence_two_keys(KC_E, KC_G)) {
+    send_unicode_string("😬");
+    return;
+  }
+  if (leader_sequence_two_keys(KC_E, KC_H)) {
+    send_unicode_string("😍");
+    return;
+  }
+  if (leader_sequence_two_keys(KC_E, KC_L)) {
+    send_unicode_string("🥺");
+    return;
+  }
+  if (leader_sequence_two_keys(KC_E, KC_M)) {
+    send_unicode_string("💪");
+    return;
+  }
+  if (leader_sequence_two_keys(KC_E, KC_N)) {
+    send_unicode_string("😁");
+    return;
+  }
+  if (leader_sequence_two_keys(KC_E, KC_O)) {
+    send_unicode_string("👌");
+    return;
+  }
+  if (leader_sequence_two_keys(KC_E, KC_P)) {
+    send_unicode_string("💩");
+    return;
+  }
+  if (leader_sequence_two_keys(KC_E, KC_S)) {
+    send_unicode_string("🤷");
+    return;
+  }
+  if (leader_sequence_two_keys(KC_E, KC_T)) {
+    send_unicode_string("🤔");
+    return;
+  }
+  if (leader_sequence_two_keys(KC_E, KC_U)) {
+    send_unicode_string("👍");
+    return;
+  }
+  // words
+  if (leader_sequence_one_key(KC_T)) {
+    send_unicode_string("the");
+    return;
   }
 }
 

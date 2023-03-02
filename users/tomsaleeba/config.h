@@ -49,4 +49,4 @@
 // https://github.com/qmk/qmk_firmware/blob/master/docs/custom_quantum_functions.md#custom-tapping-term
 #define TAPPING_TERM_PER_KEY
 
-#define UNICODE_SELECTED_MODES UC_LNX
+#define UNICODE_SELECTED_MODES UNICODE_MODE_LINUX
