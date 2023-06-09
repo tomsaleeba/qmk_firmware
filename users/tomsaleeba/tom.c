@@ -313,6 +313,9 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
           (get_oneshot_mods() && !has_oneshot_mods_timed_out())) {
         return clear_oneshots();
       }
+      if (host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK)) {
+        return tap_code(KC_CAPS);
+      }
       return do_combo_keypress(KC_ESC, pressed);
     case CMB_UNDERSCORE:
       return do_combo_keypress(KC_UNDS, pressed);
