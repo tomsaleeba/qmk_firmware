@@ -2,7 +2,7 @@
 #include "tom.h"
 
 #define ROW4_LEFT QK_LEAD, KC_LALT,  KC_DEL,   GUI_ENT, KC_LSFT,   KC_LCTL
-#define ROW4_RGHT                                          NMB_ENT,  KC_SPC,  MO(ARRW), OSM(MOD_LGUI), OSM(MOD_LSFT), OSM(MOD_LCTL)
+#define ROW4_RGHT                                          NMB_ENT,  KC_SPC,  MO(ARRW), KC_CAPS, OSM(MOD_LSFT), OSM(MOD_LCTL)
 
 #define ROW5_L_PARTIAL               KC_SPC,   KC_ESC,  MO(MDIA),  MO(BRKT)
 #define ROW5_R_PARTIAL                                     ALT_TABT, ALT_TAB, KC_APP,   CLROSM
@@ -74,8 +74,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [ARRW] = LAYOUT_ergoslab_wrapper(
     KC_NO,   KC_NO,   KC_NO,   KC_NO,   W_THE,                          KC_NO,    AS_LEFT,  AS_DOWN,  AS_UP,   AS_RGHT,
-    W_AND,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                          KC_NO,    KC_LEFT,  KC_DOWN,  KC_UP,   KC_RGHT,
-    KC_NO,   KC_NO,   W_CONST, KC_NO,   KC_NO,                          KC_NO,    CS_LEFT,  A_LEFT,   A_RGHT,  CS_RGHT,
+  LGUI(KC_1),LGUI(KC_2),LGUI(KC_3),LGUI(KC_4),LGUI(KC_5),          LGUI(KC_6),    KC_LEFT,  KC_DOWN,  KC_UP,   KC_RGHT,
+    W_AND,   KC_NO,   W_CONST, KC_NO,   KC_NO,                          KC_NO,    CS_LEFT,  A_LEFT,   A_RGHT,  CS_RGHT,
     _______, _______, KC_NO,   _______, _______, _______,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,   KC_NO,
              KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,       KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO
   ),

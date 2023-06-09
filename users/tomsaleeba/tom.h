@@ -49,7 +49,7 @@ enum layer_names {
   MOUS,
   BRKT,
   GAME,
-  LFTH,
+  LFTH,  // only for ergodox
 };
 
 #define CTL_ESC  CTL_T(KC_ESC)
