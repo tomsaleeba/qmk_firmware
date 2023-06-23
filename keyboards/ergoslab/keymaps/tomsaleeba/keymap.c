@@ -139,12 +139,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     rgblight_sethsv_noeeprom(HSV_TOM_ORANGE);
   }
 
-  // FIXME it works for turning on, but turning off is harder because we have to figure
-  //  out what to go back to (layers) and when to do it (not on every record)
-  // void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
-  //   if (host_keyboard_leds() & (1<<USB_LED_CAPS_LOCK)) {
-  //     // FIXME might be a bit wasteful to check on every record
-  //     rgblight_sethsv_noeeprom(HSV_TOM_WHITE);
-  //   }
-  // }
+  bool led_update_user(led_t led_state) {
+    if (led_state.caps_lock) {
+      rgblight_sethsv_noeeprom(HSV_TOM_WHITE);
+    } else {
+      layer_state_set_user(layer_state);
+    }
+    return true;
+  }
 #endif
