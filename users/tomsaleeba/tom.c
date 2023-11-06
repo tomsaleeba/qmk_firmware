@@ -138,6 +138,14 @@ void leader_end_user(void) {
     send_unicode_string("✅");
     return;
   }
+  if (leader_sequence_two_keys(KC_E, KC_B)) {
+    send_unicode_string("🙇");
+    return;
+  }
+  if (leader_sequence_two_keys(KC_E, KC_X)) {
+    send_unicode_string("❌");
+    return;
+  }
   if (leader_sequence_two_keys(KC_E, KC_D)) {
     send_unicode_string("👎");
     return;
@@ -190,9 +198,8 @@ void leader_end_user(void) {
     send_unicode_string("👍");
     return;
   }
-  // words
-  if (leader_sequence_one_key(KC_T)) {
-    send_unicode_string("the");
+  if (leader_sequence_two_keys(KC_E, KC_W)) {
+    send_unicode_string("😅");
     return;
   }
 }
@@ -240,8 +247,8 @@ enum combo_events {
 // common
 const uint16_t PROGMEM i_o_combo[] = {KC_I, KC_O, COMBO_END};
 const uint16_t PROGMEM k_l_combo[] = {KC_K, KC_L, COMBO_END};
-const uint16_t PROGMEM f_g_combo[] = {KC_F, KC_G, COMBO_END};
-const uint16_t PROGMEM r_t_combo[] = {KC_R, KC_T, COMBO_END};
+const uint16_t PROGMEM dot_slash_combo[] = {KC_DOT, KC_SLSH, COMBO_END};
+// const uint16_t PROGMEM r_t_combo[] = {KC_R, KC_T, COMBO_END};
 // QWERTY
 const uint16_t PROGMEM d_f_combo[] = {KC_D, KC_F, COMBO_END};
 const uint16_t PROGMEM dot_comma_combo[] = {KC_DOT, KC_COMM, COMBO_END};
@@ -263,7 +270,7 @@ const uint16_t PROGMEM z_x_combo[] = {KC_Z, KC_X, COMBO_END};
 // QWDFGY
 // const uint16_t PROGMEM w_d_combo[] = {KC_W, KC_D, COMBO_END};
 // const uint16_t PROGMEM s_e_combo[] = {KC_S, KC_E, COMBO_END};
-// const uint16_t PROGMEM o_p_combo[] = {KC_O, KC_P, COMBO_END};
+const uint16_t PROGMEM o_p_combo[] = {KC_O, KC_P, COMBO_END};
 // const uint16_t PROGMEM e_r_combo[] = {KC_E, KC_R, COMBO_END};
 // const uint16_t PROGMEM h_u_combo[] = {KC_H, KC_U, COMBO_END};
 
@@ -286,8 +293,8 @@ combo_t key_combos[COMBO_COUNT] = {
   // [CMB_MINUS_Q2] = COMBO_ACTION(w_d_combo),
   [CMB_MOUS_Q] = COMBO_ACTION(l_cln_combo),
   // [CMB_MOUS_Q2] = COMBO_ACTION(o_p_combo),
-  [CMB_PGDN_Q_OR_PGUP_Q2] = COMBO_ACTION(f_g_combo),
-  [CMB_PGUP_Q_OR_PGDN_Q2] = COMBO_ACTION(r_t_combo),
+  [CMB_PGDN_Q_OR_PGUP_Q2] = COMBO_ACTION(dot_slash_combo),
+  [CMB_PGUP_Q_OR_PGDN_Q2] = COMBO_ACTION(o_p_combo),
   // [CMB_QUOT_C] = COMBO_ACTION(u_y_combo),
   [CMB_QUOT_Q_OR_MOUS_C_OR_END_Q2] = COMBO_ACTION(i_o_combo),
   [CMB_RCTL] = COMBO_ACTION(z_x_combo),

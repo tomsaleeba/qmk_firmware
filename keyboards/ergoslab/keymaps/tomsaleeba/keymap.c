@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO,   KC_NO,   KC_NO,   KC_NO,   W_THE,                          KC_NO,    AS_LEFT,  AS_DOWN,  AS_UP,   AS_RGHT,
   LGUI(KC_1),LGUI(KC_2),LGUI(KC_3),LGUI(KC_4),LGUI(KC_5),          LGUI(KC_6),    KC_LEFT,  KC_DOWN,  KC_UP,   KC_RGHT,
     W_AND,   KC_NO,   W_CONST, KC_NO,   KC_NO,                          KC_NO,    CS_LEFT,  A_LEFT,   A_RGHT,  CS_RGHT,
-    _______, _______, KC_NO,   _______, _______, _______,     KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO,   KC_NO,
+    _______, _______, KC_NO,   _______, _______, _______,     KC_NO,    KC_NO,    KC_NO,    G_LEFT,   G_RGHT,  KC_NO,
              KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,       KC_NO,    KC_NO,    KC_NO,    KC_NO,    KC_NO
   ),
 };
