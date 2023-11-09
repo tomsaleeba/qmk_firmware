@@ -88,9 +88,19 @@ void sendThreeKeys(int key1, int key2, int key3) {
 
 
 void leader_end_user(void) {
+  // kitty copy
+  if (leader_sequence_one_key(KC_C)) {
+    sendThreeKeys(KC_LCTL, KC_LSFT, KC_C);
+    return;
+  }
   // app launcher
   if (leader_sequence_one_key(KC_D)) {
     sendThreeKeys(KC_LGUI, KC_LSFT, KC_D);
+    return;
+  }
+  // emoji
+  if (leader_sequence_one_key(KC_F)) {
+    send_unicode_string("(╯°□°)╯︵ ┻━┻");
     return;
   }
   // new terminal
@@ -98,9 +108,8 @@ void leader_end_user(void) {
     sendTwoKeys(KC_LGUI, KC_ENT);
     return;
   }
-  // kitty copy
-  if (leader_sequence_one_key(KC_C)) {
-    sendThreeKeys(KC_LCTL, KC_LSFT, KC_C);
+  if (leader_sequence_one_key(KC_S)) {
+    send_unicode_string(".saplinglearning.me/s");
     return;
   }
   // kitty paste
@@ -125,25 +134,16 @@ void leader_end_user(void) {
     sendTwoKeys(KC_LGUI, KC_MINS);
     return;
   }
-  // emoji
-  if (leader_sequence_one_key(KC_F)) {
-    send_unicode_string("(╯°□°)╯︵ ┻━┻");
-    return;
-  }
   if (leader_sequence_two_keys(KC_E, KC_A)) {
     send_unicode_string("🍆");
-    return;
-  }
-  if (leader_sequence_two_keys(KC_E, KC_C)) {
-    send_unicode_string("✅");
     return;
   }
   if (leader_sequence_two_keys(KC_E, KC_B)) {
     send_unicode_string("🙇");
     return;
   }
-  if (leader_sequence_two_keys(KC_E, KC_X)) {
-    send_unicode_string("❌");
+  if (leader_sequence_two_keys(KC_E, KC_C)) {
+    send_unicode_string("✅");
     return;
   }
   if (leader_sequence_two_keys(KC_E, KC_D)) {
@@ -198,8 +198,16 @@ void leader_end_user(void) {
     send_unicode_string("👍");
     return;
   }
+  if (leader_sequence_two_keys(KC_E, KC_X)) {
+    send_unicode_string("❌");
+    return;
+  }
   if (leader_sequence_two_keys(KC_E, KC_W)) {
     send_unicode_string("😅");
+    return;
+  }
+  if (leader_sequence_two_keys(KC_E, KC_Y)) {
+    send_unicode_string("👆");
     return;
   }
 }
