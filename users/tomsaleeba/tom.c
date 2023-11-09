@@ -100,7 +100,7 @@ void leader_end_user(void) {
   }
   // emoji
   if (leader_sequence_one_key(KC_F)) {
-    send_unicode_string("(╯°□°)╯︵ ┻━┻");
+    send_string("debugger // FIXME delete line");
     return;
   }
   // new terminal
@@ -109,7 +109,7 @@ void leader_end_user(void) {
     return;
   }
   if (leader_sequence_one_key(KC_S)) {
-    send_unicode_string(".saplinglearning.me/s");
+    send_string(".saplinglearning.me/s");
     return;
   }
   // kitty paste
