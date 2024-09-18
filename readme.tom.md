@@ -1,4 +1,6 @@
 ## Setup
+Note: python is a bit shit. Every time the OS python version updates it loses all the
+installed packages. So using docker seems more robust, we'll see.
   1. `git clone`
   1. `cd qmk_firmware`
   1. `venv3`
@@ -8,7 +10,7 @@
 Can also use `compile` instead of `flash`.
 
 ## ergoslab
-  1. `qmk flash -kb ergoslab -km tomsaleeba`
+  1. `./util/docker_build.sh ergoslab:tomsaleeba:flash`
 
 ## Concertina
   1. `qmk flash -kb handwired/concertina/64key -km tomsaleeba`
