@@ -12,6 +12,14 @@ Can also use `compile` instead of `flash`.
 ## ergoslab
   1. `./util/docker_build.sh ergoslab:tomsaleeba:flash`
 
+or, for the one with busted promicro:
+```
+# edit keyboards/ergoslab/keymaps/tomsaleeba/config.h
+#define MASTER_LEFT
+
+# then flash like 👆
+```
+
 ## Concertina
   1. `qmk flash -kb handwired/concertina/64key -km tomsaleeba`
 
