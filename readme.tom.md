@@ -20,6 +20,17 @@ or, for the one with busted promicro:
 # then flash like 👆
 ```
 
+## STHLMkb CYOA
+```
+./util/docker_build.sh cyoa_ortho:tom:build
+```
+
+Then put the board into bootloader mode, either by:
+- the key shortcut, or
+- unplug keyboard cable, connect boot pin hole on rp2040 to the pin 4 down and plug the
+  cable back in, release the pin connection
+The RP2040 will show as a flash drive, copy the .uf2 file onto it
+
 ## Concertina
   1. `qmk flash -kb handwired/concertina/64key -km tomsaleeba`
 
